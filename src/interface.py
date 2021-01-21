@@ -12,4 +12,6 @@ class Interface:
     def create(self, width, height):
         self.window = tk.Tk()
         self.window.title(self.title)
-        self.window.geometry(str(width) + "x" + str(height) + "+400+200")
+
+        
+        self.window.geometry(str(width) + "x" + str(height) + "+400+200")  
