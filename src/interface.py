@@ -5,13 +5,11 @@ class Interface:
 
     def __init__(self, title):
         self.title = title
-        self.create(700, 450)
+        self.create(750, 750)
 
         self.window.mainloop()
 
     def create(self, width, height):
         self.window = tk.Tk()
         self.window.title(self.title)
-
-        
-        self.window.geometry(str(width) + "x" + str(height) + "+400+200")  
+        self.window.geometry(str(width) + "x" + str(height) + "+500+100")
