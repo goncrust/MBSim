@@ -42,7 +42,7 @@ class Interface:
         for z in range(len(active)):
             if active[z]:
                 self.buttons[z] = tk.Button(
-                    self.canvas, image=image_loader.botao)
+                    self.canvas, image=image_loader.button_right)
 
                 if z == 0:
                     self.buttons[z].place(x=0, y=50)

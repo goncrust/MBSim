@@ -2,6 +2,10 @@ from PIL import Image, ImageTk
 
 IMAGEDIR = 'assets/images/'
 
-botao_file = Image.open(IMAGEDIR + 'botao.png')
-botao_file = botao_file.resize((320, 90))
-botao = ImageTk.PhotoImage(botao_file)
+button_left_file = Image.open(IMAGEDIR + 'buttonleft.png')
+button_left_file = button_left_file.resize((320, 90))
+button_left = ImageTk.PhotoImage(button_left_file)
+
+button_right_file = Image.open(IMAGEDIR + 'buttonright.png')
+button_right_file = button_left_file.resize((320, 90))
+button_right = ImageTk.PhotoImage(button_right_file)
