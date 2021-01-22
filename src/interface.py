@@ -1,5 +1,6 @@
 import tkinter as tk
 import i_event_handler
+from scenarios import *
 
 WIDTH = 750
 HEIGHT = 750
@@ -17,7 +18,9 @@ class Interface:
         self.create_window(WIDTH, HEIGHT)
         self.create_canvas()
 
-        self.cenario([True, True, True, True, True, True, True, True], "")
+        self.current_scenario = Scenario.LOGIN
+
+        self.update_scenario()
 
         self.window.mainloop()
 
@@ -31,7 +34,12 @@ class Interface:
                                 height=HEIGHT, bg="#32a84e", highlightthickness=0)
         self.canvas.pack()
 
-    def cenario(self, active, label):
+    def update_scenario(self):
+        self.scenario(Scenario.get_scenario_active(self.current_scenario))
+
+        self.scenario_text(Scenario.get_scenario_text(self.current_scenario))
+
+    def scenario(self, active):
 
         import image_loader
 
@@ -66,4 +74,8 @@ class Interface:
                 elif z == 7:
                     self.buttons[z].place(x=WIDTH-320, y=500)
 
-                self.buttons[z].bind('<Button-1>', self.event_handler.click)
+                self.buttons[z].bind(
+                    '<Button-1>', eval("self.event_handler.click_" + str(z)))
+
+    def scenario_text(self, label):
+        pass
