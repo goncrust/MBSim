@@ -1,7 +1,10 @@
+
+
 class IEventHandler:
 
-    def __init__(self):
-        pass
+    def __init__(self, interface):
+        self.interface = interface
 
     def click(self, event):
-        print("test")
+        self.interface.cenario(
+            [True, False, True, False, True, True, False, False], "")
