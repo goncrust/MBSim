@@ -28,7 +28,7 @@ class Interface:
 
     def create_canvas(self):
         self.canvas = tk.Canvas(self.window, width=WIDTH,
-                                height=HEIGHT, bg="blue", highlightthickness=0)
+                                height=HEIGHT, bg="#32a84e", highlightthickness=0)
         self.canvas.pack()
 
     def cenario(self, active, label):
