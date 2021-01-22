@@ -27,7 +27,8 @@ class Interface:
         self.window.geometry(str(width) + "x" + str(height) + "+500+100")
 
     def create_canvas(self):
-        self.canvas = tk.Canvas(self.window, width=WIDTH, height=HEIGHT)
+        self.canvas = tk.Canvas(self.window, width=WIDTH,
+                                height=HEIGHT, bg="blue", highlightthickness=0)
         self.canvas.pack()
 
     def cenario(self, active, label):
@@ -43,10 +44,10 @@ class Interface:
             if active[z]:
                 if z < 4:
                     self.buttons[z] = tk.Button(
-                        self.canvas, image=image_loader.button_left, borderwidth=0)
+                        self.canvas, image=image_loader.button_left, borderwidth=0, highlightthickness=0)
                 else:
                     self.buttons[z] = tk.Button(
-                        self.canvas, image=image_loader.button_right, borderwidth=0)
+                        self.canvas, image=image_loader.button_right, borderwidth=0, highlightthickness=0)
 
                 if z == 0:
                     self.buttons[z].place(x=-1, y=50)
@@ -64,7 +65,5 @@ class Interface:
                     self.buttons[z].place(x=WIDTH-320, y=350)
                 elif z == 7:
                     self.buttons[z].place(x=WIDTH-320, y=500)
-
-
 
                 self.buttons[z].bind('<Button-1>', self.event_handler.click)
