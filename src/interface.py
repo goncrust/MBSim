@@ -43,27 +43,27 @@ class Interface:
             if active[z]:
                 if z < 4:
                     self.buttons[z] = tk.Button(
-                        self.canvas, image=image_loader.button_left)
+                        self.canvas, image=image_loader.button_left, borderwidth=0)
                 else:
                     self.buttons[z] = tk.Button(
-                        self.canvas, image=image_loader.button_right)
+                        self.canvas, image=image_loader.button_right, borderwidth=0)
 
                 if z == 0:
-                    self.buttons[z].place(x=0, y=50)
+                    self.buttons[z].place(x=-1, y=50)
                 elif z == 1:
-                    self.buttons[z].place(x=0, y=200)
+                    self.buttons[z].place(x=-1, y=200)
                 elif z == 2:
-                    self.buttons[z].place(x=0, y=350)
+                    self.buttons[z].place(x=-1, y=350)
                 elif z == 3:
-                    self.buttons[z].place(x=0, y=500)
+                    self.buttons[z].place(x=-1, y=500)
                 elif z == 4:
-                    self.buttons[z].place(x=WIDTH-320-5, y=50)
+                    self.buttons[z].place(x=WIDTH-320, y=50)
                 elif z == 5:
-                    self.buttons[z].place(x=WIDTH-320-5, y=200)
+                    self.buttons[z].place(x=WIDTH-320, y=200)
                 elif z == 6:
-                    self.buttons[z].place(x=WIDTH-320-5, y=350)
+                    self.buttons[z].place(x=WIDTH-320, y=350)
                 elif z == 7:
-                    self.buttons[z].place(x=WIDTH-320-5, y=500)
+                    self.buttons[z].place(x=WIDTH-320, y=500)
 
 
 
