@@ -41,8 +41,12 @@ class Interface:
 
         for z in range(len(active)):
             if active[z]:
-                self.buttons[z] = tk.Button(
-                    self.canvas, image=image_loader.button_right)
+                if z < 4:
+                    self.buttons[z] = tk.Button(
+                        self.canvas, image=image_loader.button_left)
+                else:
+                    self.buttons[z] = tk.Button(
+                        self.canvas, image=image_loader.button_right)
 
                 if z == 0:
                     self.buttons[z].place(x=0, y=50)
@@ -60,5 +64,7 @@ class Interface:
                     self.buttons[z].place(x=WIDTH-320-5, y=350)
                 elif z == 7:
                     self.buttons[z].place(x=WIDTH-320-5, y=500)
+
+
 
                 self.buttons[z].bind('<Button-1>', self.event_handler.click)
