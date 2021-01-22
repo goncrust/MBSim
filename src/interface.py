@@ -78,4 +78,4 @@ class Interface:
                     '<Button-1>', eval("self.event_handler.click_" + str(z)))
 
     def scenario_text(self, label):
-        pass
+        print(label)

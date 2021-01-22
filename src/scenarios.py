@@ -1,3 +1,9 @@
+import json
+
+
+languages = ""
+with open('assets/language.json') as languages_file:
+    languages = json.load(languages_file)
 
 
 class Scenario:
@@ -5,6 +11,8 @@ class Scenario:
     LOGIN = 0
     MAIN = 1
     MAINS = 2
+
+    LANGUAGES = languages
 
     @staticmethod
     def get_scenario_active(scenario):
@@ -15,5 +23,9 @@ class Scenario:
     @staticmethod
     def get_scenario_text(scenario):
 
-        if scenario == Scenario.LOGIN:
-            return ["", "", "", "", "", "", "", ""]
+        result = []
+
+        for i in range(8):
+            result.append(languages[str(scenario)][str(i)]["Portuguese"])
+
+        return result
