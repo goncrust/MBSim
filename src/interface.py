@@ -10,16 +10,14 @@ class Interface:
     def __init__(self, title):
         self.title = title
 
+        self.buttons = []
+
         self.event_handler = i_event_handler.IEventHandler()
 
         self.create_window(WIDTH, HEIGHT)
         self.create_canvas()
-        import image_loader
 
-        # test buttons
-        b1 = tk.Button(self.canvas, image=image_loader.botao)
-        b1.pack()
-        b1.bind('<Button-1>', self.event_handler.click)
+        self.cenario([True, True, True, True, True, True, True, True], "")
 
         self.window.mainloop()
 
@@ -29,8 +27,40 @@ class Interface:
         self.window.geometry(str(width) + "x" + str(height) + "+500+100")
 
     def create_canvas(self):
-        self.canvas = tk.Canvas(self.window)
+        self.canvas = tk.Canvas(self.window, width=WIDTH, height=HEIGHT)
+        self.canvas
         self.canvas.pack()
 
-    def test(self, event):
-        print("test1")
+    def cenario(self, active, label):
+
+        import image_loader
+        
+        for x in range(len(self.buttons)):
+            self.buttons[x].destroy()
+            del self.buttons[x]
+
+        self.buttons=[None, None, None, None, None, None, None, None]
+
+        for z in range(len(active)):
+            if active[z]:
+                self.buttons[z]=tk.Button(self.canvas, image=image_loader.botao)
+
+                if z==0:
+                    self.buttons[z].place(x=0, y=50)
+                elif z==1:
+                    self.buttons[z].place(x=0, y=200)
+                elif z==2:
+                    self.buttons[z].place(x=0, y=350)
+                elif z==3:
+                    self.buttons[z].place(x=0, y=500)
+                elif z==4:
+                    self.buttons[z].place(x=450, y=50)
+                elif z==5:
+                    self.buttons[z].place(x=450, y=200)
+                elif z==6:
+                    self.buttons[z].place(x=450, y=350)
+                elif z==7:
+                    self.buttons[z].place(x=450, y=500)
+
+                self.buttons[z].bind('<Button-1>', self.event_handler.click)
+
