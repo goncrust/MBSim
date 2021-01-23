@@ -63,8 +63,8 @@
             "English": "Vouchers"
         },
         "7": {
-            "Portuguese": "Depósitos e\nOutras Operações",
-            "English": "Deposit &\nOther Operations"
+            "Portuguese": "",
+            "English": ""
         }
     },
     "2": {
@@ -104,23 +104,23 @@
     "3": {
         "0": {
             "Portuguese": "20 Euros",
-            "English": ""
+            "English": "20 Euros"
         },
         "1": {
             "Portuguese": "40 Euros",
-            "English": ""
+            "English": "40 Euros"
         },
         "2": {
             "Portuguese": "60 Euros",
-            "English": ""
+            "English": "60 Euros"
         },
         "3": {
             "Portuguese": "100 Euros",
-            "English": ""
+            "English": "100 Euros"
         },
         "4": {
             "Portuguese": "200 Euros",
-            "English": ""
+            "English": "200 Euros"
         },
         "5": {
             "Portuguese": "",
@@ -128,21 +128,21 @@
         },
         "6": {
             "Portuguese": "Outras Importâncias",
-            "English": ""
+            "English": "Other Amount"
         },
         "7": {
             "Portuguese": "Outras Operações",
-            "English": ""
+            "English": "Other Operations"
         }
     },
     "4": {
         "0": {
-            "Portuguese": "Consulta de Saldos",
-            "English": ""
+            "Portuguese": "Consulta de Saldos da Conta",
+            "English": "Account Balance Inquiry"
         },
         "1": {
-            "Portuguese": "Consulta de Movimentos",
-            "English": ""
+            "Portuguese": "Consulta de\nMovimentos da Conta",
+            "English": "Account Movements Inquiry"
         },
         "2": {
             "Portuguese": "",
@@ -166,7 +166,7 @@
         },
         "7": {
             "Portuguese": "Outras Operações",
-            "English": ""
+            "English": "Other Operations"
         }
     },
     "5": {
@@ -218,7 +218,7 @@
         },
         "3": {
             "Portuguese": "Outras Operações",
-            "English": ""
+            "English": "Other Operations"
         },
         "4": {
             "Portuguese": "",
@@ -234,13 +234,13 @@
         },
         "7": {
             "Portuguese": "Confirmar",
-            "English": ""
+            "English": "Confirm"
         }
     },
     "7": {
         "0": {
             "Portuguese": "MB WAY",
-            "English": ""
+            "English": "MB WAY"
         },
         "1": {
             "Portuguese": "",
@@ -252,7 +252,7 @@
         },
         "3": {
             "Portuguese": "Outras Operações",
-            "English": ""
+            "English": "Other Operações"
         },
         "4": {
             "Portuguese": "",
@@ -274,11 +274,11 @@
     "8": {
         "0": {
             "Portuguese": " Jogos",
-            "English": ""
+            "English": "Games"
         },
         "1": {
             "Portuguese": "Filmes",
-            "English": ""
+            "English": "Movies"
         },
         "2": {
             "Portuguese": "",
@@ -290,7 +290,7 @@
         },
         "4": {
             "Portuguese": "Música",
-            "English": ""
+            "English": "Music"
         },
         "5": {
             "Portuguese": "",
@@ -308,19 +308,19 @@
     "9": {
         "0": {
             "Portuguese": "10 Euros",
-            "English": ""
+            "English": "10 Euros"
         },
         "1": {
             "Portuguese": "20 Euros",
-            "English": ""
+            "English": "20 Euros"
         },
         "2": {
             "Portuguese": "30 Euros",
-            "English": ""
+            "English": "30 Euros"
         },
         "3": {
             "Portuguese": "50 Euros",
-            "English": ""
+            "English": "50 Euros"
         },
         "4": {
             "Portuguese": "",
@@ -354,7 +354,7 @@
         },
         "3": {
             "Portuguese": "Cancelar",
-            "English": ""
+            "English": "Cancel"
         },
         "4": {
             "Portuguese": "",
@@ -370,7 +370,7 @@
         },
         "7": {
             "Portuguese": "Confirmar",
-            "English": ""
+            "English": "Confirm"
         }
     },
     "11": {
@@ -388,7 +388,7 @@
         },
         "3": {
             "Portuguese": "Cancelar",
-            "English": ""
+            "English": "Cancel"
         },
         "4": {
             "Portuguese": "",
@@ -404,7 +404,7 @@
         },
         "7": {
             "Portuguese": "Confirmar",
-            "English": ""
+            "English": "Confirm"
         }
     },
     "12": {
@@ -438,7 +438,7 @@
         },
         "7": {
             "Portuguese": "Outras Operações",
-            "English": ""
+            "English": "Other Operations"
         }
     },
     "13": {
@@ -472,7 +472,7 @@
         },
         "7": {
             "Portuguese": "Outras Operações",
-            "English": ""
+            "English": "Other Operations"
         }
     },
     "14": {
@@ -506,7 +506,7 @@
         },
         "7": {
             "Portuguese": "Outras Operações",
-            "English": ""
+            "English": "Other Operations"
         }
     }
 }

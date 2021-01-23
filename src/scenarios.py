@@ -47,7 +47,7 @@ class Scenario:
         elif scenario == Scenario.PAYMENTS:
             return [False, False, False, True, False, False, False, True]
         elif scenario == Scenario.MBWAY:
-            return [True, False, False, False, True, False, False, False]
+            return [True, False, False, True, False, False, False, False]
         elif scenario == Scenario.VOUCHERS:
             return [True, True, False, False, True, False, False, False]
         elif scenario == Scenario.VOUCHERS1:
