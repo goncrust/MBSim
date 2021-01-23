@@ -19,7 +19,12 @@ class Scenario:
     MBWAY = 7
     VOUCHERS = 8
     VOUCHERS1 = 9
-    VOUCHERRS2 = 10
+    VOUCHERS2 = 10
+    WHITHDRAWOTHERAMOUNT = 11
+    BALANCE1 = 12
+    BALANCE2 = 13
+    PAYMENTS1 = 14
+    MBWAY1 = 15
 
     # languages.json
     LANGUAGES = languages
@@ -39,7 +44,7 @@ class Scenario:
         elif scenario == Scenario.BALANCE:
             return [True, True, False, False, False, False, False, True]
         elif scenario == Scenario.TRANSFERS:
-            return [False, True, False, False, False, False, False, True]
+            return [False, False, False, True, False, False, False, True]
         elif scenario == Scenario.PAYMENTS:
             return [True, False, False, False, False, False, False, True]
         elif scenario == Scenario.MBWAY:
@@ -50,6 +55,16 @@ class Scenario:
             return [True, True, True, True, False, False, False, False]
         elif scenario == Scenario.VOUCHERS2:
             return [False, False, False, False, False, False, True, True]
+        elif scenario == Scenario.WHITHDRAWOTHERAMOUNT:
+            return [False, False, False, True, False, False, False, True]
+        elif scenario == Scenario.BALANCE1:
+            return [False, False, False, True, False, False, False, True]
+        elif scenario == Scenario.BALANCE2:
+            return [False, False, False, True, False, False, False, True]
+        elif scenario == Scenario.PAYMENTS1:
+            return [False, False, False, True, False, False, False, True]
+        elif scenario == Scenario.MBWAY1:
+            return [False, False, False, True, False, False, False, True]
 
     # return buttons's text in the scene
 
