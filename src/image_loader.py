@@ -35,9 +35,9 @@ def place_text(interface, button, label):
         new_b_file = new_b_file.resize((320, 90))
 
         label_font = ImageFont.truetype(
-            'assets/fonts/Exo2-VariableFont_wght.ttf', 10)
+            'assets/fonts/Exo2-VariableFont_wght.ttf', 30)
         editable = ImageDraw.Draw(new_b_file)
-        editable.text((0, 0), label, (255, 255, 255), font=label_font)
+        editable.text((20, 25), label, (255, 255, 255), font=label_font)
 
         new_b = ImageTk.PhotoImage(new_b_file)
 

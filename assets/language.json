@@ -1,7 +1,7 @@
 {
     "0": {
         "0": {
-            "Portuguese": "Levantamentos",
+            "Portuguese": "",
             "English": ""
         },
         "1": {
@@ -13,8 +13,8 @@
             "English": ""
         },
         "3": {
-            "Portuguese": "",
-            "English": ""
+            "Portuguese": "Entrar",
+            "English": "Login"
         },
         "4": {
             "Portuguese": "",
@@ -29,42 +29,42 @@
             "English": ""
         },
         "7": {
-            "Portuguese": "",
-            "English": ""
+            "Portuguese": "Registar",
+            "English": "Register"
         }
     },
     "1": {
         "0": {
-            "Portuguese": "",
-            "English": ""
+            "Portuguese": "Levantamentos",
+            "English": "Cash Withdrawal"
         },
         "1": {
-            "Portuguese": "",
-            "English": ""
+            "Portuguese": "Consultas",
+            "English": "Balance Inquiry"
         },
         "2": {
-            "Portuguese": "",
-            "English": ""
+            "Portuguese": "Transferências e Débitos Diretos",
+            "English": "Funds Transfer"
         },
         "3": {
-            "Portuguese": "",
-            "English": ""
+            "Portuguese": "Pagamentos e Outros Serviços",
+            "English": "Bill Payments"
         },
         "4": {
-            "Portuguese": "",
-            "English": ""
+            "Portuguese": "MB WAY / MB NET",
+            "English": "MB WAY / MB NET"
         },
         "5": {
             "Portuguese": "",
             "English": ""
         },
         "6": {
-            "Portuguese": "",
-            "English": ""
+            "Portuguese": "Vouchers",
+            "English": "Vouchers"
         },
         "7": {
-            "Portuguese": "",
-            "English": ""
+            "Portuguese": "Depósitos e Outras Operações",
+            "English": "Deposist & Other Operations"
         }
     },
     "2": {
