@@ -47,7 +47,7 @@
             "English": "Funds Transfer"
         },
         "3": {
-            "Portuguese": "Pagamentos e Outros Serviços",
+            "Portuguese": "Pagamentos e\n Outros Serviços",
             "English": "Bill Payments"
         },
         "4": {
@@ -63,8 +63,8 @@
             "English": "Vouchers"
         },
         "7": {
-            "Portuguese": "Depósitos e Outras Operações",
-            "English": "Deposist & Other Operations"
+            "Portuguese": "Depósitos e\n Outras Operações",
+            "English": "Deposit &\n Other Operations"
         }
     },
     "2": {
@@ -268,6 +268,244 @@
         },
         "7": {
             "Portuguese": "",
+            "English": ""
+        }
+    },
+    "8": {
+        "0": {
+            "Portuguese": " Jogos",
+            "English": ""
+        },
+        "1": {
+            "Portuguese": "Filmes",
+            "English": ""
+        },
+        "2": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "3": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "4": {
+            "Portuguese": "Música",
+            "English": ""
+        },
+        "5": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "6": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "7": {
+            "Portuguese": "",
+            "English": ""
+        }
+    },
+    "9": {
+        "0": {
+            "Portuguese": "10 Euros",
+            "English": ""
+        },
+        "1": {
+            "Portuguese": "20 Euros",
+            "English": ""
+        },
+        "2": {
+            "Portuguese": "30 Euros",
+            "English": ""
+        },
+        "3": {
+            "Portuguese": "50 Euros",
+            "English": ""
+        },
+        "4": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "5": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "6": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "7": {
+            "Portuguese": "",
+            "English": ""
+        }
+    },
+    "10": {
+        "0": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "1": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "2": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "3": {
+            "Portuguese": "Confirmar",
+            "English": ""
+        },
+        "4": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "5": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "6": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "7": {
+            "Portuguese": "Cancelar",
+            "English": ""
+        }
+    },
+    "11": {
+        "0": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "1": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "2": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "3": {
+            "Portuguese": "Confirmar",
+            "English": ""
+        },
+        "4": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "5": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "6": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "7": {
+            "Portuguese": "Cancelar",
+            "English": ""
+        }
+    },
+    "12": {
+        "0": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "1": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "2": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "3": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "4": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "5": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "6": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "7": {
+            "Portuguese": "Outras Operações",
+            "English": ""
+        }
+    },
+    "13": {
+        "0": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "1": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "2": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "3": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "4": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "5": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "6": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "7": {
+            "Portuguese": "Outras Operações",
+            "English": ""
+        }
+    },
+    "14": {
+        "0": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "1": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "2": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "3": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "4": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "5": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "6": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "7": {
+            "Portuguese": "Outras Operações",
             "English": ""
         }
     }
