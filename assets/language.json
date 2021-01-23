@@ -43,11 +43,11 @@
             "English": "Balance Inquiry"
         },
         "2": {
-            "Portuguese": "Transferências e\n Débitos Diretos",
+            "Portuguese": "Transferências e\nDébitos Diretos",
             "English": "Funds Transfer"
         },
         "3": {
-            "Portuguese": "Pagamentos e\n Outros Serviços",
+            "Portuguese": "Pagamentos e\nOutros Serviços",
             "English": "Bill Payments"
         },
         "4": {
@@ -63,8 +63,8 @@
             "English": "Vouchers"
         },
         "7": {
-            "Portuguese": "Depósitos e\n Outras Operações",
-            "English": "Deposit &\n Other Operations"
+            "Portuguese": "Depósitos e\nOutras Operações",
+            "English": "Deposit &\nOther Operations"
         }
     },
     "2": {
