@@ -13,8 +13,8 @@
             "English": ""
         },
         "3": {
-            "Portuguese": "Entrar",
-            "English": "Login"
+            "Portuguese": "Registar",
+            "English": "Register"
         },
         "4": {
             "Portuguese": "",
@@ -29,8 +29,8 @@
             "English": ""
         },
         "7": {
-            "Portuguese": "Registar",
-            "English": "Register"
+            "Portuguese": "Entrar",
+            "English": "Login"
         }
     },
     "1": {
@@ -81,8 +81,8 @@
             "English": ""
         },
         "3": {
-            "Portuguese": "",
-            "English": ""
+            "Portuguese": "Cancelar",
+            "English": "Cancel"
         },
         "4": {
             "Portuguese": "",
@@ -97,8 +97,8 @@
             "English": ""
         },
         "7": {
-            "Portuguese": "",
-            "English": ""
+            "Portuguese": "Registar",
+            "English": "Sign Up"
         }
     },
     "3": {
@@ -239,7 +239,7 @@
     },
     "7": {
         "0": {
-            "Portuguese": "Outras Operações",
+            "Portuguese": "MB WAY",
             "English": ""
         },
         "1": {
@@ -251,11 +251,11 @@
             "English": ""
         },
         "3": {
-            "Portuguese": "",
+            "Portuguese": "Outras Operações",
             "English": ""
         },
         "4": {
-            "Portuguese": "MB WAY",
+            "Portuguese": "",
             "English": ""
         },
         "5": {
@@ -353,7 +353,7 @@
             "English": ""
         },
         "3": {
-            "Portuguese": "Confirmar",
+            "Portuguese": "Cancelar",
             "English": ""
         },
         "4": {
@@ -369,7 +369,7 @@
             "English": ""
         },
         "7": {
-            "Portuguese": "Cancelar",
+            "Portuguese": "Confirmar",
             "English": ""
         }
     },
@@ -387,7 +387,7 @@
             "English": ""
         },
         "3": {
-            "Portuguese": "Confirmar",
+            "Portuguese": "Cancelar",
             "English": ""
         },
         "4": {
@@ -403,7 +403,7 @@
             "English": ""
         },
         "7": {
-            "Portuguese": "Cancelar",
+            "Portuguese": "Confirmar",
             "English": ""
         }
     },
