@@ -57,11 +57,11 @@ class Scenario:
         elif scenario == Scenario.WHITHDRAWOTHERAMOUNT:
             return [False, False, False, True, False, False, False, True]
         elif scenario == Scenario.BALANCE1:
-            return [False, False, False, True, False, False, False, True]
+            return [False, False, False, False, False, False, False, True]
         elif scenario == Scenario.BALANCE2:
-            return [False, False, False, True, False, False, False, True]
+            return [False, False, False, False, False, False, False, True]
         elif scenario == Scenario.MBWAY1:
-            return [False, False, False, True, False, False, False, True]
+            return [False, False, False, False, False, False, False, True]
 
     # return buttons's text in the scene
 
