@@ -5,6 +5,8 @@ IMAGEDIR = 'assets/images/'
 B_LEFT = 0
 B_RIGHT = 1
 
+FONT_SIZE = 23
+
 # left buttons image
 button_left_file = Image.open(IMAGEDIR + 'buttonleft.png')
 button_left_file = button_left_file.resize((320, 90))
@@ -23,9 +25,22 @@ def place_text(interface, button, label):
         new_b_file = new_b_file.resize((320, 90))
 
         label_font = ImageFont.truetype(
-            'assets/fonts/Exo2-VariableFont_wght.ttf', 25)
+            'assets/fonts/Exo2-VariableFont_wght.ttf', FONT_SIZE)
         editable = ImageDraw.Draw(new_b_file)
         label_size_x, label_size_y = editable.textsize(label, label_font)
+
+        second_label = ""
+        if label.find("\n") != -1:
+            second_label = label[label.find("\n")+1:len(label)]
+            label = label[0:label.find("\n")]
+
+            label_size_x = editable.textsize(label, label_font)[0]
+
+            second_label_size_x, second_label_size_y = editable.textsize(
+                second_label, label_font)
+
+            editable.text((300-second_label_size_x, (90-label_size_y)/2 + second_label_size_y), second_label,
+                          (255, 255, 255), font=label_font)
 
         editable.text((300-label_size_x, (90-label_size_y)/2), label,
                       (255, 255, 255), font=label_font)
@@ -38,7 +53,7 @@ def place_text(interface, button, label):
         new_b_file = new_b_file.resize((320, 90))
 
         label_font = ImageFont.truetype(
-            'assets/fonts/Exo2-VariableFont_wght.ttf', 25)
+            'assets/fonts/Exo2-VariableFont_wght.ttf', FONT_SIZE)
         editable = ImageDraw.Draw(new_b_file)
         label_size_x, label_size_y = editable.textsize(label, label_font)
 
