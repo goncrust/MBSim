@@ -23,8 +23,7 @@ class Scenario:
     WHITHDRAWOTHERAMOUNT = 11
     BALANCE1 = 12
     BALANCE2 = 13
-    PAYMENTS1 = 14
-    MBWAY1 = 15
+    MBWAY1 = 14
 
     # languages.json
     LANGUAGES = languages
@@ -46,7 +45,7 @@ class Scenario:
         elif scenario == Scenario.TRANSFERS:
             return [False, False, False, True, False, False, False, True]
         elif scenario == Scenario.PAYMENTS:
-            return [True, False, False, False, False, False, False, True]
+            return [False, False, False, True, False, False, False, True]
         elif scenario == Scenario.MBWAY:
             return [True, False, False, False, True, False, False, False]
         elif scenario == Scenario.VOUCHERS:
@@ -60,8 +59,6 @@ class Scenario:
         elif scenario == Scenario.BALANCE1:
             return [False, False, False, True, False, False, False, True]
         elif scenario == Scenario.BALANCE2:
-            return [False, False, False, True, False, False, False, True]
-        elif scenario == Scenario.PAYMENTS1:
             return [False, False, False, True, False, False, False, True]
         elif scenario == Scenario.MBWAY1:
             return [False, False, False, True, False, False, False, True]
