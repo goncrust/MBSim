@@ -24,7 +24,7 @@ class Interface:
         self.create_canvas()
 
         # set first scenario and run it
-        self.current_scenario = Scenario.PAYMENTS
+        self.current_scenario = Scenario.MBWAY
         self.update_scenario()
 
         # tkinter mainloop
