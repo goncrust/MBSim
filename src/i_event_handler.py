@@ -1,3 +1,5 @@
+from scenarios import *
+
 
 # button events
 class IEventHandler:
@@ -27,4 +29,6 @@ class IEventHandler:
         pass
 
     def click_7(self, event):
-        pass
+        if self.interface.current_scenario == Scenario.LOGIN:
+            self.interface.current_scenario = Scenario.MAIN
+            self.interface.update_scenario()
