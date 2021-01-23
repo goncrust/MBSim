@@ -35,7 +35,7 @@ class Scenario:
         if scenario == Scenario.LOGIN:
             return [False, False, False, True, False, False, False, True]
         elif scenario == Scenario.MAIN:
-            return [True, True, True, True, True, False, False, True]
+            return [True, True, True, True, True, False, False, False]
         elif scenario == Scenario.REGISTER:
             return [False, False, False, True, False, False, False, True]
         elif scenario == Scenario.WHITHDRAW:
