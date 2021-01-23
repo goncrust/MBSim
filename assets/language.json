@@ -43,7 +43,7 @@
             "English": "Balance Inquiry"
         },
         "2": {
-            "Portuguese": "Transferências e Débitos Diretos",
+            "Portuguese": "Transferências e\n Débitos Diretos",
             "English": "Funds Transfer"
         },
         "3": {
@@ -51,8 +51,8 @@
             "English": "Bill Payments"
         },
         "4": {
-            "Portuguese": "MB WAY / MB NET",
-            "English": "MB WAY / MB NET"
+            "Portuguese": "MB WAY/MB NET",
+            "English": "MB WAY/MB NET"
         },
         "5": {
             "Portuguese": "",
@@ -98,6 +98,74 @@
         },
         "7": {
             "Portuguese": "",
+            "English": ""
+        }
+    },
+    "3": {
+        "0": {
+            "Portuguese": "20 Euros",
+            "English": ""
+        },
+        "1": {
+            "Portuguese": "40 Euros",
+            "English": ""
+        },
+        "2": {
+            "Portuguese": "60 Euros",
+            "English": ""
+        },
+        "3": {
+            "Portuguese": "100 Euros",
+            "English": ""
+        },
+        "4": {
+            "Portuguese": "200 Euros",
+            "English": ""
+        },
+        "5": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "6": {
+            "Portuguese": "Outras Importâncias",
+            "English": ""
+        },
+        "7": {
+            "Portuguese": "Outras Operações",
+            "English": ""
+        }
+    },
+    "4": {
+        "0": {
+            "Portuguese": "Consulta de Saldos",
+            "English": ""
+        },
+        "1": {
+            "Portuguese": "Consulta de Movimentos",
+            "English": ""
+        },
+        "2": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "3": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "4": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "5": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "6": {
+            "Portuguese": "",
+            "English": ""
+        },
+        "7": {
+            "Portuguese": "Outras Operações",
             "English": ""
         }
     }

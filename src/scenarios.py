@@ -19,7 +19,7 @@ class Scenario:
     MBWAY = 7
     VOUCHERS = 8
     VOUCHERS1 = 9
-    VOUCHERRS2 = 10
+    VOUCHERS2 = 10
 
     # languages.json
     LANGUAGES = languages
