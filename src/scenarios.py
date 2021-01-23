@@ -11,7 +11,7 @@ class Scenario:
     # scenarios enumeration
     LOGIN = 0
     MAIN = 1
-    MAINS = 2
+    REGISTER = 2
     WHITHDRAW = 3
     BALANCE = 4
     TRANSFERS = 5
@@ -36,8 +36,8 @@ class Scenario:
             return [False, False, False, True, False, False, False, True]
         elif scenario == Scenario.MAIN:
             return [True, True, True, True, True, False, False, True]
-        elif scenario == Scenario.MAINS:
-            return [True, True, True, True, True, False, False, True]
+        elif scenario == Scenario.REGISTER:
+            return [False, False, False, True, False, False, False, True]
         elif scenario == Scenario.WHITHDRAW:
             return [True, True, True, True, True, False, True, True]
         elif scenario == Scenario.BALANCE:
@@ -64,7 +64,6 @@ class Scenario:
             return [False, False, False, False, False, False, False, True]
 
     # return buttons's text in the scene
-
     @staticmethod
     def get_scenario_text(scenario):
 
