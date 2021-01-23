@@ -44,12 +44,11 @@ class Interface:
 
     # update onscreen scenario
     def update_scenario(self):
-        self.scenario(Scenario.get_scenario_active(self.current_scenario))
-
-        self.scenario_text(Scenario.get_scenario_text(self.current_scenario))
+        self.scenario(Scenario.get_scenario_active(
+            self.current_scenario), Scenario.get_scenario_text(self.current_scenario))
 
     # place buttons and assign events
-    def scenario(self, active):
+    def scenario(self, active, label):
 
         import image_loader
 
@@ -59,16 +58,19 @@ class Interface:
                 self.buttons[x].destroy()
                 self.buttons[x] = None
 
+        self.b_label = []
+        for i in range(len(label)):
+            if i < 4:
+                image_loader.place_text(self, image_loader.B_LEFT, label[i])
+            else:
+                image_loader.place_text(self, image_loader.B_RIGHT, label[i])
+
         for z in range(len(active)):
             if active[z]:
 
                 # create button
-                if z < 4:
-                    self.buttons[z] = tk.Button(
-                        self.canvas, image=image_loader.button_left, borderwidth=0, highlightthickness=0)
-                else:
-                    self.buttons[z] = tk.Button(
-                        self.canvas, image=image_loader.button_right, borderwidth=0, highlightthickness=0)
+                self.buttons[z] = tk.Button(
+                    self.canvas, image=self.b_label[z], borderwidth=0, highlightthickness=0)
 
                 # place button
                 if z == 0:
@@ -91,7 +93,3 @@ class Interface:
                 # assign events to button
                 self.buttons[z].bind(
                     '<Button-1>', eval("self.event_handler.click_" + str(z)))
-
-    # place text on the buttons
-    def scenario_text(self, label):
-        print(label)
