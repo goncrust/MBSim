@@ -2,7 +2,7 @@ import json
 
 # read languages.json content
 languages = None
-with open('assets/language.json') as languages_file:
+with open('assets/language.json', encoding='utf-8') as languages_file:
     languages = json.load(languages_file)
 
 
@@ -35,7 +35,7 @@ class Scenario:
         if scenario == Scenario.LOGIN:
             return [False, False, False, True, False, False, False, True]
         elif scenario == Scenario.MAIN:
-            return [True, True, True, True, True, False, False, True] 
+            return [True, True, True, True, True, False, False, True]
         elif scenario == Scenario.MAINS:
             return [True, True, True, True, True, False, False, True]
         elif scenario == Scenario.WHITHDRAW:
@@ -63,8 +63,8 @@ class Scenario:
         elif scenario == Scenario.MBWAY1:
             return [False, False, False, True, False, False, False, True]
 
-
     # return buttons's text in the scene
+
     @staticmethod
     def get_scenario_text(scenario):
 
