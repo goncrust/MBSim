@@ -17,8 +17,8 @@
             "English": "Register"
         },
         "4": {
-            "Portuguese": "",
-            "English": ""
+            "Portuguese": "Sair",
+            "English": "Exit"
         },
         "5": {
             "Portuguese": "",
@@ -63,8 +63,8 @@
             "English": "Vouchers"
         },
         "7": {
-            "Portuguese": "",
-            "English": ""
+            "Portuguese": "Terminar Sessão",
+            "English": "Log Out"
         }
     },
     "2": {

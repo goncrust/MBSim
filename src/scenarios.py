@@ -33,9 +33,9 @@ class Scenario:
     def get_scenario_active(scenario):
 
         if scenario == Scenario.LOGIN:
-            return [False, False, False, True, False, False, False, True]
+            return [False, False, False, True, True, False, False, True]
         elif scenario == Scenario.MAIN:
-            return [True, True, True, True, True, False, False, False]
+            return [True, True, True, True, True, False, False, True]
         elif scenario == Scenario.REGISTER:
             return [False, False, False, True, False, False, False, True]
         elif scenario == Scenario.WHITHDRAW:
