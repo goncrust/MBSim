@@ -64,7 +64,6 @@ class Scenario:
             return [False, False, False, False, False, False, False, True]
 
     # return buttons's text in the scene
-
     @staticmethod
     def get_scenario_text(scenario):
 
