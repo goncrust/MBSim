@@ -108,9 +108,9 @@ class Interface:
 
         # create entry objects
         self.username_field = tk.Entry(
-            self.canvas, textvariable=username, font=("default", 23))
+            self.canvas, textvariable=self.login_username_text, font=("default", 23))
         self.password_field = tk.Entry(
-            self.canvas, textvariable=password, show='*', font=("default", 23))
+            self.canvas, textvariable=self.login_password_text, show='*', font=("default", 23))
 
         # place entry objects
         self.username_field.place(
@@ -138,3 +138,9 @@ class Interface:
         if self.password_field.cget("fg") == "grey":
             self.password_field.config(fg="black", show="*")
             self.password_field.delete(0, tk.END)
+
+    def destroy_login(self):
+        self.username_field.destroy()
+        self.password_field.destroy()
+        self.login_username_text = None
+        self.login_password_text = None

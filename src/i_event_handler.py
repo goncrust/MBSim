@@ -55,6 +55,8 @@ class IEventHandler:
     def click_3(self, event):
 
         if self.interface.current_scenario == Scenario.LOGIN:
+            self.interface.destroy_login()
+
             self.interface.current_scenario = Scenario.REGISTER
             self.interface.update_scenario()
 
@@ -121,6 +123,7 @@ class IEventHandler:
 
         if self.interface.current_scenario == Scenario.LOGIN:
             # account login
+            self.interface.destroy_login()
 
             self.interface.current_scenario = Scenario.MAIN
             self.interface.update_scenario()
