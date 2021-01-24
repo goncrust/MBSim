@@ -28,6 +28,14 @@ class Scenario:
     # languages.json
     LANGUAGES = languages
 
+    # specific language cases
+    login_username_pt = languages[str(
+        LOGIN)]["Username"]["Portuguese"]
+    login_username_en = languages[str(LOGIN)]["Username"]["English"]
+
+    login_pin_pt = languages[str(LOGIN)]["PIN"]["Portuguese"]
+    login_pin_en = languages[str(LOGIN)]["PIN"]["English"]
+
     # return active buttons in the scene
     @staticmethod
     def get_scenario_active(scenario):

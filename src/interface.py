@@ -50,7 +50,11 @@ class Interface:
         self.scenario(Scenario.get_scenario_active(
             self.current_scenario), Scenario.get_scenario_text(self.current_scenario))
 
+        if self.current_scenario == Scenario.LOGIN:
+            self.login()
+
     # place buttons and assign events
+
     def scenario(self, active, label):
 
         import image_loader
@@ -96,3 +100,41 @@ class Interface:
                 # assign events to button
                 self.buttons[z].bind(
                     '<Button-1>', eval("self.event_handler.click_" + str(z)))
+
+    # for login scenario
+    def login(self):
+        self.login_username_text = None
+        self.login_password_text = None
+
+        # create entry objects
+        self.username_field = tk.Entry(
+            self.canvas, textvariable=username, font=("default", 23))
+        self.password_field = tk.Entry(
+            self.canvas, textvariable=password, show='*', font=("default", 23))
+
+        # place entry objects
+        self.username_field.place(
+            x=(WIDTH/2)-100, y=(HEIGHT/2)-20-42-20, width=200, height=40)
+        self.password_field.place(
+            x=(WIDTH/2)-100, y=(HEIGHT/2)-20-20, width=200, height=40)
+
+        # greyed out default text
+        self.username_field.config(fg="grey")
+        self.password_field.config(fg="grey")
+        self.password_field.config(show="")
+
+        self.username_field.insert(0, Scenario.login_username_pt)
+        self.password_field.insert(0, Scenario.login_pin_pt)
+
+        self.username_field.bind("<FocusIn>", self.focusin_username_login)
+        self.password_field.bind("<FocusIn>", self.focusin_password_login)
+
+    def focusin_username_login(self, pos):
+        if self.username_field.cget("fg") == "grey":
+            self.username_field.config(fg="black")
+            self.username_field.delete(0, tk.END)
+
+    def focusin_password_login(self, pos):
+        if self.password_field.cget("fg") == "grey":
+            self.password_field.config(fg="black", show="*")
+            self.password_field.delete(0, tk.END)

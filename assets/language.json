@@ -31,6 +31,14 @@
         "7": {
             "Portuguese": "Entrar",
             "English": "Login"
+        },
+        "Username": {
+            "Portuguese": "Utilizador",
+            "English": "Username"
+        },
+        "PIN": {
+            "Portuguese": "PIN",
+            "English": "PIN"
         }
     },
     "1": {
