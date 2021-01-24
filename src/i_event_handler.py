@@ -90,8 +90,7 @@ class IEventHandler:
     def click_4(self, event):
 
         if self.interface.current_scenario == Scenario.LOGIN:
-            self.interface.current_scenario = Scenario.REGISTER
-            self.interface.update_scenario()
+            self.interface.window.destroy()
 
         elif self.interface.current_scenario == Scenario.MAIN:
             self.interface.current_scenario = Scenario.MBWAY
@@ -130,6 +129,12 @@ class IEventHandler:
             # account register
 
             pass
+
+        elif self.interface.current_scenario == Scenario.MAIN:
+            # logout
+
+            self.interface.current_scenario = Scenario.LOGIN
+            self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.WHITHDRAW:
             self.interface.current_scenario = Scenario.MAIN
