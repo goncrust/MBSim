@@ -36,6 +36,9 @@ class Interface:
         self.window.title(self.title)
         self.window.geometry(str(width) + "x" + str(height) + "+500+100")
 
+        import image_loader
+        self.window.iconphoto(False, image_loader.icon)
+
     # create canvas function
     def create_canvas(self):
         self.canvas = tk.Canvas(self.window, width=WIDTH,

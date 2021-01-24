@@ -17,6 +17,11 @@ button_right_file = Image.open(IMAGEDIR + 'buttonright.png')
 button_right_file = button_right_file.resize((320, 90))
 button_right = ImageTk.PhotoImage(button_right_file)
 
+# icon
+icon_file = Image.open(IMAGEDIR + 'multibanco.png')
+#icon_file = icon_file.resize((20, 20))
+icon = ImageTk.PhotoImage(icon_file)
+
 
 # place text on the images
 def place_text(interface, button, label):
