@@ -77,21 +77,21 @@ class Interface:
 
                 # place button
                 if z == 0:
-                    self.buttons[z].place(x=-1, y=50)
+                    self.buttons[z].place(x=-1, y=105)
                 elif z == 1:
-                    self.buttons[z].place(x=-1, y=200)
+                    self.buttons[z].place(x=-1, y=255)
                 elif z == 2:
-                    self.buttons[z].place(x=-1, y=350)
+                    self.buttons[z].place(x=-1, y=405)
                 elif z == 3:
-                    self.buttons[z].place(x=-1, y=500)
+                    self.buttons[z].place(x=-1, y=555)
                 elif z == 4:
-                    self.buttons[z].place(x=WIDTH-320, y=50)
+                    self.buttons[z].place(x=WIDTH-320, y=105)
                 elif z == 5:
-                    self.buttons[z].place(x=WIDTH-320, y=200)
+                    self.buttons[z].place(x=WIDTH-320, y=255)
                 elif z == 6:
-                    self.buttons[z].place(x=WIDTH-320, y=350)
+                    self.buttons[z].place(x=WIDTH-320, y=405)
                 elif z == 7:
-                    self.buttons[z].place(x=WIDTH-320, y=500)
+                    self.buttons[z].place(x=WIDTH-320, y=555)
 
                 # assign events to button
                 self.buttons[z].bind(
