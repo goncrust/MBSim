@@ -19,7 +19,7 @@ button_right = ImageTk.PhotoImage(button_right_file)
 
 # icon
 icon_file = Image.open(IMAGEDIR + 'multibanco.png')
-#icon_file = icon_file.resize((20, 20))
+icon_file = icon_file.resize((25, 25))
 icon = ImageTk.PhotoImage(icon_file)
 
 
