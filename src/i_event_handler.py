@@ -131,7 +131,8 @@ class IEventHandler:
         elif self.interface.current_scenario == Scenario.REGISTER:
             # account register
 
-            pass
+            self.interface.current_scenario = Scenario.LOGIN
+            self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.MAIN:
             # logout

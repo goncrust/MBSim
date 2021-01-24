@@ -35,6 +35,7 @@ class Interface:
         self.window = tk.Tk()
         self.window.title(self.title)
         self.window.geometry(str(width) + "x" + str(height) + "+500+100")
+        self.window.resizable(False, False)
 
         import image_loader
         self.window.iconphoto(False, image_loader.icon)
