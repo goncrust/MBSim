@@ -1,4 +1,5 @@
 from scenarios import *
+import database.i_db_connector
 
 
 # button events
@@ -62,7 +63,7 @@ class IEventHandler:
 
         elif self.interface.current_scenario == Scenario.REGISTER:
             self.interface.destroy_register()
-            
+
             self.interface.current_scenario = Scenario.LOGIN
             self.interface.update_scenario()
 
