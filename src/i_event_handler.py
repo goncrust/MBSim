@@ -128,7 +128,7 @@ class IEventHandler:
 
         if self.interface.current_scenario == Scenario.LOGIN:
             # account login
-            if (i_db_con.login_user(self.interface.login_username_text.get(), self.interface.login_password_text.get())):
+            if (i_db_con.login_user(self.interface.login_username_text.get(), self.interface.login_pin_text.get())):
                 self.interface.destroy_login()
 
                 self.interface.current_scenario = Scenario.MAIN
@@ -136,10 +136,16 @@ class IEventHandler:
 
         elif self.interface.current_scenario == Scenario.REGISTER:
             # account register
-            self.interface.destroy_register()
+            if (self.interface.register_username_field.cget("fg") == "grey" or self.interface.register_pin_field.cget("fg") == "grey"):
+                pass
+            else:
+                if(i_db_con.register_user(self.interface.register_username_text.get(), self.interface.register_pin_text.get(),
+                                          self.interface.register_bank_text.get(), self.interface.register_calendar_field.selection_get())):
 
-            self.interface.current_scenario = Scenario.LOGIN
-            self.interface.update_scenario()
+                    self.interface.destroy_register()
+
+                    self.interface.current_scenario = Scenario.LOGIN
+                    self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.MAIN:
             # logout

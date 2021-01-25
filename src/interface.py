@@ -108,55 +108,55 @@ class Interface:
     def login(self):
         # variables to store fields data
         self.login_username_text = tk.StringVar()
-        self.login_password_text = tk.StringVar()
+        self.login_pin_text = tk.StringVar()
 
         # create entry objects
         self.username_field = tk.Entry(
             self.canvas, textvariable=self.login_username_text, font=("default", 23))
-        self.password_field = tk.Entry(
-            self.canvas, textvariable=self.login_password_text, show='*', font=("default", 23))
+        self.pin_field = tk.Entry(
+            self.canvas, textvariable=self.login_pin_text, show='*', font=("default", 23))
 
         # place entry objects
         self.username_field.place(
             x=(WIDTH/2)-100, y=(HEIGHT/2)-20-42-20, width=200, height=40)
-        self.password_field.place(
+        self.pin_field.place(
             x=(WIDTH/2)-100, y=(HEIGHT/2)-20-20, width=200, height=40)
 
         # greyed out default text
         self.username_field.config(fg="grey")
-        self.password_field.config(fg="grey")
-        self.password_field.config(show="")
+        self.pin_field.config(fg="grey")
+        self.pin_field.config(show="")
 
         self.username_field.insert(0, Scenario.login_username_pt)
-        self.password_field.insert(0, Scenario.login_pin_pt)
+        self.pin_field.insert(0, Scenario.login_pin_pt)
 
         self.username_field.bind("<FocusIn>", self.focusin_username_login)
-        self.password_field.bind("<FocusIn>", self.focusin_password_login)
+        self.pin_field.bind("<FocusIn>", self.focusin_pin_login)
 
     def focusin_username_login(self, pos):
         if self.username_field.cget("fg") == "grey":
             self.username_field.config(fg="black")
             self.username_field.delete(0, tk.END)
 
-    def focusin_password_login(self, pos):
-        if self.password_field.cget("fg") == "grey":
-            self.password_field.config(fg="black", show="*")
-            self.password_field.delete(0, tk.END)
+    def focusin_pin_login(self, pos):
+        if self.pin_field.cget("fg") == "grey":
+            self.pin_field.config(fg="black", show="*")
+            self.pin_field.delete(0, tk.END)
 
     def destroy_login(self):
         # destroy fields
         self.username_field.destroy()
-        self.password_field.destroy()
+        self.pin_field.destroy()
 
         # reset variables
         self.login_username_text.set("")
-        self.login_password_text.set("")
+        self.login_pin_text.set("")
 
     # for register scenario
     def register(self):
         # variables to store fields data
         self.register_username_text = tk.StringVar()
-        self.register_password_text = tk.StringVar()
+        self.register_pin_text = tk.StringVar()
 
         # print(self.register_calendar_field.selection_get()) to save the date
 
@@ -166,8 +166,8 @@ class Interface:
         # create entry objects
         self.register_username_field = tk.Entry(
             self.canvas, textvariable=self.register_username_text, font=("default", 23))
-        self.register_password_field = tk.Entry(
-            self.canvas, textvariable=self.register_password_text, show='*', font=("default", 23))
+        self.register_pin_field = tk.Entry(
+            self.canvas, textvariable=self.register_pin_text, show='*', font=("default", 23))
         self.register_calendar_field = Calendar(
             self.canvas, font=("default", 9), selectmode='day')
         self.register_bank_field = tk.OptionMenu(
@@ -175,41 +175,41 @@ class Interface:
 
         # place entry objects
         self.register_username_field.place(x=10, y=10, width=200, height=40)
-        self.register_password_field.place(x=10, y=52, width=200, height=40)
+        self.register_pin_field.place(x=10, y=52, width=200, height=40)
         self.register_calendar_field.place(x=10, y=188, height=150, width=200)
         self.register_bank_field.place(x=10, y=115, height=50, width=200)
 
         # greyed out default text
         self.register_username_field.config(fg="grey")
-        self.register_password_field.config(fg="grey")
-        self.register_password_field.config(show="")
+        self.register_pin_field.config(fg="grey")
+        self.register_pin_field.config(show="")
 
         self.register_username_field.insert(0, Scenario.register_username_pt)
-        self.register_password_field.insert(0, Scenario.register_pin_pt)
+        self.register_pin_field.insert(0, Scenario.register_pin_pt)
 
         self.register_username_field.bind(
             "<FocusIn>", self.focusin_username_register)
-        self.register_password_field.bind(
-            "<FocusIn>", self.focusin_password_register)
+        self.register_pin_field.bind(
+            "<FocusIn>", self.focusin_pin_register)
 
     def focusin_username_register(self, pos):
         if self.register_username_field.cget("fg") == "grey":
             self.register_username_field.config(fg="black")
             self.register_username_field.delete(0, tk.END)
 
-    def focusin_password_register(self, pos):
-        if self.register_password_field.cget("fg") == "grey":
-            self.register_password_field.config(fg="black")
-            self.register_password_field.delete(0, tk.END)
+    def focusin_pin_register(self, pos):
+        if self.register_pin_field.cget("fg") == "grey":
+            self.register_pin_field.config(fg="black")
+            self.register_pin_field.delete(0, tk.END)
 
     def destroy_register(self):
         # destroy fields
         self.register_username_field.destroy()
-        self.register_password_field.destroy()
+        self.register_pin_field.destroy()
         self.register_calendar_field.destroy()
         self.register_bank_field.destroy()
 
         # reset variables
         self.register_username_text.set("")
-        self.register_password_text.set("")
+        self.register_pin_text.set("")
         self.register_bank_text.set("Santander Totta")
