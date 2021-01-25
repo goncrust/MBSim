@@ -1,4 +1,5 @@
 import database.db_manager as db_m
+from database.banks import *
 
 users_db = db_m.Database("src/database/bases/users.db")
 
@@ -52,4 +53,9 @@ def register_user(username, pin, bank, birthday):
     if not only_nms:
         return False
 
-    return True
+    # check for already existing username
+    if users_db.verify_existing_username(username):
+        return False
+
+    # generate account number
+    bank, account = Bank.generate_account_number(bank)

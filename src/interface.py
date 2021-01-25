@@ -161,7 +161,7 @@ class Interface:
         # print(self.register_calendar_field.selection_get()) to save the date
 
         self.register_bank_text = tk.StringVar(self.canvas)
-        self.register_bank_text.set("Santander Totta")
+        self.register_bank_text.set("Caixa Geral de Depóstios")
 
         # create entry objects
         self.register_username_field = tk.Entry(
@@ -171,7 +171,8 @@ class Interface:
         self.register_calendar_field = Calendar(
             self.canvas, font=("default", 9), selectmode='day')
         self.register_bank_field = tk.OptionMenu(
-            self.canvas, self.register_bank_text, "Santander Totta", "Montepio", "Caixa Geral de Depóstios")
+            self.canvas, self.register_bank_text, "Caixa Geral de Depóstios", "Santander Totta", "Millennium BCP",
+            "BPI", "Novo Banco", "Bankinter", "EuroBIC", "Popular", "Montepio", "Banco CTT", "BBVA")
 
         # place entry objects
         self.register_username_field.place(x=10, y=10, width=200, height=40)
@@ -212,4 +213,4 @@ class Interface:
         # reset variables
         self.register_username_text.set("")
         self.register_pin_text.set("")
-        self.register_bank_text.set("Santander Totta")
+        self.register_bank_text.set("Caixa Geral de Depóstios")

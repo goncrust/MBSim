@@ -35,3 +35,7 @@ class Database:
 
     def get_pin_from_user(self, user):
         return self.c.execute("SELECT pin FROM Users WHERE name=?", (user,))
+
+    def verify_existing_username(self, user):
+        if self.c.execute("SELECT name FROM Users WHERE name=?", (user,)) != None:
+            return True
