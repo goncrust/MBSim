@@ -1,5 +1,5 @@
 from scenarios import *
-import database.i_db_connector
+import database.i_db_connector as i_db_con
 
 
 # button events
@@ -95,6 +95,8 @@ class IEventHandler:
     def click_4(self, event):
 
         if self.interface.current_scenario == Scenario.LOGIN:
+            i_db_con.users_db.close_connection()
+
             self.interface.window.destroy()
 
         elif self.interface.current_scenario == Scenario.MAIN:
@@ -126,10 +128,11 @@ class IEventHandler:
 
         if self.interface.current_scenario == Scenario.LOGIN:
             # account login
-            self.interface.destroy_login()
+            if (i_db_con.login_user(self.interface.login_username_text.get(), self.interface.login_password_text.get())):
+                self.interface.destroy_login()
 
-            self.interface.current_scenario = Scenario.MAIN
-            self.interface.update_scenario()
+                self.interface.current_scenario = Scenario.MAIN
+                self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.REGISTER:
             # account register

@@ -19,8 +19,19 @@ class Database:
 
     def default_tables(self):
         self.c.execute(
-            "CREATE TABLE IF NOT EXISTS Users(name TEXT, account INT, bank TEXT, pin INT, birthday TEXT, balance INT)")
+            "CREATE TABLE IF NOT EXISTS Users(name TEXT, account TEXT, bank TEXT, pin TEXT, birthday TEXT, balance REAL)")
+
+        self.con.commit()
 
     def close_connection(self):
         self.c.close()
         self.con.close()
+
+    def register_user(self, name, account, bank, pin, birthday, balance):
+        self.c.execute(
+            "INSERT INTO Users(name, account, bank, pin, birthday, balance) VALUES(?, ?, ?, ?, ?, ?)", (name, account, bank, pin, birthday, balance))
+
+        self.con.commit()
+
+    def get_pin_from_user(self, user):
+        return self.c.execute("SELECT pin FROM Users WHERE name=?", (user,))

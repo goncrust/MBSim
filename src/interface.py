@@ -107,8 +107,8 @@ class Interface:
     # for login scenario
     def login(self):
         # variables to store fields data
-        self.login_username_text = None
-        self.login_password_text = None
+        self.login_username_text = tk.StringVar()
+        self.login_password_text = tk.StringVar()
 
         # create entry objects
         self.username_field = tk.Entry(
@@ -149,14 +149,14 @@ class Interface:
         self.password_field.destroy()
 
         # reset variables
-        self.login_username_text = None
-        self.login_password_text = None
+        self.login_username_text.set("")
+        self.login_password_text.set("")
 
     # for register scenario
     def register(self):
         # variables to store fields data
-        self.register_username_text = None
-        self.register_password_text = None
+        self.register_username_text = tk.StringVar()
+        self.register_password_text = tk.StringVar()
 
         # print(self.register_calendar_field.selection_get()) to save the date
 
@@ -210,6 +210,6 @@ class Interface:
         self.register_bank_field.destroy()
 
         # reset variables
-        self.register_username_text = None
-        self.register_password_text = None
+        self.register_username_text.set("")
+        self.register_password_text.set("")
         self.register_bank_text.set("Santander Totta")
