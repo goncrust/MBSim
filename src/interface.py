@@ -1,6 +1,7 @@
 import tkinter as tk
 import i_event_handler
 from scenarios import *
+from tkcalendar import Calendar, DateEntry
 
 # window dimensions
 WIDTH = 750
@@ -53,6 +54,8 @@ class Interface:
 
         if self.current_scenario == Scenario.LOGIN:
             self.login()
+        elif self.current_scenario == Scenario.REGISTER:
+            self.register()
 
     # place buttons and assign events
 
@@ -145,3 +148,63 @@ class Interface:
         self.password_field.destroy()
         self.login_username_text = None
         self.login_password_text = None
+
+
+    # for register scenario
+    def register(self):
+        self.register_username_text = None
+        self.register_password_text = None
+        self.register_date_text= None
+        self.register_bank_text= tk.StringVar(self.canvas)
+
+        # create entry objects
+        self.register_username_field = tk.Entry(
+            self.canvas, textvariable=self.register_username_text, font=("default", 23))
+        self.register_password_field = tk.Entry(
+            self.canvas, textvariable=self.register_password_text, show='*', font=("default", 23))
+
+
+        # place entry objects
+        self.register_username_field.place(
+            x=10, y=10, width=200, height=40)
+        self.register_password_field.place(
+            x=10, y=52, width=200, height=40)
+
+        self.register_calendar_field = Calendar(self.canvas, font=("default", 9), selectmode='day')
+        self.register_calendar_field.place(x=10, y=188, height=150, width=200)
+        #print(cal.selection_get()) to save the date
+         
+        self.register_bank_text.set("Santander Totta") # default value
+        self.register_bank_field = tk.OptionMenu(self.canvas, self.register_bank_text, "Santander Totta", "Montepio", "Caixa Geral de Depóstios")
+        self.register_bank_field.place(x=10, y=115, height=50, width=200)
+
+        # greyed out default text
+        self.register_username_field.config(fg="grey")
+        self.register_password_field.config(fg="grey")
+        self.register_password_field.config(show="")
+
+        self.register_username_field.insert(0, Scenario.login_username_pt)
+        self.register_password_field.insert(0, Scenario.login_pin_pt)
+
+        self.register_username_field.bind("<FocusIn>", self.focusin_username_register)
+        self.register_password_field.bind("<FocusIn>", self.focusin_password_register)
+
+    def focusin_username_register(self, pos):
+        if self.register_username_field.cget("fg") == "grey":
+            self.register_username_field.config(fg="black")
+            self.register_username_field.delete(0, tk.END)
+
+    def focusin_password_register(self, pos):
+        if self.register_password_field.cget("fg") == "grey":
+            self.register_password_field.config(fg="black")
+            self.register_password_field.delete(0, tk.END)
+
+    def destroy_register(self):
+        self.register_username_field.destroy()
+        self.register_password_field.destroy()
+        self.register_calendar_field.destroy()
+        self.register_bank_field.destroy()
+        self.register_username_text = None
+        self.register_password_text = None
+        self.register_date_text= None
+        self.register_bank_text.set("Santander Totta")

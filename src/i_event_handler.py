@@ -61,6 +61,8 @@ class IEventHandler:
             self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.REGISTER:
+            self.interface.destroy_register()
+            
             self.interface.current_scenario = Scenario.LOGIN
             self.interface.update_scenario()
 
@@ -130,6 +132,7 @@ class IEventHandler:
 
         elif self.interface.current_scenario == Scenario.REGISTER:
             # account register
+            self.interface.destroy_register()
 
             self.interface.current_scenario = Scenario.LOGIN
             self.interface.update_scenario()
