@@ -29,12 +29,17 @@ class Scenario:
     LANGUAGES = languages
 
     # specific language cases
-    login_username_pt = languages[str(
-        LOGIN)]["Username"]["Portuguese"]
+    login_username_pt = languages[str(LOGIN)]["Username"]["Portuguese"]
     login_username_en = languages[str(LOGIN)]["Username"]["English"]
 
     login_pin_pt = languages[str(LOGIN)]["PIN"]["Portuguese"]
     login_pin_en = languages[str(LOGIN)]["PIN"]["English"]
+
+    register_username_pt = languages[str(REGISTER)]["Username"]["Portuguese"]
+    register_username_en = languages[str(REGISTER)]["Username"]["English"]
+
+    register_pin_pt = languages[str(REGISTER)]["PIN"]["Portuguese"]
+    register_pin_en = languages[str(REGISTER)]["PIN"]["English"]
 
     # return active buttons in the scene
     @staticmethod
