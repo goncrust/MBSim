@@ -1,3 +1,4 @@
+import random
 
 
 class Bank:
@@ -31,25 +32,62 @@ class Bank:
 
     @staticmethod
     def generate_account_number(bank):
+
+        final_code = ""
+
+        agency_code = str(random.randint(0, 9999))
+
+        if len(agency_code) < 4:
+            agency_code = "0"*(4-len(agency_code)) + agency_code
+
+        account_code = str(random.randint(0, 99999999999))
+
+        if len(account_code) < 11:
+            account_code = "0"*(11-len(account_code)) + account_code
+
         if bank == "Caixa Geral de Depóstios":
-            pass
+            bank = Bank.CAIXA_ABBREVIATION
+            final_code = Bank.PORTUGAL_IDENTIFIER + " " + Bank.CAIXA_IDENTIFIER + " " + \
+                agency_code + " " + account_code + " " + Bank.PORTUGAL_VERIFICATION
         elif bank == "Santander Totta":
-            pass
+            bank = Bank.SANTANDER_ABBREVIATION
+            final_code = Bank.PORTUGAL_IDENTIFIER + " " + Bank.SANTANDER_IDENTIFIER + " " + \
+                agency_code + " " + account_code + " " + Bank.PORTUGAL_VERIFICATION
         elif bank == "Millennium BCP":
-            pass
+            bank = Bank.MILLENNIUM_ABBREVIATION
+            final_code = Bank.PORTUGAL_IDENTIFIER + " " + Bank.MILLENNIUM_IDENTIFIER + " " + \
+                agency_code + " " + account_code + " " + Bank.PORTUGAL_VERIFICATION
         elif bank == "BPI":
-            pass
+            bank = Bank.BPI_ABBREVIATION
+            final_code = Bank.PORTUGAL_IDENTIFIER + " " + Bank.BPI_IDENTIFIER + " " + \
+                agency_code + " " + account_code + " " + Bank.PORTUGAL_VERIFICATION
         elif bank == "Novo Banco":
-            pass
+            bank = Bank.NOVO_ABBREVIATION
+            final_code = Bank.PORTUGAL_IDENTIFIER + " " + Bank.NOVO_IDENTIFIER + " " + \
+                agency_code + " " + account_code + " " + Bank.PORTUGAL_VERIFICATION
         elif bank == "Bankinter":
-            pass
+            bank = Bank.BANKINTER_ABBREVIATION
+            final_code = Bank.PORTUGAL_IDENTIFIER + " " + Bank.BANKINTER_IDENTIFIER + " " + \
+                agency_code + " " + account_code + " " + Bank.PORTUGAL_VERIFICATION
         elif bank == "EuroBIC":
-            pass
+            bank = Bank.EUROBIC_ABBREVIATION
+            final_code = Bank.PORTUGAL_IDENTIFIER + " " + Bank.EUROBIC_IDENTIFIER + " " + \
+                agency_code + " " + account_code + " " + Bank.PORTUGAL_VERIFICATION
         elif bank == "Popular":
-            pass
+            bank = Bank.POPULAR_ABBREVIATION
+            final_code = Bank.PORTUGAL_IDENTIFIER + " " + Bank.POPULAR_IDENTIFIER + " " + \
+                agency_code + " " + account_code + " " + Bank.PORTUGAL_VERIFICATION
         elif bank == "Montepio":
-            pass
+            bank = Bank.MONTEPIO_ABBREVIATION
+            final_code = Bank.PORTUGAL_IDENTIFIER + " " + Bank.MONTEPIO_IDENTIFIER + " " + \
+                agency_code + " " + account_code + " " + Bank.PORTUGAL_VERIFICATION
         elif bank == "Banco CTT":
-            pass
+            bank = Bank.BANCOCTT_ABBREVIATION
+            final_code = Bank.PORTUGAL_IDENTIFIER + " " + Bank.BANCOCTT_IDENTIFIER + " " + \
+                agency_code + " " + account_code + " " + Bank.PORTUGAL_VERIFICATION
         elif bank == "BBVA":
-            pass
+            bank = Bank.BBVA_ABBREVIATION
+            final_code = Bank.PORTUGAL_IDENTIFIER + " " + Bank.BBVA_IDENTIFIER + " " + \
+                agency_code + " " + account_code + " " + Bank.PORTUGAL_VERIFICATION
+
+        return bank, final_code

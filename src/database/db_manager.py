@@ -37,5 +37,17 @@ class Database:
         return self.c.execute("SELECT pin FROM Users WHERE name=?", (user,))
 
     def verify_existing_username(self, user):
-        if self.c.execute("SELECT name FROM Users WHERE name=?", (user,)) != None:
+        try:
+            self.c.execute("SELECT name FROM Users WHERE name=?",
+                           (user,)).fetchall()[0]
             return True
+        except IndexError:
+            return False
+
+    def verify_existing_account_number(self, account):
+        try:
+            self.c.execute(
+                "SELECT account FROM Users WHERE account=?", (account,)).fetchall()[0]
+            return True
+        except IndexError:
+            return False

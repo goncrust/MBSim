@@ -58,4 +58,19 @@ def register_user(username, pin, bank, birthday):
         return False
 
     # generate account number
-    bank, account = Bank.generate_account_number(bank)
+    bank, account = create_account_number(bank)
+
+    return True
+
+
+def create_account_number(bank_extended):
+    finished = False
+
+    bank, account = ["", ""]
+
+    while not finished:
+        bank, account = Bank.generate_account_number(bank_extended)
+        if not users_db.verify_existing_account_number(account):
+            finished = True
+
+    return bank, account
