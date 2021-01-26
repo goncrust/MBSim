@@ -109,12 +109,12 @@
             "English": "Sign Up"
         },
         "Username": {
-            "Portuguese": "Utilizador",
-            "English": "Username"
+            "Portuguese": "Novo Utilizador",
+            "English": "New Username"
         },
         "PIN": {
-            "Portuguese": "PIN",
-            "English": "PIN"
+            "Portuguese": "Novo PIN",
+            "English": "New PIN"
         },
         "Info": {
             "Portuguese": "Insira um nome de utilizador com 4 ou\nmais letras e que não contenha números\ne um pin de 4 digitos numéricos.",

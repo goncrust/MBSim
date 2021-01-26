@@ -167,9 +167,9 @@ class Interface:
 
         # create entry objects
         self.register_username_field = tk.Entry(
-            self.canvas, textvariable=self.register_username_text, font=("default", 23))
+            self.canvas, textvariable=self.register_username_text, font=("default", 21))
         self.register_pin_field = tk.Entry(
-            self.canvas, textvariable=self.register_pin_text, show='*', font=("default", 23))
+            self.canvas, textvariable=self.register_pin_text, show='*', font=("default", 21))
         self.register_calendar_field = Calendar(
             self.canvas, font=("default", 9), selectmode='day')
         self.register_bank_field = tk.OptionMenu(
@@ -214,7 +214,7 @@ class Interface:
 
     def focusin_pin_register(self, pos):
         if self.register_pin_field.cget("fg") == "grey":
-            self.register_pin_field.config(fg="black")
+            self.register_pin_field.config(fg="black", show="*")
             self.register_pin_field.delete(0, tk.END)
 
     def set_warning_message_register(self, message):
