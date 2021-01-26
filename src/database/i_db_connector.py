@@ -13,7 +13,7 @@ def login_user(username, pin):
     try:
         real_pass = users_db.get_pin_from_user(username).fetchall()[0][0]
     except IndexError:
-        print("user doesn't exist")
+        return False
 
     if real_pass == pin:
         return True
@@ -25,15 +25,25 @@ def register_user(username, pin, bank_abb, account_number, birthday):
     birthday = birthday.strftime("%d-%m-%Y")
 
     # check for numbers in username and username < 4
-    only_letters = True
-    for l in username:
-        try:
-            int(l)
-            only_letters = False
-        except:
-            continue
+    # only_letters = True
+    # for l in username:
+    # try:
+    #    int(l)
+    #    only_letters = False
+    # except:
+    #    continue
 
-    if not only_letters:
+    # if not only_letters:
+    #    return False, 0
+
+    username_only_letters = username
+
+    for l in range(len(username_only_letters)):
+        if username_only_letters[l] == " ":
+            username_only_letters = username_only_letters[:l] + \
+                "a" + username_only_letters[l+1:]
+
+    if not username_only_letters.isalpha():
         return False, 0
 
     if len(username) < 4:

@@ -35,6 +35,9 @@ class Scenario:
     login_pin_pt = languages[str(LOGIN)]["PIN"]["Portuguese"]
     login_pin_en = languages[str(LOGIN)]["PIN"]["English"]
 
+    warning_pin_pt = languages[str(LOGIN)]["Warning"]["Portuguese"]
+    warning_pin_en = languages[str(LOGIN)]["Warning"]["English"]
+
     register_username_pt = languages[str(REGISTER)]["Username"]["Portuguese"]
     register_username_en = languages[str(REGISTER)]["Username"]["English"]
 

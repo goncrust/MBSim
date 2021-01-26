@@ -118,12 +118,15 @@ class Interface:
             self.canvas, textvariable=self.login_username_text, font=("default", 23))
         self.pin_field = tk.Entry(
             self.canvas, textvariable=self.login_pin_text, show='*', font=("default", 23))
+        self.login_warning_label = tk.Label(self.canvas, font=(
+            "default", 18), justify=tk.LEFT, bg=BACKGROUND_CLR, fg="red")
 
         # place entry objects
         self.username_field.place(
             x=(WIDTH/2)-100, y=(HEIGHT/2)-20-42-20, width=200, height=40)
         self.pin_field.place(
             x=(WIDTH/2)-100, y=(HEIGHT/2)-20-20, width=200, height=40)
+        self.login_warning_label.place(x=133, y=400)
 
         # greyed out default text
         self.username_field.config(fg="grey")
@@ -146,10 +149,14 @@ class Interface:
             self.pin_field.config(fg="black", show="*")
             self.pin_field.delete(0, tk.END)
 
+    def login_warning(self):
+        self.login_warning_label.config(text=Scenario.warning_pin_pt)
+
     def destroy_login(self):
         # destroy fields
         self.username_field.destroy()
         self.pin_field.destroy()
+        self.login_warning_label.destroy()
 
         # reset variables
         self.login_username_text.set("")
@@ -163,6 +170,7 @@ class Interface:
         self.register_bank_text = tk.StringVar(self.canvas)
         self.register_bank_text.set("Caixa Geral de Depóstios")
         self.register_account_number = None
+
         self.register_bank_abb = None
 
         # create entry objects

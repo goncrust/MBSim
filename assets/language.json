@@ -39,6 +39,10 @@
         "PIN": {
             "Portuguese": "PIN",
             "English": "PIN"
+        },
+        "Warning": {
+            "Portuguese": "O nome de utilizador ou o PIN está incorreto.",
+            "English": "The user name or PIN is incorrect."
         }
     },
     "1": {
@@ -121,7 +125,7 @@
             "English": "Enter a username with 4 or more letters and that does not contain numbers and a 4-digit numeric pin."
         },
         "Only Letters": {
-            "Portuguese": "O nome de utilizador não\npode conter números.",
+            "Portuguese": "O nome de utilizador só\npode conter letras.",
             "English": "Username cannot contain numbers."
         },
         "Short Username": {

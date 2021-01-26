@@ -135,6 +135,8 @@ class IEventHandler:
 
                 self.interface.current_scenario = Scenario.MAIN
                 self.interface.update_scenario()
+            else:
+                self.interface.login_warning()
 
         elif self.interface.current_scenario == Scenario.REGISTER:
             # account register
