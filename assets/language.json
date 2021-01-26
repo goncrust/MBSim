@@ -120,6 +120,10 @@
             "Portuguese": "Novo PIN",
             "English": "New PIN"
         },
+        "PIN Confirm": {
+            "Portuguese": "Confirmar PIN",
+            "English": "Confirm PIN"
+        },
         "Info": {
             "Portuguese": "Insira um nome de utilizador com 4 ou\nmais letras e que não contenha números\ne um pin de 4 digitos numéricos.",
             "English": "Enter a username with 4 or more letters and that does not contain numbers and a 4-digit numeric pin."
@@ -147,6 +151,10 @@
         "Birthday": {
             "Portuguese": "Data de nascimento",
             "English": "Date of birth"
+        },
+        "PIN Match": {
+            "Portuguese": "O PIN não coincide.",
+            "English": "The PIN does not match."
         }
     },
     "3": {

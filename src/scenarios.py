@@ -35,14 +35,19 @@ class Scenario:
     login_pin_pt = languages[str(LOGIN)]["PIN"]["Portuguese"]
     login_pin_en = languages[str(LOGIN)]["PIN"]["English"]
 
-    warning_pin_pt = languages[str(LOGIN)]["Warning"]["Portuguese"]
-    warning_pin_en = languages[str(LOGIN)]["Warning"]["English"]
+    login_warning_pt = languages[str(LOGIN)]["Warning"]["Portuguese"]
+    login_warning_en = languages[str(LOGIN)]["Warning"]["English"]
 
     register_username_pt = languages[str(REGISTER)]["Username"]["Portuguese"]
     register_username_en = languages[str(REGISTER)]["Username"]["English"]
 
     register_pin_pt = languages[str(REGISTER)]["PIN"]["Portuguese"]
     register_pin_en = languages[str(REGISTER)]["PIN"]["English"]
+
+    register_pin_confirm_pt = languages[str(
+        REGISTER)]["PIN Confirm"]["Portuguese"]
+    register_pin_confirm_en = languages[str(
+        REGISTER)]["PIN Confirm"]["English"]
 
     register_info_pt = languages[str(REGISTER)]["Info"]["Portuguese"]
     register_info_en = languages[str(REGISTER)]["Info"]["English"]
@@ -74,6 +79,11 @@ class Scenario:
         REGISTER)]["Birthday"]["Portuguese"]
     register_calendar_field_en = languages[str(
         REGISTER)]["Birthday"]["English"]
+
+    register_pin_match_pt = languages[str(
+        REGISTER)]["PIN Match"]["Portuguese"]
+    register_pin_match_en = languages[str(
+        REGISTER)]["PIN Match"]["English"]
 
     # return active buttons in the scene
     @staticmethod

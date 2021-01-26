@@ -142,6 +142,8 @@ class IEventHandler:
             # account register
             if (self.interface.register_username_field.cget("fg") == "grey" or self.interface.register_pin_field.cget("fg") == "grey"):
                 self.interface.blink_info_register()
+            elif (self.interface.register_pin_field.get() != self.interface.register_pin_confirm_field.get()):
+                self.interface.set_warning_message_register(5)
             else:
 
                 success, message = i_db_con.register_user(self.interface.register_username_text.get(), self.interface.register_pin_text.get(),

@@ -25,6 +25,7 @@ def register_user(username, pin, bank_abb, account_number, birthday):
     birthday = birthday.strftime("%d-%m-%Y")
 
     # check for numbers in username and username < 4
+
     # only_letters = True
     # for l in username:
     # try:

@@ -150,7 +150,7 @@ class Interface:
             self.pin_field.delete(0, tk.END)
 
     def login_warning(self):
-        self.login_warning_label.config(text=Scenario.warning_pin_pt)
+        self.login_warning_label.config(text=Scenario.login_warning_pt)
 
     def destroy_login(self):
         # destroy fields
@@ -167,6 +167,7 @@ class Interface:
         # variables to store fields data
         self.register_username_text = tk.StringVar()
         self.register_pin_text = tk.StringVar()
+        self.register_pin_confirm_text = tk.StringVar()
         self.register_bank_text = tk.StringVar(self.canvas)
         self.register_bank_text.set("Caixa Geral de Depóstios")
         self.register_account_number = None
@@ -178,6 +179,8 @@ class Interface:
             self.canvas, textvariable=self.register_username_text, font=("default", 21))
         self.register_pin_field = tk.Entry(
             self.canvas, textvariable=self.register_pin_text, show='*', font=("default", 21))
+        self.register_pin_confirm_field = tk.Entry(
+            self.canvas, textvariable=self.register_pin_confirm_text, show='*', font=("default", 21))
         self.register_calendar_field = Calendar(
             self.canvas, font=("default", 9), selectmode='day')
         self.register_bank_field = tk.OptionMenu(
@@ -195,25 +198,30 @@ class Interface:
         # place entry objects
         self.register_username_field.place(x=10, y=10, width=200, height=40)
         self.register_pin_field.place(x=10, y=52, width=200, height=40)
-        self.register_calendar_field.place(x=10, y=208, height=150, width=200)
-        self.register_bank_field.place(x=10, y=115, height=50, width=200)
+        self.register_pin_confirm_field.place(x=10, y=94, width=200, height=40)
+        self.register_calendar_field.place(x=10, y=250, height=150, width=200)
+        self.register_bank_field.place(x=10, y=157, height=50, width=200)
         self.register_info_field.place(x=280, y=10)
         self.register_warning_field.place(x=450, y=475)
-        self.register_calendar_label.place(x=10, y=178)
-        self.register_account_number_label.place(x=220, y=128)
+        self.register_calendar_label.place(x=10, y=220)
+        self.register_account_number_label.place(x=220, y=170)
 
         # greyed out default text
         self.register_username_field.config(fg="grey")
-        self.register_pin_field.config(fg="grey")
-        self.register_pin_field.config(show="")
+        self.register_pin_field.config(fg="grey", show="")
+        self.register_pin_confirm_field.config(fg="grey", show="")
 
         self.register_username_field.insert(0, Scenario.register_username_pt)
         self.register_pin_field.insert(0, Scenario.register_pin_pt)
+        self.register_pin_confirm_field.insert(
+            0, Scenario.register_pin_confirm_pt)
 
         self.register_username_field.bind(
             "<FocusIn>", self.focusin_username_register)
         self.register_pin_field.bind(
             "<FocusIn>", self.focusin_pin_register)
+        self.register_pin_confirm_field.bind(
+            "<FocusIn>", self.focusin_pin_confirm_register)
 
     def focusin_username_register(self, pos):
         if self.register_username_field.cget("fg") == "grey":
@@ -224,6 +232,11 @@ class Interface:
         if self.register_pin_field.cget("fg") == "grey":
             self.register_pin_field.config(fg="black", show="*")
             self.register_pin_field.delete(0, tk.END)
+
+    def focusin_pin_confirm_register(self, pos):
+        if self.register_pin_confirm_field.cget("fg") == "grey":
+            self.register_pin_confirm_field.config(fg="black", show="*")
+            self.register_pin_confirm_field.delete(0, tk.END)
 
     def set_warning_message_register(self, message):
         if message == 0:
@@ -241,6 +254,9 @@ class Interface:
         elif message == 4:
             self.register_warning_field.config(
                 text=Scenario.register_username_exists_pt)
+        elif message == 5:
+            self.register_warning_field.config(
+                text=Scenario.register_pin_match_pt)
 
     def blink_info_register(self):
         self.register_info_field.config(fg="red")
@@ -254,6 +270,7 @@ class Interface:
         # destroy fields
         self.register_username_field.destroy()
         self.register_pin_field.destroy()
+        self.register_pin_confirm_field.destroy()
         self.register_calendar_field.destroy()
         self.register_bank_field.destroy()
         self.register_info_field.destroy()
@@ -265,6 +282,7 @@ class Interface:
         # reset variables
         self.register_username_text.set("")
         self.register_pin_text.set("")
+        self.register_pin_confirm_text.set("")
         self.register_bank_text.set("Caixa Geral de Depóstios")
         self.register_account_number = None
         self.register_bank_abb = None
