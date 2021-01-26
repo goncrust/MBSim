@@ -61,6 +61,8 @@ class IEventHandler:
             self.interface.current_scenario = Scenario.REGISTER
             self.interface.update_scenario()
 
+            self.interface.change_bank_register("")
+
         elif self.interface.current_scenario == Scenario.REGISTER:
             self.interface.destroy_register()
 
@@ -141,7 +143,8 @@ class IEventHandler:
             else:
 
                 success, message = i_db_con.register_user(self.interface.register_username_text.get(), self.interface.register_pin_text.get(),
-                                                          self.interface.register_bank_text.get(), self.interface.register_calendar_field.selection_get())
+                                                          self.interface.register_bank_abb, self.interface.register_account_number,
+                                                          self.interface.register_calendar_field.selection_get())
 
                 if success:
 
@@ -193,3 +196,7 @@ class IEventHandler:
         elif self.interface.current_scenario == Scenario.MBWAY1:
             self.interface.current_scenario = Scenario.MAIN
             self.interface.update_scenario()
+
+    def update_interface_bank_numbers_abb(self):
+        self.interface.register_bank_abb, self.interface.register_account_number = i_db_con.create_account_number(
+            self.interface.register_bank_text.get())

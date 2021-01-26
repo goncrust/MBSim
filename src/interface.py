@@ -162,6 +162,8 @@ class Interface:
         self.register_pin_text = tk.StringVar()
         self.register_bank_text = tk.StringVar(self.canvas)
         self.register_bank_text.set("Caixa Geral de Depóstios")
+        self.register_account_number = None
+        self.register_bank_abb = None
 
         # create entry objects
         self.register_username_field = tk.Entry(
@@ -172,13 +174,15 @@ class Interface:
             self.canvas, font=("default", 9), selectmode='day')
         self.register_bank_field = tk.OptionMenu(
             self.canvas, self.register_bank_text, "Caixa Geral de Depóstios", "Santander Totta", "Millennium BCP",
-            "BPI", "Novo Banco", "Bankinter", "EuroBIC", "Popular", "Montepio", "Banco CTT", "BBVA")
+            "BPI", "Novo Banco", "Bankinter", "EuroBIC", "Popular", "Montepio", "Banco CTT", "BBVA", command=self.change_bank_register)
         self.register_info_field = tk.Label(
             self.canvas, text=Scenario.register_info_pt, font=("default", 18), justify=tk.LEFT, bg=BACKGROUND_CLR)
         self.register_warning_field = tk.Label(
             self.canvas, font=("default", 18), justify=tk.LEFT, bg=BACKGROUND_CLR, fg="red")
         self.register_calendar_label = tk.Label(self.canvas, font=(
             "default", 16), justify=tk.LEFT, bg=BACKGROUND_CLR, text=Scenario.register_calendar_field_pt)
+        self.register_account_number_label = tk.Label(
+            self.canvas, font=("default", 9), justify=tk.LEFT, fg="grey")
 
         # place entry objects
         self.register_username_field.place(x=10, y=10, width=200, height=40)
@@ -188,6 +192,7 @@ class Interface:
         self.register_info_field.place(x=280, y=10)
         self.register_warning_field.place(x=450, y=475)
         self.register_calendar_label.place(x=10, y=178)
+        self.register_account_number_label.place(x=220, y=128)
 
         # greyed out default text
         self.register_username_field.config(fg="grey")
@@ -232,6 +237,11 @@ class Interface:
     def blink_info_register(self):
         self.register_info_field.config(fg="red")
 
+    def change_bank_register(self, event):
+        self.event_handler.update_interface_bank_numbers_abb()
+        self.register_account_number_label.config(
+            text=self.register_account_number)
+
     def destroy_register(self):
         # destroy fields
         self.register_username_field.destroy()
@@ -241,8 +251,12 @@ class Interface:
         self.register_info_field.destroy()
         self.register_warning_field.destroy()
         self.register_bank_field.destroy()
+        self.register_calendar_label.destroy()
+        self.register_account_number_label.destroy()
 
         # reset variables
         self.register_username_text.set("")
         self.register_pin_text.set("")
         self.register_bank_text.set("Caixa Geral de Depóstios")
+        self.register_account_number = None
+        self.register_bank_abb = None

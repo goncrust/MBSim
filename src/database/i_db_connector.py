@@ -19,7 +19,7 @@ def login_user(username, pin):
         return True
 
 
-def register_user(username, pin, bank, birthday):
+def register_user(username, pin, bank_abb, account_number, birthday):
 
     # birthday from <class 'datetime.date'> to <class 'str'>
     birthday = birthday.strftime("%d-%m-%Y")
@@ -57,8 +57,8 @@ def register_user(username, pin, bank, birthday):
     if users_db.verify_existing_username(username):
         return False, 4
 
-    # generate account number
-    bank, account = create_account_number(bank)
+    # bank abbreviation and account number
+    bank, account = bank_abb, account_number
 
     return True, 0
 
