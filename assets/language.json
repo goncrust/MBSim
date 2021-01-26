@@ -115,6 +115,34 @@
         "PIN": {
             "Portuguese": "PIN",
             "English": "PIN"
+        },
+        "Info": {
+            "Portuguese": "Insira um nome de utilizador com 4 ou\nmais letras e que não contenha números\ne um pin de 4 digitos numéricos.",
+            "English": "Enter a username with 4 or more letters and that does not contain numbers and a 4-digit numeric pin."
+        },
+        "Only Letters": {
+            "Portuguese": "O nome de utilizador não\npode conter números.",
+            "English": "Username cannot contain numbers."
+        },
+        "Short Username": {
+            "Portuguese": "O nome de utilizador tem\nde possuir 4 ou mais letras.",
+            "English": "The username must be 4 or more letters long."
+        },
+        "Only numbers": {
+            "Portuguese": "O PIN só pode conter\nnúmeros.",
+            "English": "The PIN can only contain numbers."
+        },
+        "PIN Size": {
+            "Portuguese": "O PIN tem de conter\n4 números.",
+            "English": "The PIN must contain 4 numbers."
+        },
+        "Username exists": {
+            "Portuguese": "O nome de utilizador já\nestá em uso.",
+            "English": "Username is already in use."
+        },
+        "Birthday": {
+            "Portuguese": "Data de nascimento",
+            "English": "Date of birth"
         }
     },
     "3": {

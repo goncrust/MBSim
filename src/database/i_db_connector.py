@@ -34,15 +34,12 @@ def register_user(username, pin, bank, birthday):
             continue
 
     if not only_letters:
-        return False
+        return False, 0
 
     if len(username) < 4:
-        return False
+        return False, 1
 
     # check for letters in pin and leght != 4
-    if len(str(pin)) != 4:
-        return False
-
     only_nms = True
     for n in pin:
         try:
@@ -51,16 +48,19 @@ def register_user(username, pin, bank, birthday):
             only_nms = False
 
     if not only_nms:
-        return False
+        return False, 2
+
+    if len(str(pin)) != 4:
+        return False, 3
 
     # check for already existing username
     if users_db.verify_existing_username(username):
-        return False
+        return False, 4
 
     # generate account number
     bank, account = create_account_number(bank)
 
-    return True
+    return True, 0
 
 
 def create_account_number(bank_extended):

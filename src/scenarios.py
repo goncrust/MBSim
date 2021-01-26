@@ -41,6 +41,37 @@ class Scenario:
     register_pin_pt = languages[str(REGISTER)]["PIN"]["Portuguese"]
     register_pin_en = languages[str(REGISTER)]["PIN"]["English"]
 
+    register_info_pt = languages[str(REGISTER)]["Info"]["Portuguese"]
+    register_info_en = languages[str(REGISTER)]["Info"]["English"]
+
+    register_only_letters_pt = languages[str(
+        REGISTER)]["Only Letters"]["Portuguese"]
+    register_only_letters_en = languages[str(
+        REGISTER)]["Only Letters"]["English"]
+
+    register_short_username_pt = languages[str(
+        REGISTER)]["Short Username"]["Portuguese"]
+    register_short_username_en = languages[str(
+        REGISTER)]["Short Username"]["English"]
+
+    register_only_numbers_pt = languages[str(
+        REGISTER)]["Only numbers"]["Portuguese"]
+    register_only_numbers_en = languages[str(
+        REGISTER)]["Only numbers"]["English"]
+
+    register_pin_size_pt = languages[str(REGISTER)]["PIN Size"]["Portuguese"]
+    register_pin_size_en = languages[str(REGISTER)]["PIN Size"]["English"]
+
+    register_username_exists_pt = languages[str(
+        REGISTER)]["Username exists"]["Portuguese"]
+    register_username_exists_en = languages[str(
+        REGISTER)]["Username exists"]["English"]
+
+    register_calendar_field_pt = languages[str(
+        REGISTER)]["Birthday"]["Portuguese"]
+    register_calendar_field_en = languages[str(
+        REGISTER)]["Birthday"]["English"]
+
     # return active buttons in the scene
     @staticmethod
     def get_scenario_active(scenario):
