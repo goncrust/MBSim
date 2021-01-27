@@ -27,6 +27,14 @@ class IEventHandler:
             self.interface.current_scenario = Scenario.MBWAY1
             self.interface.update_scenario()
 
+        elif self.interface.current_scenario == Scenario.VOUCHERS:
+            self.interface.current_scenario = Scenario.VOUCHERS1
+            self.interface.update_scenario()
+
+        elif self.interface.current_scenario == Scenario.VOUCHERS1:
+            self.interface.current_scenario = Scenario.VOUCHERS2
+            self.interface.update_scenario()
+
     def click_1(self, event):
 
         if self.interface.current_scenario == Scenario.MAIN:
@@ -42,6 +50,14 @@ class IEventHandler:
             self.interface.current_scenario = Scenario.BALANCE2
             self.interface.update_scenario()
 
+        elif self.interface.current_scenario == Scenario.VOUCHERS:
+            self.interface.current_scenario = Scenario.VOUCHERS1
+            self.interface.update_scenario()
+
+        elif self.interface.current_scenario == Scenario.VOUCHERS1:
+            self.interface.current_scenario = Scenario.VOUCHERS2
+            self.interface.update_scenario()
+
     def click_2(self, event):
 
         if self.interface.current_scenario == Scenario.MAIN:
@@ -52,6 +68,10 @@ class IEventHandler:
             # whithdraw 60
 
             pass
+
+        elif self.interface.current_scenario == Scenario.VOUCHERS1:
+            self.interface.current_scenario = Scenario.VOUCHERS2
+            self.interface.update_scenario()
 
     def click_3(self, event):
 
@@ -94,6 +114,14 @@ class IEventHandler:
             self.interface.current_scenario = Scenario.MAIN
             self.interface.update_scenario()
 
+        elif self.interface.current_scenario == Scenario.VOUCHERS1:
+            self.interface.current_scenario = Scenario.VOUCHERS2
+            self.interface.update_scenario()
+
+        elif self.interface.current_scenario == Scenario.VOUCHERS2:
+            self.interface.current_scenario = Scenario.MAIN
+            self.interface.update_scenario()
+
     def click_4(self, event):
 
         if self.interface.current_scenario == Scenario.LOGIN:
@@ -110,6 +138,10 @@ class IEventHandler:
 
             pass
 
+        elif self.interface.current_scenario == Scenario.VOUCHERS:
+            self.interface.current_scenario = Scenario.VOUCHERS1
+            self.interface.update_scenario()
+
     def click_5(self, event):
 
         if self.interface.current_scenario == Scenario.MAIN:
@@ -119,7 +151,7 @@ class IEventHandler:
     def click_6(self, event):
 
         if self.interface.current_scenario == Scenario.MAIN:
-            self.interface.current_scenario = Scenario.MAIN
+            self.interface.current_scenario = Scenario.VOUCHERS
             self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.WHITHDRAW:
@@ -198,6 +230,10 @@ class IEventHandler:
             pass
 
         elif self.interface.current_scenario == Scenario.MBWAY1:
+            self.interface.current_scenario = Scenario.MAIN
+            self.interface.update_scenario()
+
+        elif self.interface.current_scenario == Scenario.VOUCHERS1:
             self.interface.current_scenario = Scenario.MAIN
             self.interface.update_scenario()
 
