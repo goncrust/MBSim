@@ -122,6 +122,14 @@ class IEventHandler:
             self.interface.current_scenario = Scenario.MAIN
             self.interface.update_scenario()
 
+        elif self.interface.current_scenario == Scenario.ADMIN:
+            self.interface.current_scenario = Scenario.MAIN
+            self.interface.update_scenario()
+
+        elif self.interface.current_scenario == Scenario.ADMIN1:
+            self.interface.current_scenario = Scenario.MAIN
+            self.interface.update_scenario()
+
     def click_4(self, event):
 
         if self.interface.current_scenario == Scenario.LOGIN:
@@ -145,7 +153,7 @@ class IEventHandler:
     def click_5(self, event):
 
         if self.interface.current_scenario == Scenario.MAIN:
-            self.interface.current_scenario = Scenario.MAIN
+            self.interface.current_scenario = Scenario.ADMIN
             self.interface.update_scenario()
 
     def click_6(self, event):
@@ -158,11 +166,17 @@ class IEventHandler:
             self.interface.current_scenario = Scenario.WHITHDRAWOTHERAMOUNT
             self.interface.update_scenario()
 
+        elif self.interface.current_scenario == Scenario.ADMIN1:
+            # delete user
+
+            pass
+
     def click_7(self, event):
 
         if self.interface.current_scenario == Scenario.LOGIN:
             # account login
             if (i_db_con.login_user(self.interface.login_username_text.get(), self.interface.login_pin_text.get())):
+                self.interface.current_user = self.interface.login_username_text.get()
                 self.interface.destroy_login()
 
                 self.interface.current_scenario = Scenario.MAIN
@@ -236,6 +250,15 @@ class IEventHandler:
         elif self.interface.current_scenario == Scenario.VOUCHERS1:
             self.interface.current_scenario = Scenario.MAIN
             self.interface.update_scenario()
+
+        elif self.interface.current_scenario == Scenario.ADMIN:
+            self.interface.current_scenario = Scenario.ADMIN1
+            self.interface.update_scenario()
+
+        elif self.interface.current_scenario == Scenario.ADMIN1:
+            # confirm user modification
+
+            pass
 
     def update_interface_bank_numbers_abb(self):
         self.interface.register_bank_abb, self.interface.register_account_number = i_db_con.create_account_number(

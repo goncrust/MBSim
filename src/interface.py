@@ -27,6 +27,9 @@ class Interface:
         self.create_window(WIDTH, HEIGHT)
         self.create_canvas()
 
+        # user
+        self.current_user = None
+
         # set first scenario and run it
         self.current_scenario = Scenario.LOGIN
         self.update_scenario()
@@ -52,8 +55,12 @@ class Interface:
 
     # update onscreen scenario
     def update_scenario(self):
-        self.scenario(Scenario.get_scenario_active(
-            self.current_scenario), Scenario.get_scenario_text(self.current_scenario))
+        if self.current_user == "admin":
+            self.scenario(Scenario.get_scenario_active(
+                self.current_scenario, True), Scenario.get_scenario_text(self.current_scenario))
+        else:
+            self.scenario(Scenario.get_scenario_active(
+                self.current_scenario, False), Scenario.get_scenario_text(self.current_scenario))
 
         if self.current_scenario == Scenario.LOGIN:
             self.login()

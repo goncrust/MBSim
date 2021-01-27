@@ -26,6 +26,7 @@ class Scenario:
     MBWAY1 = 14
     CONFIRMWITHDRAW = 15
     ADMIN = 16
+    ADMIN1 = 17
 
     # languages.json
     LANGUAGES = languages
@@ -92,12 +93,15 @@ class Scenario:
 
     # return active buttons in the scene
     @staticmethod
-    def get_scenario_active(scenario):
+    def get_scenario_active(scenario, admin):
 
         if scenario == Scenario.LOGIN:
             return [False, False, False, True, True, False, False, True]
         elif scenario == Scenario.MAIN:
-            return [True, True, True, True, True, False, True, True]
+            if admin:
+                return [True, True, True, True, True, True, True, True]
+            else:
+                return [True, True, True, True, True, False, True, True]
         elif scenario == Scenario.REGISTER:
             return [False, False, False, True, False, False, False, True]
         elif scenario == Scenario.WHITHDRAW:
@@ -128,6 +132,8 @@ class Scenario:
             return [False, False, False, True, False, False, False, True]
         elif scenario == Scenario.ADMIN:
             return [False, False, False, True, False, False, False, True]
+        elif scenario == Scenario.ADMIN1:
+            return [False, False, False, True, False, False, True, True]
 
     # return buttons's text in the scene
     @staticmethod
