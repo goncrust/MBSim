@@ -83,6 +83,9 @@ def register_user(username, pin, bank_abb, account_number, birthday):
     # bank abbreviation and account number
     bank, account = bank_abb, account_number
 
+    # commit to db
+    users_db.register_user(username, account, bank, pin, birthday, 0)
+
     return True, 0
 
 
