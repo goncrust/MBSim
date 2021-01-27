@@ -24,7 +24,7 @@ class Scenario:
     BALANCE1 = 12
     BALANCE2 = 13
     MBWAY1 = 14
-    CONFIRM_WITHDRAW = 15
+    CONFIRMWITHDRAW = 15
     ADMIN = 16
 
     # languages.json
@@ -124,6 +124,10 @@ class Scenario:
             return [False, False, False, False, False, False, False, True]
         elif scenario == Scenario.MBWAY1:
             return [False, False, False, False, False, False, False, True]
+        elif scenario == Scenario.CONFIRMWITHDRAW:
+            return [False, False, False, True, False, False, False, True]
+        elif scenario == Scenario.ADMIN:
+            return [False, False, False, True, False, False, False, True]
 
     # return buttons's text in the scene
     @staticmethod
