@@ -4,8 +4,6 @@ from datetime import date
 
 users_db = db_m.Database("src/database/bases/users.db")
 
-#users_db.register_user("admin", "0000 0000 0000", "caixa", "1234", "01-01-2000", 0)
-
 
 def login_user(username, pin):
 

@@ -21,6 +21,10 @@ class Database:
         self.c.execute(
             "CREATE TABLE IF NOT EXISTS Users(name TEXT, account TEXT, bank TEXT, pin TEXT, birthday TEXT, balance REAL)")
 
+        if not self.verify_existing_username("admin"):
+            self.register_user(
+                "admin", "PT50 0035 0000 00000000000 54", "caixa", "3579", "01-01-2000", 0)
+
         self.con.commit()
 
     def close_connection(self):
