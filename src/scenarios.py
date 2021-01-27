@@ -24,6 +24,8 @@ class Scenario:
     BALANCE1 = 12
     BALANCE2 = 13
     MBWAY1 = 14
+    CONFIRM_WITHDRAW = 15
+    ADMIN = 16
 
     # languages.json
     LANGUAGES = languages
