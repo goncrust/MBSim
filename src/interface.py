@@ -182,7 +182,7 @@ class Interface:
         self.register_pin_confirm_field = tk.Entry(
             self.canvas, textvariable=self.register_pin_confirm_text, show='*', font=("default", 21))
         self.register_calendar_field = Calendar(
-            self.canvas, font=("default", 9), selectmode='day')
+            self.canvas, font=("default", 9), selectmode="day", year=2000, month=1, day=1)
         self.register_bank_field = tk.OptionMenu(
             self.canvas, self.register_bank_text, "Caixa Geral de Depóstios", "Santander Totta", "Millennium BCP",
             "BPI", "Novo Banco", "Bankinter", "EuroBIC", "Popular", "Montepio", "Banco CTT", "BBVA", command=self.change_bank_register)
@@ -257,6 +257,8 @@ class Interface:
         elif message == 5:
             self.register_warning_field.config(
                 text=Scenario.register_pin_match_pt)
+        elif message == 6:
+            self.register_warning_field.config(text=Scenario.register_age_pt)
 
     def blink_info_register(self):
         self.register_info_field.config(fg="red")

@@ -155,6 +155,10 @@
         "PIN Match": {
             "Portuguese": "O PIN não coincide.",
             "English": "The PIN does not match."
+        },
+        "Age": {
+            "Portuguese": "Tens de ter pelo menos\n16 anos.",
+            "English": "You must be at least 16 years old.."
         }
     },
     "3": {

@@ -1,5 +1,6 @@
 import database.db_manager as db_m
 from database.banks import *
+from datetime import date
 
 users_db = db_m.Database("src/database/bases/users.db")
 
@@ -22,6 +23,17 @@ def login_user(username, pin):
 def register_user(username, pin, bank_abb, account_number, birthday):
 
     # birthday from <class 'datetime.date'> to <class 'str'>
+    #print(abs(date.today() - birthday).year)
+
+    year_difference = date.today().year - birthday.year
+    today = date.today()
+
+    if date(2000, today.month, today.day) < date(2000, birthday.month, birthday.day):
+        year_difference = year_difference - 1
+
+    if (year_difference < 16):
+        return False, 6
+
     birthday = birthday.strftime("%d-%m-%Y")
 
     # check for numbers in username and username < 4

@@ -85,6 +85,9 @@ class Scenario:
     register_pin_match_en = languages[str(
         REGISTER)]["PIN Match"]["English"]
 
+    register_age_pt = languages[str(REGISTER)]["Age"]["Portuguese"]
+    register_age_en = languages[str(REGISTER)]["Age"]["English"]
+
     # return active buttons in the scene
     @staticmethod
     def get_scenario_active(scenario):
