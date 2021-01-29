@@ -1,11 +1,14 @@
 import database.db_manager as db_m
 from database.banks import *
 from datetime import date
+import hashlib
 
 users_db = db_m.Database("src/database/bases/users.db")
 
 
 def login_user(username, pin):
+
+    pin = hashlib.sha512(pin.encode('utf-8')).hexdigest()
 
     real_pass = None
 
@@ -73,6 +76,9 @@ def register_user(username, pin, bank_abb, account_number, birthday):
 
     if len(str(pin)) != 4:
         return False, 3
+
+    # encryption
+    pin = hashlib.sha512(pin.encode('utf-8')).hexdigest()
 
     # check for already existing username
     if users_db.verify_existing_username(username):

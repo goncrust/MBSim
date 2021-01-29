@@ -23,7 +23,9 @@ class Database:
 
         if not self.verify_existing_username("admin"):
             self.register_user(
-                "admin", "PT50 0035 0000 00000000000 54", "caixa", "3579", "01-01-2000", 0)
+                "admin", "PT50 0035 0000 00000000000 54", "caixa",
+                "f02595051ebd518fd644330d62943e604048a66ec62d4eee6b5f974cd2f9d636e4ea9da3ac9c2705477ccab0315b3f56047286d728a63070c2963f1a9fed4544",
+                "01-01-2000", 0)
 
         self.con.commit()
 
