@@ -295,3 +295,22 @@ class Interface:
         self.register_bank_text.set("Caixa Geral de Depóstios")
         self.register_account_number = None
         self.register_bank_abb = None
+
+    # withdraw
+    def withdraw(self, amount, current_balance):
+        self.final_balance = current_balance - amount
+
+        if self.final_balance < 0:
+            label_text = Scenario.withdraw_current_balance_pt + ": " + str(current_balance) + " €\n" + Scenario.withdraw_amount_pt + ": " + str(
+                amount) + " €\n" + Scenario.withdraw_insufficient_balance_pt
+        else:
+            label_text = Scenario.withdraw_current_balance_pt + ": " + str(current_balance) + " €\n" + Scenario.withdraw_amount_pt + ": " + str(
+                amount) + " €\n" + Scenario.withdraw_final_balance_pt + ": " + str(self.final_balance) + " €"
+
+        self.withdraw_label = tk.Label(self.canvas, font=(
+            "default", 18), text=label_text, justify=tk.LEFT, bg=BACKGROUND_CLR)
+        self.withdraw_label.place(x=270, y=200)
+
+    def destroy_withdraw(self):
+        self.final_balance = None
+        self.withdraw_label.destroy()

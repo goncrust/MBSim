@@ -601,6 +601,22 @@
         "7": {
             "Portuguese": "Confirmar",
             "English": "Confirmar"
+        },
+        "CBalance": {
+            "Portuguese": "Saldo atual",
+            "English": "Current balance"
+        },
+        "WAmount": {
+            "Portuguese": "Valor a retirar",
+            "English": "Amount to withdraw"
+        },
+        "FBalance": {
+            "Portuguese": "Saldo final",
+            "English": "Final balance"
+        },
+        "IBalance": {
+            "Portuguese": "Saldo insuficiente",
+            "English": "Insufficient funds"
         }
     },
     "16": {

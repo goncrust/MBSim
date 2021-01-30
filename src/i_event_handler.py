@@ -11,12 +11,16 @@ class IEventHandler:
     def click_0(self, event):
 
         if self.interface.current_scenario == Scenario.MAIN:
-            self.interface.current_scenario = Scenario.WHITHDRAW
+            self.interface.current_scenario = Scenario.WITHDRAW
             self.interface.update_scenario()
 
-        elif self.interface.current_scenario == Scenario.WHITHDRAW:
-            # whithdraw 20
+        elif self.interface.current_scenario == Scenario.WITHDRAW:
+            # WITHDRAW 20
             self.interface.current_scenario = Scenario.CONFIRMWITHDRAW
+
+            self.interface.withdraw(
+                20, i_db_con.users_db.get_balance(self.interface.current_user))
+
             self.interface.update_scenario()
 
             pass
@@ -43,9 +47,13 @@ class IEventHandler:
             self.interface.current_scenario = Scenario.BALANCE
             self.interface.update_scenario()
 
-        elif self.interface.current_scenario == Scenario.WHITHDRAW:
-            # whithdraw 40
+        elif self.interface.current_scenario == Scenario.WITHDRAW:
+            # WITHDRAW 40
             self.interface.current_scenario = Scenario.CONFIRMWITHDRAW
+
+            self.interface.withdraw(
+                40, i_db_con.users_db.get_balance(self.interface.current_user))
+
             self.interface.update_scenario()
 
             pass
@@ -68,9 +76,13 @@ class IEventHandler:
             self.interface.current_scenario = Scenario.TRANSFERS
             self.interface.update_scenario()
 
-        elif self.interface.current_scenario == Scenario.WHITHDRAW:
-            # whithdraw 60
+        elif self.interface.current_scenario == Scenario.WITHDRAW:
+            # WITHDRAW 60
             self.interface.current_scenario = Scenario.CONFIRMWITHDRAW
+
+            self.interface.withdraw(
+                60, i_db_con.users_db.get_balance(self.interface.current_user))
+
             self.interface.update_scenario()
 
             pass
@@ -99,14 +111,18 @@ class IEventHandler:
             self.interface.current_scenario = Scenario.PAYMENTS
             self.interface.update_scenario()
 
-        elif self.interface.current_scenario == Scenario.WHITHDRAW:
-            # whithdraw 100
+        elif self.interface.current_scenario == Scenario.WITHDRAW:
+            # WITHDRAW 100
             self.interface.current_scenario = Scenario.CONFIRMWITHDRAW
+
+            self.interface.withdraw(
+                100, i_db_con.users_db.get_balance(self.interface.current_user))
+
             self.interface.update_scenario()
 
             pass
 
-        elif self.interface.current_scenario == Scenario.WHITHDRAWOTHERAMOUNT:
+        elif self.interface.current_scenario == Scenario.WITHDRAWOTHERAMOUNT:
             self.interface.current_scenario = Scenario.MAIN
             self.interface.update_scenario()
 
@@ -139,6 +155,8 @@ class IEventHandler:
             self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.CONFIRMWITHDRAW:
+            self.interface.destroy_withdraw()
+
             self.interface.current_scenario = Scenario.MAIN
             self.interface.update_scenario()
 
@@ -153,9 +171,13 @@ class IEventHandler:
             self.interface.current_scenario = Scenario.MBWAY
             self.interface.update_scenario()
 
-        elif self.interface.current_scenario == Scenario.WHITHDRAW:
-            # whithdraw 200
+        elif self.interface.current_scenario == Scenario.WITHDRAW:
+            # WITHDRAW 200
             self.interface.current_scenario = Scenario.CONFIRMWITHDRAW
+
+            self.interface.withdraw(
+                200, i_db_con.users_db.get_balance(self.interface.current_user))
+
             self.interface.update_scenario()
 
             pass
@@ -176,8 +198,8 @@ class IEventHandler:
             self.interface.current_scenario = Scenario.VOUCHERS
             self.interface.update_scenario()
 
-        elif self.interface.current_scenario == Scenario.WHITHDRAW:
-            self.interface.current_scenario = Scenario.WHITHDRAWOTHERAMOUNT
+        elif self.interface.current_scenario == Scenario.WITHDRAW:
+            self.interface.current_scenario = Scenario.WITHDRAWOTHERAMOUNT
             self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.ADMIN1:
@@ -222,16 +244,17 @@ class IEventHandler:
 
         elif self.interface.current_scenario == Scenario.MAIN:
             # logout
+            self.interface.current_user = None
 
             self.interface.current_scenario = Scenario.LOGIN
             self.interface.update_scenario()
 
-        elif self.interface.current_scenario == Scenario.WHITHDRAW:
+        elif self.interface.current_scenario == Scenario.WITHDRAW:
             self.interface.current_scenario = Scenario.MAIN
             self.interface.update_scenario()
 
-        elif self.interface.current_scenario == Scenario.WHITHDRAWOTHERAMOUNT:
-            # whithdraw other amount
+        elif self.interface.current_scenario == Scenario.WITHDRAWOTHERAMOUNT:
+            # WITHDRAW other amount
 
             pass
 
@@ -280,6 +303,11 @@ class IEventHandler:
 
         elif self.interface.current_scenario == Scenario.CONFIRMWITHDRAW:
             # confirm withdraw
+            if self.interface.final_balance >= 0:
+                i_db_con.users_db.set_balance(
+                    self.interface.current_user, self.interface.final_balance)
+
+            self.interface.destroy_withdraw()
 
             self.interface.current_scenario = Scenario.MAIN
             self.interface.update_scenario()

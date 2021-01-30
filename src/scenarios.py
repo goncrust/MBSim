@@ -12,7 +12,7 @@ class Scenario:
     LOGIN = 0
     MAIN = 1
     REGISTER = 2
-    WHITHDRAW = 3
+    WITHDRAW = 3
     BALANCE = 4
     TRANSFERS = 5
     PAYMENTS = 6
@@ -20,7 +20,7 @@ class Scenario:
     VOUCHERS = 8
     VOUCHERS1 = 9
     VOUCHERS2 = 10
-    WHITHDRAWOTHERAMOUNT = 11
+    WITHDRAWOTHERAMOUNT = 11
     BALANCE1 = 12
     BALANCE2 = 13
     MBWAY1 = 14
@@ -91,6 +91,25 @@ class Scenario:
     register_age_pt = languages[str(REGISTER)]["Age"]["Portuguese"]
     register_age_en = languages[str(REGISTER)]["Age"]["English"]
 
+    withdraw_current_balance_pt = languages[str(
+        CONFIRMWITHDRAW)]["CBalance"]["Portuguese"]
+    withdraw_current_balance_en = languages[str(
+        CONFIRMWITHDRAW)]["CBalance"]["English"]
+
+    withdraw_amount_pt = languages[str(
+        CONFIRMWITHDRAW)]["WAmount"]["Portuguese"]
+    withdraw_amount_en = languages[str(CONFIRMWITHDRAW)]["WAmount"]["English"]
+
+    withdraw_final_balance_pt = languages[str(
+        CONFIRMWITHDRAW)]["FBalance"]["Portuguese"]
+    withdraw_final_balance_en = languages[str(
+        CONFIRMWITHDRAW)]["FBalance"]["English"]
+
+    withdraw_insufficient_balance_pt = languages[str(
+        CONFIRMWITHDRAW)]["IBalance"]["Portuguese"]
+    withdraw_insufficient_balance_en = languages[str(
+        CONFIRMWITHDRAW)]["IBalance"]["English"]
+
     # return active buttons in the scene
     @staticmethod
     def get_scenario_active(scenario, admin):
@@ -104,7 +123,7 @@ class Scenario:
                 return [True, True, True, True, True, False, True, True]
         elif scenario == Scenario.REGISTER:
             return [False, False, False, True, False, False, False, True]
-        elif scenario == Scenario.WHITHDRAW:
+        elif scenario == Scenario.WITHDRAW:
             return [True, True, True, True, True, False, True, True]
         elif scenario == Scenario.BALANCE:
             return [True, True, False, False, False, False, False, True]
@@ -120,7 +139,7 @@ class Scenario:
             return [True, True, True, True, False, False, False, True]
         elif scenario == Scenario.VOUCHERS2:
             return [False, False, False, True, False, False, False, True]
-        elif scenario == Scenario.WHITHDRAWOTHERAMOUNT:
+        elif scenario == Scenario.WITHDRAWOTHERAMOUNT:
             return [False, False, False, True, False, False, False, True]
         elif scenario == Scenario.BALANCE1:
             return [False, False, False, False, False, False, False, True]

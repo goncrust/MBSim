@@ -57,3 +57,12 @@ class Database:
             return True
         except IndexError:
             return False
+
+    def get_balance(self, user):
+        return self.c.execute("SELECT balance FROM Users WHERE name=?", (user,)).fetchall()[0][0]
+
+    def set_balance(self, user, balance):
+        self.c.execute(
+            "UPDATE Users SET balance=? WHERE name=?", (balance, user))
+
+        self.con.commit()
