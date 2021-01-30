@@ -110,6 +110,9 @@ class Scenario:
     withdraw_insufficient_balance_en = languages[str(
         CONFIRMWITHDRAW)]["IBalance"]["English"]
 
+    mbway_error_pt = languages[str(MBWAY1)]["Error Message"]["Portuguese"]
+    mbway_error_en = languages[str(MBWAY1)]["Error Message"]["English"]
+
     # return active buttons in the scene
     @staticmethod
     def get_scenario_active(scenario, admin):

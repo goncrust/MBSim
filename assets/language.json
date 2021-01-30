@@ -567,6 +567,10 @@
         "7": {
             "Portuguese": "Outras Operações",
             "English": "Other Operations"
+        },
+        "Error Message": {
+            "Portuguese": "Fora de Serviço",
+            "English": "Out of Service"
         }
     },
     "15": {

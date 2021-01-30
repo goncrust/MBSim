@@ -314,3 +314,25 @@ class Interface:
     def destroy_withdraw(self):
         self.final_balance = None
         self.withdraw_label.destroy()
+
+    # balance
+    def balance(self, current_balance):
+        label_text = Scenario.withdraw_current_balance_pt + ": " + str(current_balance) + " €"
+
+        self.balance_label = tk.Label(self.canvas, font=(
+            "default", 18), text=label_text, justify=tk.LEFT, bg=BACKGROUND_CLR)
+        self.balance_label.place(x=270, y=200)
+
+    def destroy_balance(self):
+        self.current_balance = None
+        self.balance_label.destroy()
+
+    # mbway
+    def mbway(self):
+        label_text = Scenario.mbway_error_pt
+
+        self.mbway_label = tk.Label(self.canvas, font=("default", 18), text = label_text, justify=tk.LEFT, bg=BACKGROUND_CLR)
+        self.mbway_label.place(x=285, y=200)
+
+    def destroy_mbway(self):
+        self.mbway_label.destroy()
