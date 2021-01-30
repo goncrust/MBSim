@@ -27,10 +27,15 @@ class IEventHandler:
 
         elif self.interface.current_scenario == Scenario.BALANCE:
             self.interface.current_scenario = Scenario.BALANCE1
+            # balance
+            self.interface.balance(i_db_con.users_db.get_balance(self.interface.current_user))
+
             self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.MBWAY:
             self.interface.current_scenario = Scenario.MBWAY1
+            # mbway
+            self.interface.mbway()
             self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.VOUCHERS:
@@ -283,6 +288,8 @@ class IEventHandler:
             self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.BALANCE1:
+            # destroy balance
+            self.interface.destroy_balance()
             self.interface.current_scenario = Scenario.MAIN
             self.interface.update_scenario()
 
@@ -301,6 +308,9 @@ class IEventHandler:
             pass
 
         elif self.interface.current_scenario == Scenario.MBWAY1:
+            # destroy mbway
+            self.interface.destroy_mbway()
+
             self.interface.current_scenario = Scenario.MAIN
             self.interface.update_scenario()
 
