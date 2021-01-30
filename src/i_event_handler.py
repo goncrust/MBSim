@@ -123,6 +123,8 @@ class IEventHandler:
             pass
 
         elif self.interface.current_scenario == Scenario.WITHDRAWOTHERAMOUNT:
+            self.interface.withdraw_custom_destroy()
+
             self.interface.current_scenario = Scenario.MAIN
             self.interface.update_scenario()
 
@@ -200,6 +202,9 @@ class IEventHandler:
 
         elif self.interface.current_scenario == Scenario.WITHDRAW:
             self.interface.current_scenario = Scenario.WITHDRAWOTHERAMOUNT
+
+            self.interface.withdraw_custom()
+
             self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.ADMIN1:
@@ -256,7 +261,22 @@ class IEventHandler:
         elif self.interface.current_scenario == Scenario.WITHDRAWOTHERAMOUNT:
             # WITHDRAW other amount
 
-            pass
+            only_numbers = True
+            for n in self.interface.custom_withdraw_text.get():
+                try:
+                    int(n)
+                except:
+                    only_numbers = False
+
+            if only_numbers:
+                self.interface.current_scenario = Scenario.CONFIRMWITHDRAW
+
+                self.interface.withdraw(
+                    float(self.interface.custom_withdraw_text.get()), i_db_con.users_db.get_balance(self.interface.current_user))
+
+                self.interface.withdraw_custom_destroy()
+
+                self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.BALANCE:
             self.interface.current_scenario = Scenario.MAIN

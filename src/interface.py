@@ -314,3 +314,17 @@ class Interface:
     def destroy_withdraw(self):
         self.final_balance = None
         self.withdraw_label.destroy()
+
+    # withdraw custom amount
+    def withdraw_custom(self):
+        self.custom_withdraw_text = tk.StringVar()
+
+        self.custom_withdraw_field = tk.Entry(
+            self.canvas, textvariable=self.custom_withdraw_text, font=("default", 21))
+
+        self.custom_withdraw_field.place(
+            x=(WIDTH/2)-100, y=(HEIGHT/2)-20-200, width=200, height=40)
+
+    def withdraw_custom_destroy(self):
+        self.custom_withdraw_text.set("")
+        self.custom_withdraw_field.destroy()
