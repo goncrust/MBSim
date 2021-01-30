@@ -16,6 +16,8 @@ class IEventHandler:
 
         elif self.interface.current_scenario == Scenario.WHITHDRAW:
             # whithdraw 20
+            self.interface.current_scenario = Scenario.CONFIRMWITHDRAW
+            self.interface.update_scenario()
 
             pass
 
@@ -43,6 +45,8 @@ class IEventHandler:
 
         elif self.interface.current_scenario == Scenario.WHITHDRAW:
             # whithdraw 40
+            self.interface.current_scenario = Scenario.CONFIRMWITHDRAW
+            self.interface.update_scenario()
 
             pass
 
@@ -66,6 +70,8 @@ class IEventHandler:
 
         elif self.interface.current_scenario == Scenario.WHITHDRAW:
             # whithdraw 60
+            self.interface.current_scenario = Scenario.CONFIRMWITHDRAW
+            self.interface.update_scenario()
 
             pass
 
@@ -95,6 +101,8 @@ class IEventHandler:
 
         elif self.interface.current_scenario == Scenario.WHITHDRAW:
             # whithdraw 100
+            self.interface.current_scenario = Scenario.CONFIRMWITHDRAW
+            self.interface.update_scenario()
 
             pass
 
@@ -130,6 +138,10 @@ class IEventHandler:
             self.interface.current_scenario = Scenario.MAIN
             self.interface.update_scenario()
 
+        elif self.interface.current_scenario == Scenario.CONFIRMWITHDRAW:
+            self.interface.current_scenario = Scenario.MAIN
+            self.interface.update_scenario()
+
     def click_4(self, event):
 
         if self.interface.current_scenario == Scenario.LOGIN:
@@ -143,6 +155,8 @@ class IEventHandler:
 
         elif self.interface.current_scenario == Scenario.WHITHDRAW:
             # whithdraw 200
+            self.interface.current_scenario = Scenario.CONFIRMWITHDRAW
+            self.interface.update_scenario()
 
             pass
 
@@ -259,6 +273,16 @@ class IEventHandler:
             # confirm user modification
 
             pass
+
+        elif self.interface.current_scenario == Scenario.VOUCHERS:
+            self.interface.current_scenario = Scenario.MAIN
+            self.interface.update_scenario()
+
+        elif self.interface.current_scenario == Scenario.CONFIRMWITHDRAW:
+            # confirm withdraw
+
+            self.interface.current_scenario = Scenario.MAIN
+            self.interface.update_scenario()
 
     def update_interface_bank_numbers_abb(self):
         self.interface.register_bank_abb, self.interface.register_account_number = i_db_con.create_account_number(

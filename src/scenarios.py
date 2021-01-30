@@ -115,7 +115,7 @@ class Scenario:
         elif scenario == Scenario.MBWAY:
             return [True, False, False, True, False, False, False, False]
         elif scenario == Scenario.VOUCHERS:
-            return [True, True, False, False, True, False, False, False]
+            return [True, True, False, False, True, False, False, True]
         elif scenario == Scenario.VOUCHERS1:
             return [True, True, True, True, False, False, False, True]
         elif scenario == Scenario.VOUCHERS2:
