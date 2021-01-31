@@ -325,6 +325,19 @@ class Interface:
         self.custom_withdraw_field.place(
             x=(WIDTH/2)-100, y=(HEIGHT/2)-20-200, width=200, height=40)
 
+        self.custom_withdraw_field.config(fg="grey")
+
+        self.custom_withdraw_field.insert(
+            0, Scenario.withdraw_other_default_text_pt)
+
+        self.custom_withdraw_field.bind(
+            "<FocusIn>", self.focusin_withdraw_custom)
+
+    def focusin_withdraw_custom(self, pos):
+        if self.custom_withdraw_field.cget("fg") == "grey":
+            self.custom_withdraw_field.config(fg="black")
+            self.custom_withdraw_field.delete(0, tk.END)
+
     def withdraw_custom_destroy(self):
         self.custom_withdraw_text.set("")
         self.custom_withdraw_field.destroy()

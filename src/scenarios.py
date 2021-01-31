@@ -110,6 +110,11 @@ class Scenario:
     withdraw_insufficient_balance_en = languages[str(
         CONFIRMWITHDRAW)]["IBalance"]["English"]
 
+    withdraw_other_default_text_pt = languages[str(
+        WITHDRAWOTHERAMOUNT)]["Amount"]["Portuguese"]
+    withdraw_other_default_text_en = languages[str(
+        WITHDRAWOTHERAMOUNT)]["Amount"]["English"]
+
     mbway_error_pt = languages[str(MBWAY1)]["Error Message"]["Portuguese"]
     mbway_error_en = languages[str(MBWAY1)]["Error Message"]["English"]
 
