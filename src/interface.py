@@ -34,6 +34,9 @@ class Interface:
         self.current_scenario = Scenario.LOGIN
         self.update_scenario()
 
+        # focusin something
+        self.focusedin = False
+
         # bind keys
         self.bind_keys()
 
@@ -51,16 +54,36 @@ class Interface:
         self.window.iconphoto(False, image_loader.icon)
 
     def bind_keys(self):
-        self.window.bind("7", self.event_handler.click_0)
-        self.window.bind("4", self.event_handler.click_1)
-        self.window.bind("1", self.event_handler.click_2)
-        self.window.bind("0", self.event_handler.click_3)
-        self.window.bind("9", self.event_handler.click_4)
-        self.window.bind("6", self.event_handler.click_5)
-        self.window.bind("3", self.event_handler.click_6)
-        self.window.bind(".", self.event_handler.click_7)
+        self.window.bind("7", lambda x=None: self.bind_keys_connector(7))
+        self.window.bind("4", lambda x=None: self.bind_keys_connector(4))
+        self.window.bind("1", lambda x=None: self.bind_keys_connector(1))
+        self.window.bind("0", lambda x=None: self.bind_keys_connector(0))
+        self.window.bind("9", lambda x=None: self.bind_keys_connector(9))
+        self.window.bind("6", lambda x=None: self.bind_keys_connector(6))
+        self.window.bind("3", lambda x=None: self.bind_keys_connector(3))
+        self.window.bind(".", lambda x=None: self.bind_keys_connector("."))
+
+    def bind_keys_connector(self, button):
+        if not self.focusedin:
+            if button == 7:
+                self.event_handler.click_0("")
+            elif button == 4:
+                self.event_handler.click_1("")
+            elif button == 1:
+                self.event_handler.click_2("")
+            elif button == 0:
+                self.event_handler.click_3("")
+            elif button == 9:
+                self.event_handler.click_4("")
+            elif button == 6:
+                self.event_handler.click_5("")
+            elif button == 3:
+                self.event_handler.click_6("")
+            elif button == ".":
+                self.event_handler.click_7("")
 
     # create canvas function
+
     def create_canvas(self):
         self.canvas = tk.Canvas(self.window, width=WIDTH,
                                 height=HEIGHT, bg=BACKGROUND_CLR, highlightthickness=0)
@@ -79,6 +102,8 @@ class Interface:
             self.login()
         elif self.current_scenario == Scenario.REGISTER:
             self.register()
+
+        self.focusedin = False
 
     # place buttons and assign events
     def scenario(self, active, label):
@@ -161,10 +186,14 @@ class Interface:
             self.username_field.config(fg="black")
             self.username_field.delete(0, tk.END)
 
+        self.focusedin = True
+
     def focusin_pin_login(self, pos):
         if self.pin_field.cget("fg") == "grey":
             self.pin_field.config(fg="black", show="*")
             self.pin_field.delete(0, tk.END)
+
+        self.focusedin = True
 
     def login_warning(self):
         self.login_warning_label.config(text=Scenario.login_warning_pt)
@@ -245,15 +274,21 @@ class Interface:
             self.register_username_field.config(fg="black")
             self.register_username_field.delete(0, tk.END)
 
+        self.focusedin = True
+
     def focusin_pin_register(self, pos):
         if self.register_pin_field.cget("fg") == "grey":
             self.register_pin_field.config(fg="black", show="*")
             self.register_pin_field.delete(0, tk.END)
 
+        self.focusedin = True
+
     def focusin_pin_confirm_register(self, pos):
         if self.register_pin_confirm_field.cget("fg") == "grey":
             self.register_pin_confirm_field.config(fg="black", show="*")
             self.register_pin_confirm_field.delete(0, tk.END)
+
+        self.focusedin = True
 
     def set_warning_message_register(self, message):
         if message == 0:
@@ -347,6 +382,8 @@ class Interface:
         if self.custom_withdraw_field.cget("fg") == "grey":
             self.custom_withdraw_field.config(fg="black")
             self.custom_withdraw_field.delete(0, tk.END)
+
+        self.focusedin = True
 
     def withdraw_custom_destroy(self):
         self.custom_withdraw_text.set("")
