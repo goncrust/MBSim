@@ -23,8 +23,6 @@ class IEventHandler:
 
             self.interface.update_scenario()
 
-            pass
-
         elif self.interface.current_scenario == Scenario.BALANCE:
             self.interface.current_scenario = Scenario.BALANCE1
             # balance
@@ -62,8 +60,6 @@ class IEventHandler:
 
             self.interface.update_scenario()
 
-            pass
-
         elif self.interface.current_scenario == Scenario.BALANCE:
             self.interface.current_scenario = Scenario.BALANCE2
             self.interface.update_scenario()
@@ -94,8 +90,6 @@ class IEventHandler:
                 60, i_db_con.users_db.get_balance(self.interface.current_user))
 
             self.interface.update_scenario()
-
-            pass
 
         elif self.interface.current_scenario == Scenario.VOUCHERS1:
             self.interface.current_scenario = Scenario.VOUCHERS2
@@ -133,8 +127,6 @@ class IEventHandler:
                 100, i_db_con.users_db.get_balance(self.interface.current_user))
 
             self.interface.update_scenario()
-
-            pass
 
         elif self.interface.current_scenario == Scenario.WITHDRAWOTHERAMOUNT:
             self.interface.withdraw_custom_destroy()
@@ -188,6 +180,7 @@ class IEventHandler:
 
         if self.interface.current_scenario == Scenario.LOGIN:
             i_db_con.users_db.close_connection()
+            i_db_con.movements_db.close_connection()
 
             self.interface.window.destroy()
 
@@ -203,8 +196,6 @@ class IEventHandler:
                 200, i_db_con.users_db.get_balance(self.interface.current_user))
 
             self.interface.update_scenario()
-
-            pass
 
         elif self.interface.current_scenario == Scenario.VOUCHERS:
             self.interface.current_scenario = Scenario.VOUCHERS1
@@ -419,6 +410,9 @@ class IEventHandler:
             if self.interface.final_balance >= 0:
                 i_db_con.users_db.set_balance(
                     self.interface.current_user, self.interface.final_balance)
+
+                i_db_con.register_movement(i_db_con.WITHDRAW, i_db_con.users_db.get_account_number_from_name(
+                    self.interface.current_user), None, self.interface.amount_withdraw)
 
             self.interface.destroy_withdraw()
 

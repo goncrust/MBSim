@@ -132,8 +132,10 @@ class Scenario:
     amount_default_text_en = languages[str(
         TRANSFERS)]["Default Amount"]["English"]
 
-    tranfers_warning_message_pt = languages[str(TRANSFERS)]["Warning Message"]["Portuguese"]
-    tranfers_warning_message_en = languages[str(TRANSFERS)]["Warning Message"]["English"]
+    tranfers_warning_message_pt = languages[str(
+        TRANSFERS)]["Warning Message"]["Portuguese"]
+    tranfers_warning_message_en = languages[str(
+        TRANSFERS)]["Warning Message"]["English"]
 
     payments_entity_pt = languages[str(PAYMENTS)]["Entity"]["Portuguese"]
     payments_entity_en = languages[str(PAYMENTS)]["Entity"]["English"]

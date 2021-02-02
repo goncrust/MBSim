@@ -1,9 +1,13 @@
 import database.db_manager as db_m
 from database.banks import *
-from datetime import date
+from datetime import date, datetime
 import hashlib
 
-users_db = db_m.Database("src/database/bases/users.db")
+users_db = db_m.UDatabase("src/database/bases/users.db")
+movements_db = db_m.MDatabase("src/database/bases/movements.db")
+
+TRANSFER = 0
+WITHDRAW = 1
 
 
 def login_user(username, pin):
@@ -112,3 +116,15 @@ def transfer(user_from, iban_to, amount):
     user_to = users_db.get_name_from_account_number(iban_to)
 
     users_db.set_balance(user_to, users_db.get_balance(user_to) + amount)
+
+    register_movement(TRANSFER, users_db.get_account_number_from_name(
+        user_from), iban_to, amount)
+
+
+def register_movement(movement_type, account, account_to, amount):
+    date_now = datetime.now().strftime("%d-%m-%Y %H:%M")
+
+    if movement_type == TRANSFER:
+        movements_db.register_transfer(account, account_to, amount, date_now)
+    elif movement_type == WITHDRAW:
+        movements_db.register_withdraw(account, amount, date_now)
