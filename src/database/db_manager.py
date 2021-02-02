@@ -66,3 +66,6 @@ class Database:
             "UPDATE Users SET balance=? WHERE name=?", (balance, user))
 
         self.con.commit()
+
+    def get_name_from_account_number(self, account):
+        return self.c.execute("SELECT name FROM Users WHERE account=?", (account,)).fetchall()[0][0]
