@@ -112,6 +112,10 @@ class IEventHandler:
             self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.MAIN:
+            
+            # payments
+            self.interface.payments()
+
             self.interface.current_scenario = Scenario.PAYMENTS
             self.interface.update_scenario()
 
@@ -139,6 +143,10 @@ class IEventHandler:
             self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.PAYMENTS:
+
+            # destroy payments
+            self.interface.payments_destroy()
+            
             self.interface.current_scenario = Scenario.MAIN
             self.interface.update_scenario()
 
@@ -340,9 +348,38 @@ class IEventHandler:
             pass
 
         elif self.interface.current_scenario == Scenario.PAYMENTS:
-            # payment
 
-            pass
+            # destroy payments                       
+            only_numbers = True
+            for n in self.interface.entity_text.get():
+                if n != "." and n != ",":
+                    try:
+                        int(n)
+                    except:
+                        only_numbers = False
+
+            for n in self.interface.reference_text.get():
+                if n != "." and n != ",":
+                    try:
+                        int(n)
+                    except:
+                        only_numbers = False
+
+            for n in self.interface.payments_amount_text.get():
+                if n != "." and n != ",":
+                    try:
+                        int(n)
+                    except:
+                        only_numbers = False
+
+            if only_numbers == False:
+                self.interface.payments_warning()
+            else:
+                pass
+
+                self.interface.payments_destroy()
+                self.interface.current_scenario = Scenario.MAIN
+                self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.MBWAY1:
             # destroy mbway

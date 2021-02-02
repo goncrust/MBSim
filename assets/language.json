@@ -315,6 +315,22 @@
         "7": {
             "Portuguese": "Confirmar",
             "English": "Confirm"
+        },
+        "Entity": {
+            "Portuguese": "Entidade",
+            "English": "Entity"
+        },
+        "Reference": {
+            "Portuguese": "Referência",
+            "English": "Reference"
+        },
+        "Amount": {
+            "Portuguese": "Montante",
+            "English": "Amount"
+        },
+        "Warning Message": {
+            "Portuguese": "Utilize apenas números",
+            "English": "Use only numbers"
         }
     },
     "7": {
