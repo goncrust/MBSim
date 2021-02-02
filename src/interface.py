@@ -80,10 +80,7 @@ class Interface:
 
         self.b_label = []
         for i in range(len(label)):
-            if i < 4:
-                image_loader.place_text(self, image_loader.B_LEFT, label[i])
-            else:
-                image_loader.place_text(self, image_loader.B_RIGHT, label[i])
+            image_loader.place_text(self, i, label[i])
 
         for z in range(len(active)):
             if active[z]:

@@ -2,10 +2,9 @@ from PIL import Image, ImageTk, ImageFont, ImageDraw
 
 # images dir
 IMAGEDIR = 'assets/images/'
-B_LEFT = 0
-B_RIGHT = 1
 
 FONT_SIZE = 23
+NMS_FONT_SIZE = 28
 
 # left buttons image
 button_left_file = Image.open(IMAGEDIR + 'buttonleft.png')
@@ -25,13 +24,26 @@ icon = ImageTk.PhotoImage(icon_file)
 
 # place text on the images
 def place_text(interface, button, label):
-    if button == B_LEFT:
+    if button < 4:
         new_b_file = Image.open(IMAGEDIR + 'buttonleft.png')
         new_b_file = new_b_file.resize((320, 90))
 
         label_font = ImageFont.truetype(
             'assets/fonts/Exo2-VariableFont_wght.ttf', FONT_SIZE)
+        numbers_font = ImageFont.truetype(
+            'assets/fonts/Exo2-VariableFont_wght.ttf', NMS_FONT_SIZE)
         editable = ImageDraw.Draw(new_b_file)
+
+        if button == 0:
+            editable.text((30, 28), "7", (0, 0, 0), font=numbers_font)
+        elif button == 1:
+            editable.text((30, 28), "4", (0, 0, 0), font=numbers_font)
+        elif button == 2:
+            editable.text((32, 28), "1", (0, 0, 0), font=numbers_font)
+        else:
+            editable.text((30, 28), "0", (0, 0, 0), font=numbers_font)
+
+        # paragraphs
         label_size_x, label_size_y = editable.textsize(label, label_font)
 
         second_label = ""
@@ -59,8 +71,19 @@ def place_text(interface, button, label):
 
         label_font = ImageFont.truetype(
             'assets/fonts/Exo2-VariableFont_wght.ttf', FONT_SIZE)
+        numbers_font = ImageFont.truetype(
+            'assets/fonts/Exo2-VariableFont_wght.ttf', NMS_FONT_SIZE)
         editable = ImageDraw.Draw(new_b_file)
         label_size_x, label_size_y = editable.textsize(label, label_font)
+
+        if button == 4:
+            editable.text((275, 28), "9", (0, 0, 0), font=numbers_font)
+        elif button == 5:
+            editable.text((275, 28), "6", (0, 0, 0), font=numbers_font)
+        elif button == 6:
+            editable.text((275, 28), "3", (0, 0, 0), font=numbers_font)
+        else:
+            editable.text((279, 28), ".", (0, 0, 0), font=numbers_font)
 
         editable.text((20, (90-label_size_y)/2), label,
                       (255, 255, 255), font=label_font)
