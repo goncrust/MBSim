@@ -458,21 +458,26 @@ class Interface:
 
         self.transfers_warning_field = tk.Label(
             self.canvas, font=("default", 18), justify=tk.LEFT, bg=BACKGROUND_CLR, fg="red")
-    
+
         self.transfers_warning_field.place(x=450, y=475)
 
     def focusin_iban(self, pos):
         if self.iban_field.cget("fg") == "grey":
             self.iban_field.config(fg="black")
             self.iban_field.delete(0, tk.END)
-    
+
+        self.focusedin = True
+
     def focusin_amount(self, pos):
         if self.amount_field.cget("fg") == "grey":
             self.amount_field.config(fg="black")
             self.amount_field.delete(0, tk.END)
 
+        self.focusedin = True
+
     def transfers_warning(self):
-        self.transfers_warning_field.config(text = Scenario.tranfers_warning_message_pt)
+        self.transfers_warning_field.config(
+            text=Scenario.tranfers_warning_message_pt)
 
     def transfers_destroy(self):
         self.iban_text.set("")
