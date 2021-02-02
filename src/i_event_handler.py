@@ -112,7 +112,7 @@ class IEventHandler:
             self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.MAIN:
-            
+
             # payments
             self.interface.payments()
 
@@ -146,7 +146,7 @@ class IEventHandler:
 
             # destroy payments
             self.interface.payments_destroy()
-            
+
             self.interface.current_scenario = Scenario.MAIN
             self.interface.update_scenario()
 
@@ -342,28 +342,21 @@ class IEventHandler:
             self.interface.current_scenario = Scenario.MAIN
             self.interface.update_scenario()
 
-        elif self.interface.current_scenario == Scenario.TRANSFERS:
-            # transfer
-
-            pass
-
         elif self.interface.current_scenario == Scenario.PAYMENTS:
 
-            # destroy payments                       
+            # destroy payments
             only_numbers = True
             for n in self.interface.entity_text.get():
-                if n != "." and n != ",":
-                    try:
-                        int(n)
-                    except:
-                        only_numbers = False
+                try:
+                    int(n)
+                except:
+                    only_numbers = False
 
             for n in self.interface.reference_text.get():
-                if n != "." and n != ",":
-                    try:
-                        int(n)
-                    except:
-                        only_numbers = False
+                try:
+                    int(n)
+                except:
+                    only_numbers = False
 
             for n in self.interface.payments_amount_text.get():
                 if n != "." and n != ",":
@@ -375,11 +368,13 @@ class IEventHandler:
             if only_numbers == False:
                 self.interface.payments_warning()
             else:
-                pass
+                if (i_db_con.users_db.get_balance(self.interface.current_user) - float(self.interface.payments_amount_text.get())) >= 0:
+                    i_db_con.payments(self.interface.current_user, self.interface.entity_text.get(
+                    ), self.interface.reference_text.get(), float(self.interface.payments_amount_text.get()))
 
-                self.interface.payments_destroy()
-                self.interface.current_scenario = Scenario.MAIN
-                self.interface.update_scenario()
+                    self.interface.payments_destroy()
+                    self.interface.current_scenario = Scenario.MAIN
+                    self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.MBWAY1:
             # destroy mbway
@@ -412,7 +407,7 @@ class IEventHandler:
                     self.interface.current_user, self.interface.final_balance)
 
                 i_db_con.register_movement(i_db_con.WITHDRAW, i_db_con.users_db.get_account_number_from_name(
-                    self.interface.current_user), None, self.interface.amount_withdraw)
+                    self.interface.current_user), self.interface.amount_withdraw, None, None, None)
 
             self.interface.destroy_withdraw()
 

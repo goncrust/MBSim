@@ -97,6 +97,9 @@ class MDatabase:
         self.c.execute(
             "CREATE TABLE IF NOT EXISTS Transfers(account TEXT, account_to TEXT, amount REAL, date TEXT)")
 
+        self.c.execute(
+            "CREATE TABLE IF NOT EXISTS Payments(account TEXT, entity TEXT, reference TEXT, amount REAL, date TEXT)")
+
         self.con.commit()
 
     def close_connection(self):
@@ -112,5 +115,11 @@ class MDatabase:
     def register_withdraw(self, account, amount, date):
         self.c.execute("INSERT INTO Withdraw(account, amount, date) Values(?, ?, ?)",
                        (account, amount, date))
+
+        self.con.commit()
+
+    def register_payment(self, account, entity, reference, amount, date):
+        self.c.execute("INSERT INTO Payments(account, entity, reference, amount, date) Values(?, ?, ?, ?, ?)",
+                       (account, entity, reference, amount, date))
 
         self.con.commit()
