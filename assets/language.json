@@ -439,6 +439,10 @@
         "Code": {
             "Portuguese": "Código",
             "English": "Code"
+        },
+        "Warning": {
+            "Portuguese": "CERTIFIQUE-SE QUE GUARDA ESTE CÓDIGO\nANTES DE CONTINUAR",
+            "English": "MAKE SURE YOU SAVE THIS CODE\nBEFORE PROCEEDING"
         }
     
 

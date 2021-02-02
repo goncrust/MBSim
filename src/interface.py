@@ -369,21 +369,27 @@ class Interface:
 
     #vouchers
     def vouchers(self, amount):
-        label_text = Scenario.voucher_checkout_pt + ": " + str(amount) + " €"
+        random_code = str(random.randint(0, 9999999999))
 
+        label_text = Scenario.voucher_checkout_pt + ": " + str(amount) + " €"
         self.vouchers_label = tk.Label(self.canvas, font=(
-            "default", 18), text=label_text , justify=tk.LEFT, bg=BACKGROUND_CLR)
+            "default", 18), text=label_text , justify=tk.CENTER, bg=BACKGROUND_CLR)
         self.vouchers_label.place(x=285, y=200)
+
+        label_text2 = Scenario.voucher_code_pt + ": " + random_code
+
+        self.vouchers_code_label = tk.Label(self.canvas, font=(
+            "default", 18), text=label_text2 , justify=tk.CENTER, bg=BACKGROUND_CLR)
+        self.vouchers_code_label.place(x=285, y=250)
+
+        label_text3 = Scenario.voucher_warning_pt
+
+        self.vouchers_warning_label = tk.Label(self.canvas, font=(
+            "default", 18), text=label_text3 , justify=tk.CENTER, bg=BACKGROUND_CLR, fg="red")
+        self.vouchers_warning_label.place(x=120, y=300)
+
 
     def destroy_vouchers(self):
         self.vouchers_label.destroy()
-
-    def voucherscode(self,random):
-        label_text = Scenario.voucher_code_pt + ": " + str(random.randint(0, 9999999999))
-
-        self.vouchers_code_label = tk.Label(self.canvas, font=(
-            "default", 18), text=label_text , justify=tk.LEFT, bg=BACKGROUND_CLR)
-        self.vouchers_code_label.place(x=285, y=180)
-
-    def destroy_voucherscode(self):
         self.vouchers_code_label.destroy()
+        self.vouchers_warning_label.destroy()
