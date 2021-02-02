@@ -118,6 +118,11 @@ class Scenario:
     mbway_error_pt = languages[str(MBWAY1)]["Error Message"]["Portuguese"]
     mbway_error_en = languages[str(MBWAY1)]["Error Message"]["English"]
 
+    voucher_checkout_pt = languages[str(VOUCHERS2)]["Amount"]["Portuguese"]
+    voucher_checkout_en = languages[str(VOUCHERS2)]["Amount"]["English"]
+    voucher_code_pt = languages[str(VOUCHERS2)]["Code"]["Portuguese"]
+    voucher_code_en = languages[str(VOUCHERS2)]["Code"]["English"]
+
     # return active buttons in the scene
     @staticmethod
     def get_scenario_active(scenario, admin):

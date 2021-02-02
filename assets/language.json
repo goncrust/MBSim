@@ -431,7 +431,17 @@
         "7": {
             "Portuguese": "Confirmar",
             "English": "Confirm"
+        },
+        "Amount": {
+            "Portuguese": "Valor",
+            "English": "Amount"
+        },
+        "Code": {
+            "Portuguese": "Código",
+            "English": "Code"
         }
+    
+
     },
     "11": {
         "0": {

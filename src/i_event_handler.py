@@ -44,6 +44,7 @@ class IEventHandler:
 
         elif self.interface.current_scenario == Scenario.VOUCHERS1:
             self.interface.current_scenario = Scenario.VOUCHERS2
+            self.interface.vouchers(10)
             self.interface.update_scenario()
 
     def click_1(self, event):
@@ -73,6 +74,7 @@ class IEventHandler:
 
         elif self.interface.current_scenario == Scenario.VOUCHERS1:
             self.interface.current_scenario = Scenario.VOUCHERS2
+            self.interface.vouchers(20)
             self.interface.update_scenario()
 
     def click_2(self, event):
@@ -94,6 +96,7 @@ class IEventHandler:
 
         elif self.interface.current_scenario == Scenario.VOUCHERS1:
             self.interface.current_scenario = Scenario.VOUCHERS2
+            self.interface.vouchers(30)
             self.interface.update_scenario()
 
     def click_3(self, event):
@@ -147,9 +150,12 @@ class IEventHandler:
 
         elif self.interface.current_scenario == Scenario.VOUCHERS1:
             self.interface.current_scenario = Scenario.VOUCHERS2
+            self.interface.vouchers(50)
+
             self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.VOUCHERS2:
+            self.interface.destroy_vouchers()
             self.interface.current_scenario = Scenario.MAIN
             self.interface.update_scenario()
 
