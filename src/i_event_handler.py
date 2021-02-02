@@ -278,16 +278,17 @@ class IEventHandler:
 
             only_numbers = True
             for n in self.interface.amount_text.get():
-                try:
-                    int(n)
-                except:
-                    only_numbers = False
+                if n != "." and n != ",":
+                    try:
+                        int(n)
+                    except:
+                        only_numbers = False
 
             if only_numbers == False:
                 self.interface.transfers_warning()
             else:
 
-                if (i_db_con.users_db.get_balance(self.interface.current_user) - int(self.interface.amount_text.get())) >= 0:
+                if (i_db_con.users_db.get_balance(self.interface.current_user) - float(self.interface.amount_text.get())) >= 0:
 
                     iban_text = self.interface.iban_text.get()
 
@@ -301,7 +302,7 @@ class IEventHandler:
 
                         if i_db_con.users_db.verify_existing_account_number(iban_text):
                             i_db_con.transfer(
-                                self.interface.current_user, iban_text, int(self.interface.amount_text.get()))
+                                self.interface.current_user, iban_text, float(self.interface.amount_text.get()))
 
                             self.interface.transfers_destroy()
                             self.interface.current_scenario = Scenario.MAIN
@@ -312,10 +313,11 @@ class IEventHandler:
 
             only_numbers = True
             for n in self.interface.custom_withdraw_text.get():
-                try:
-                    int(n)
-                except:
-                    only_numbers = False
+                if n != "." and n != ",":
+                    try:
+                        int(n)
+                    except:
+                        only_numbers = False
 
             if only_numbers:
                 self.interface.current_scenario = Scenario.CONFIRMWITHDRAW
