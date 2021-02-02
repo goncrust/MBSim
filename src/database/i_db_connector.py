@@ -8,6 +8,7 @@ movements_db = db_m.MDatabase("src/database/bases/movements.db")
 
 TRANSFER = 0
 WITHDRAW = 1
+PAYMENT = 2
 
 
 def login_user(username, pin):
@@ -118,13 +119,23 @@ def transfer(user_from, iban_to, amount):
     users_db.set_balance(user_to, users_db.get_balance(user_to) + amount)
 
     register_movement(TRANSFER, users_db.get_account_number_from_name(
-        user_from), iban_to, amount)
+        user_from), amount, iban_to, None, None)
 
 
-def register_movement(movement_type, account, account_to, amount):
+def payments(user_from, entity, reference, amount):
+    users_db.set_balance(user_from, users_db.get_balance(user_from) - amount)
+
+    register_movement(PAYMENT, users_db.get_account_number_from_name(
+        user_from), amount, None, entity, reference)
+
+
+def register_movement(movement_type, account, amount, account_to, entity, reference):
     date_now = datetime.now().strftime("%d-%m-%Y %H:%M")
 
     if movement_type == TRANSFER:
         movements_db.register_transfer(account, account_to, amount, date_now)
     elif movement_type == WITHDRAW:
         movements_db.register_withdraw(account, amount, date_now)
+    elif movement_type == PAYMENT:
+        movements_db.register_payment(
+            account, entity, reference, amount, date_now)
