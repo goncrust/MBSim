@@ -104,3 +104,11 @@ def create_account_number(bank_extended):
             finished = True
 
     return bank, account
+
+
+def transfer(user_from, iban_to, amount):
+    users_db.set_balance(user_from, users_db.get_balance(user_from) - amount)
+
+    user_to = users_db.get_name_from_account_number(iban_to)
+
+    users_db.set_balance(user_to, users_db.get_balance(user_to) + amount)

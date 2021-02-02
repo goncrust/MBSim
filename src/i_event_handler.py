@@ -28,7 +28,8 @@ class IEventHandler:
         elif self.interface.current_scenario == Scenario.BALANCE:
             self.interface.current_scenario = Scenario.BALANCE1
             # balance
-            self.interface.balance(i_db_con.users_db.get_balance(self.interface.current_user))
+            self.interface.balance(
+                i_db_con.users_db.get_balance(self.interface.current_user))
 
             self.interface.update_scenario()
 
@@ -78,7 +79,7 @@ class IEventHandler:
     def click_2(self, event):
 
         if self.interface.current_scenario == Scenario.MAIN:
-                        
+
             # transfers
             self.interface.transfers()
 
@@ -142,10 +143,10 @@ class IEventHandler:
             self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.TRANSFERS:
-            
+
             # destroy tranfers
             self.interface.transfers_destroy()
-            
+
             self.interface.current_scenario = Scenario.MAIN
             self.interface.update_scenario()
 
@@ -280,32 +281,51 @@ class IEventHandler:
             self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.TRANSFERS:
-                        
+
             # destroy tranfers
-               
+
             only_numbers = True
-            for n in self.interface.iban_text.get():
-                try:
-                    int(n)
-                except:
-                    only_numbers = False
+            for n in self.interface.amount_text.get():
+                if n != "." and n != ",":
+                    try:
+                        int(n)
+                    except:
+                        only_numbers = False
 
             if only_numbers == False:
                 self.interface.transfers_warning()
             else:
-                self.interface.transfers_destroy()
-                self.interface.current_scenario = Scenario.MAIN
-                self.interface.update_scenario()
+
+                if (i_db_con.users_db.get_balance(self.interface.current_user) - float(self.interface.amount_text.get())) >= 0:
+
+                    iban_text = self.interface.iban_text.get()
+
+                    iban_text = iban_text.replace(" ", "")
+
+                    if len(iban_text) == 25:
+
+                        iban_text = iban_text[:4] + " " + iban_text[4:8] + \
+                            " " + iban_text[8:12] + " " + \
+                            iban_text[12:23] + " " + iban_text[23:25]
+
+                        if i_db_con.users_db.verify_existing_account_number(iban_text):
+                            i_db_con.transfer(
+                                self.interface.current_user, iban_text, float(self.interface.amount_text.get()))
+
+                            self.interface.transfers_destroy()
+                            self.interface.current_scenario = Scenario.MAIN
+                            self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.WITHDRAWOTHERAMOUNT:
             # WITHDRAW other amount
 
             only_numbers = True
             for n in self.interface.custom_withdraw_text.get():
-                try:
-                    int(n)
-                except:
-                    only_numbers = False
+                if n != "." and n != ",":
+                    try:
+                        int(n)
+                    except:
+                        only_numbers = False
 
             if only_numbers:
                 self.interface.current_scenario = Scenario.CONFIRMWITHDRAW
