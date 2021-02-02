@@ -135,6 +135,13 @@ class Scenario:
     tranfers_warning_message_pt = languages[str(TRANSFERS)]["Warning Message"]["Portuguese"]
     tranfers_warning_message_en = languages[str(TRANSFERS)]["Warning Message"]["English"]
 
+    payments_entity_pt = languages[str(PAYMENTS)]["Entity"]["Portuguese"]
+    payments_entity_en = languages[str(PAYMENTS)]["Entity"]["English"]
+    payments_reference_pt = languages[str(PAYMENTS)]["Reference"]["Portuguese"]
+    payments_reference_en = languages[str(PAYMENTS)]["Reference"]["English"]
+    payments_amount_pt = languages[str(PAYMENTS)]["Amount"]["Portuguese"]
+    payments_amount_en = languages[str(PAYMENTS)]["Amount"]["English"]
+
     # return active buttons in the scene
     @staticmethod
     def get_scenario_active(scenario, admin):

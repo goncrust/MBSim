@@ -117,6 +117,10 @@ class IEventHandler:
             self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.MAIN:
+            
+            # payments
+            self.interface.payments()
+
             self.interface.current_scenario = Scenario.PAYMENTS
             self.interface.update_scenario()
 
@@ -146,6 +150,10 @@ class IEventHandler:
             self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.PAYMENTS:
+
+            # destroy payments
+            self.interface.payments_destroy()
+            
             self.interface.current_scenario = Scenario.MAIN
             self.interface.update_scenario()
 

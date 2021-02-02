@@ -487,3 +487,81 @@ class Interface:
         self.tranfers_label.destroy()
         self.tranfers2_label.destroy()
         self.transfers_warning_field.destroy()
+
+    # payments
+    def payments(self):
+        label_text = Scenario.payments_entity_pt
+        label2_text = Scenario.payments_reference_pt
+        label3_text = Scenario.payments_amount_pt
+
+        self.payments_label = tk.Label(self.canvas, font=(
+            "default", 18), text=label_text, justify=tk.LEFT, bg=BACKGROUND_CLR)
+        self.payments_label.place(x=150, y=150)
+
+        self.payments2_label = tk.Label(self.canvas, font=(
+            "default", 18), text=label2_text, justify=tk.LEFT, bg=BACKGROUND_CLR)
+        self.payments2_label.place(x=150, y=200)
+
+        self.payments3_label = tk.Label(self.canvas, font=(
+            "default", 18), text=label3_text, justify=tk.LEFT, bg=BACKGROUND_CLR)
+        self.payments3_label.place(x=150, y=250)
+
+        self.entity_text = tk.StringVar()
+
+        self.entity_field = tk.Entry(
+            self.canvas, textvariable=self.entity_text, font=("default", 21))
+
+        self.entity_field.place(
+            x=300, y=150, width=200, height=40)
+
+        self.entity_field.bind("<FocusIn>", self.focusin_entity)
+
+        self.reference_text = tk.StringVar()
+
+        self.reference_field = tk.Entry(
+            self.canvas, textvariable=self.reference_text, font=("default", 21))
+
+        self.reference_field.place(
+            x=300, y=200, width=200, height=40)
+
+        self.reference_field.bind("<FocusIn>", self.focusin_reference)
+
+        self.amount_text = tk.StringVar()
+
+        self.amount_field = tk.Entry(
+            self.canvas, textvariable=self.amount_text, font=("default", 21))
+
+        self.amount_field.place(
+            x=300, y=250, width=200, height=40)
+    
+        self.amount_field.bind("<FocusIn>", self.focusin_amount)
+
+        self.payments_warning_field = tk.Label(
+            self.canvas, font=("default", 18), justify=tk.LEFT, bg=BACKGROUND_CLR, fg="red")
+
+        self.payments_warning_field.place(x=450, y=475)
+
+    def payments_warning(self):
+        self.payments_warning_field.config(
+            text=Scenario.payments_warning_message_pt)
+
+    def focusin_entity(self, pos):
+        self.focusedin = True
+
+    def focusin_reference(self, pos):
+        self.focusedin = True
+
+    def focusin_amount(self, pos):
+        self.focusedin = True
+
+    def payments_destroy(self):
+        self.entity_text.set("")
+        self.amount_text.set("")
+        self.reference_text.set("")
+        self.entity_field.destroy()
+        self.amount_field.destroy()
+        self.reference_field.destroy()
+        self.payments_label.destroy()
+        self.payments2_label.destroy()
+        self.payments3_label.destroy()
+        self.payments_warning_field.destroy()
