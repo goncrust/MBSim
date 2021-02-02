@@ -14,7 +14,7 @@ The current version of the program is only optimised for Windows 10.
 
 ## Get Started
 
-1. Install [python 3.9](https://www.python.org/)
+1. Install [python 3.9](https://www.python.org/ftp/python/3.9.1/python-3.9.1-amd64.exe)
 1. Install the required python librarys:
     - `pip install pillow`
     - `pip install tkcalendar`
