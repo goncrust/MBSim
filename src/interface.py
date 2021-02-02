@@ -34,6 +34,9 @@ class Interface:
         self.current_scenario = Scenario.LOGIN
         self.update_scenario()
 
+        # bind keys
+        self.bind_keys()
+
         # tkinter mainloop
         self.window.mainloop()
 
@@ -46,6 +49,16 @@ class Interface:
 
         import image_loader
         self.window.iconphoto(False, image_loader.icon)
+
+    def bind_keys(self):
+        self.window.bind("7", self.event_handler.click_0)
+        self.window.bind("4", self.event_handler.click_1)
+        self.window.bind("1", self.event_handler.click_2)
+        self.window.bind("0", self.event_handler.click_3)
+        self.window.bind("9", self.event_handler.click_4)
+        self.window.bind("6", self.event_handler.click_5)
+        self.window.bind("3", self.event_handler.click_6)
+        self.window.bind(".", self.event_handler.click_7)
 
     # create canvas function
     def create_canvas(self):
