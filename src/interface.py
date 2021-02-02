@@ -412,3 +412,73 @@ class Interface:
 
     def destroy_mbway(self):
         self.mbway_label.destroy()
+
+    # transfers
+    def transfers(self):
+        label_text = Scenario.tranfers_iban_pt
+        label2_text = Scenario.transfers_amount_pt
+
+        self.tranfers_label = tk.Label(self.canvas, font=(
+            "default", 18), text=label_text, justify=tk.LEFT, bg=BACKGROUND_CLR)
+        self.tranfers_label.place(x=220, y=100)
+
+        self.tranfers2_label = tk.Label(self.canvas, font=(
+            "default", 18), text=label2_text, justify=tk.LEFT, bg=BACKGROUND_CLR)
+        self.tranfers2_label.place(x=190, y=200)
+
+        self.iban_text = tk.StringVar()
+
+        self.iban_field = tk.Entry(
+            self.canvas, textvariable=self.iban_text, font=("default", 21))
+
+        self.iban_field.place(
+            x=(WIDTH/2)-100, y=(HEIGHT)-600, width=200, height=40)
+
+        self.iban_field.config(fg="grey")
+
+        self.iban_field.insert(
+            0, Scenario.iban_default_text_pt)
+
+        self.iban_field.bind("<FocusIn>", self.focusin_iban)
+
+        self.amount_text = tk.StringVar()
+
+        self.amount_field = tk.Entry(
+            self.canvas, textvariable=self.amount_text, font=("default", 21))
+
+        self.amount_field.place(
+            x=(WIDTH/2)-100, y=(HEIGHT)-500, width=200, height=40)
+
+        self.amount_field.config(fg="grey")
+
+        self.amount_field.insert(
+            0, Scenario.amount_default_text_pt)
+
+        self.amount_field.bind("<FocusIn>", self.focusin_amount)
+
+        self.transfers_warning_field = tk.Label(
+            self.canvas, font=("default", 18), justify=tk.LEFT, bg=BACKGROUND_CLR, fg="red")
+    
+        self.transfers_warning_field.place(x=450, y=475)
+
+    def focusin_iban(self, pos):
+        if self.iban_field.cget("fg") == "grey":
+            self.iban_field.config(fg="black")
+            self.iban_field.delete(0, tk.END)
+    
+    def focusin_amount(self, pos):
+        if self.amount_field.cget("fg") == "grey":
+            self.amount_field.config(fg="black")
+            self.amount_field.delete(0, tk.END)
+
+    def transfers_warning(self):
+        self.transfers_warning_field.config(text = Scenario.tranfers_warning_message_pt)
+
+    def transfers_destroy(self):
+        self.iban_text.set("")
+        self.amount_text.set("")
+        self.iban_field.destroy()
+        self.amount_field.destroy()
+        self.tranfers_label.destroy()
+        self.tranfers2_label.destroy()
+        self.transfers_warning_field.destroy()

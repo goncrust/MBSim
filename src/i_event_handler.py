@@ -78,6 +78,10 @@ class IEventHandler:
     def click_2(self, event):
 
         if self.interface.current_scenario == Scenario.MAIN:
+                        
+            # transfers
+            self.interface.transfers()
+
             self.interface.current_scenario = Scenario.TRANSFERS
             self.interface.update_scenario()
 
@@ -134,6 +138,10 @@ class IEventHandler:
             self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.TRANSFERS:
+            
+            # destroy tranfers
+            self.interface.transfers_destroy()
+            
             self.interface.current_scenario = Scenario.MAIN
             self.interface.update_scenario()
 
@@ -262,6 +270,24 @@ class IEventHandler:
         elif self.interface.current_scenario == Scenario.WITHDRAW:
             self.interface.current_scenario = Scenario.MAIN
             self.interface.update_scenario()
+
+        elif self.interface.current_scenario == Scenario.TRANSFERS:
+                        
+            # destroy tranfers
+               
+            only_numbers = True
+            for n in self.interface.iban_text.get():
+                try:
+                    int(n)
+                except:
+                    only_numbers = False
+
+            if only_numbers == False:
+                self.interface.transfers_warning()
+            else:
+                self.interface.transfers_destroy()
+                self.interface.current_scenario = Scenario.MAIN
+                self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.WITHDRAWOTHERAMOUNT:
             # WITHDRAW other amount
