@@ -3,6 +3,7 @@ import i_event_handler
 from scenarios import *
 from tkcalendar import Calendar, DateEntry
 import time
+import random
 
 # window dimensions
 WIDTH = 750
@@ -414,6 +415,33 @@ class Interface:
     def destroy_mbway(self):
         self.mbway_label.destroy()
 
+    #vouchers
+    def vouchers(self, amount):
+        random_code = str(random.randint(0, 9999999999))
+
+        label_text = Scenario.voucher_checkout_pt + ": " + str(amount) + " €"
+        self.vouchers_label = tk.Label(self.canvas, font=(
+            "default", 18), text=label_text , justify=tk.CENTER, bg=BACKGROUND_CLR)
+        self.vouchers_label.place(x=285, y=200)
+
+        label_text2 = Scenario.voucher_code_pt + ": " + random_code
+
+        self.vouchers_code_label = tk.Label(self.canvas, font=(
+            "default", 18), text=label_text2 , justify=tk.CENTER, bg=BACKGROUND_CLR)
+        self.vouchers_code_label.place(x=285, y=250)
+
+        label_text3 = Scenario.voucher_warning_pt
+
+        self.vouchers_warning_label = tk.Label(self.canvas, font=(
+            "default", 18), text=label_text3 , justify=tk.CENTER, bg=BACKGROUND_CLR, fg="red")
+        self.vouchers_warning_label.place(x=120, y=300)
+
+
+    def destroy_vouchers(self):
+        self.vouchers_label.destroy()
+        self.vouchers_code_label.destroy()
+        self.vouchers_warning_label.destroy()
+        
     # transfers
     def transfers(self):
         label_text = Scenario.tranfers_iban_pt

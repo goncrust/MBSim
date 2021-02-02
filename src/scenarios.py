@@ -118,6 +118,13 @@ class Scenario:
     mbway_error_pt = languages[str(MBWAY1)]["Error Message"]["Portuguese"]
     mbway_error_en = languages[str(MBWAY1)]["Error Message"]["English"]
 
+    voucher_checkout_pt = languages[str(VOUCHERS2)]["Amount"]["Portuguese"]
+    voucher_checkout_en = languages[str(VOUCHERS2)]["Amount"]["English"]
+    voucher_code_pt = languages[str(VOUCHERS2)]["Code"]["Portuguese"]
+    voucher_code_en = languages[str(VOUCHERS2)]["Code"]["English"]
+    voucher_warning_pt = languages[str(VOUCHERS2)]["Warning"]["Portuguese"]
+    voucher_warning_en = languages[str(VOUCHERS2)]["Warning"]["English"]
+
     tranfers_iban_pt = languages[str(TRANSFERS)]["IBAN"]["Portuguese"]
     transfers_iban_en = languages[str(TRANSFERS)]["IBAN"]["English"]
     transfers_amount_pt = languages[str(TRANSFERS)]["Amount"]["Portuguese"]
@@ -145,7 +152,7 @@ class Scenario:
     payments_amount_en = languages[str(PAYMENTS)]["Amount"]["English"]
     payments_warning_message_pt = languages[str(PAYMENTS)]["Warning Message"]["Portuguese"]
     payments_warning_message_en = languages[str(PAYMENTS)]["Warning Message"]["English"]
-    
+
     # return active buttons in the scene
     @staticmethod
     def get_scenario_active(scenario, admin):
