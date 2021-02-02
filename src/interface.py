@@ -53,6 +53,7 @@ class Interface:
         import image_loader
         self.window.iconphoto(False, image_loader.icon)
 
+    # bind numpad keys
     def bind_keys(self):
         self.window.bind("7", lambda x=None: self.bind_keys_connector(7))
         self.window.bind("4", lambda x=None: self.bind_keys_connector(4))
@@ -83,7 +84,6 @@ class Interface:
                 self.event_handler.click_7("")
 
     # create canvas function
-
     def create_canvas(self):
         self.canvas = tk.Canvas(self.window, width=WIDTH,
                                 height=HEIGHT, bg=BACKGROUND_CLR, highlightthickness=0)
@@ -343,7 +343,8 @@ class Interface:
 
     # withdraw
     def withdraw(self, amount, current_balance):
-        self.final_balance = current_balance - amount
+        self.amount_withdraw = amount
+        self.final_balance = current_balance - self.amount_withdraw
 
         if self.final_balance < 0:
             label_text = Scenario.withdraw_current_balance_pt + ": " + str(current_balance) + " €\n" + Scenario.withdraw_amount_pt + ": " + str(
