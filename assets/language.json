@@ -261,6 +261,26 @@
         "7": {
             "Portuguese": "Confirmar",
             "English": "Confirm"
+        },
+        "IBAN": {
+            "Portuguese": "Insira o NIB do destinatário",
+            "English": "Insert receiver NIB number"
+        },
+        "Amount": {
+            "Portuguese": "Introduza a importância a transferir",
+            "English": "Insert amount to transfer"
+        },
+        "Default NIB": {
+            "Portuguese": "NIB",
+            "English": "NIB"
+        },
+        "Default Amount": {
+            "Portuguese": "Valor",
+            "English": "Amount"
+        },
+        "Warning Message": {
+            "Portuguese": "Utilize apenas números",
+            "English": "Use only numbers"
         }
     },
     "6": {
@@ -295,6 +315,22 @@
         "7": {
             "Portuguese": "Confirmar",
             "English": "Confirm"
+        },
+        "Entity": {
+            "Portuguese": "Entidade",
+            "English": "Entity"
+        },
+        "Reference": {
+            "Portuguese": "Referência",
+            "English": "Reference"
+        },
+        "Amount": {
+            "Portuguese": "Montante",
+            "English": "Amount"
+        },
+        "Warning Message": {
+            "Portuguese": "Utilize apenas números",
+            "English": "Use only numbers"
         }
     },
     "7": {

@@ -35,6 +35,12 @@ class Interface:
         self.current_scenario = Scenario.LOGIN
         self.update_scenario()
 
+        # focusin something
+        self.focusedin = False
+
+        # bind keys
+        self.bind_keys()
+
         # tkinter mainloop
         self.window.mainloop()
 
@@ -47,6 +53,36 @@ class Interface:
 
         import image_loader
         self.window.iconphoto(False, image_loader.icon)
+
+    # bind numpad keys
+    def bind_keys(self):
+        self.window.bind("7", lambda x=None: self.bind_keys_connector(7))
+        self.window.bind("4", lambda x=None: self.bind_keys_connector(4))
+        self.window.bind("1", lambda x=None: self.bind_keys_connector(1))
+        self.window.bind("0", lambda x=None: self.bind_keys_connector(0))
+        self.window.bind("9", lambda x=None: self.bind_keys_connector(9))
+        self.window.bind("6", lambda x=None: self.bind_keys_connector(6))
+        self.window.bind("3", lambda x=None: self.bind_keys_connector(3))
+        self.window.bind(".", lambda x=None: self.bind_keys_connector("."))
+
+    def bind_keys_connector(self, button):
+        if not self.focusedin:
+            if button == 7:
+                self.event_handler.click_0("")
+            elif button == 4:
+                self.event_handler.click_1("")
+            elif button == 1:
+                self.event_handler.click_2("")
+            elif button == 0:
+                self.event_handler.click_3("")
+            elif button == 9:
+                self.event_handler.click_4("")
+            elif button == 6:
+                self.event_handler.click_5("")
+            elif button == 3:
+                self.event_handler.click_6("")
+            elif button == ".":
+                self.event_handler.click_7("")
 
     # create canvas function
     def create_canvas(self):
@@ -68,6 +104,8 @@ class Interface:
         elif self.current_scenario == Scenario.REGISTER:
             self.register()
 
+        self.focusedin = False
+
     # place buttons and assign events
     def scenario(self, active, label):
 
@@ -81,10 +119,7 @@ class Interface:
 
         self.b_label = []
         for i in range(len(label)):
-            if i < 4:
-                image_loader.place_text(self, image_loader.B_LEFT, label[i])
-            else:
-                image_loader.place_text(self, image_loader.B_RIGHT, label[i])
+            image_loader.place_text(self, i, label[i])
 
         for z in range(len(active)):
             if active[z]:
@@ -152,10 +187,14 @@ class Interface:
             self.username_field.config(fg="black")
             self.username_field.delete(0, tk.END)
 
+        self.focusedin = True
+
     def focusin_pin_login(self, pos):
         if self.pin_field.cget("fg") == "grey":
             self.pin_field.config(fg="black", show="*")
             self.pin_field.delete(0, tk.END)
+
+        self.focusedin = True
 
     def login_warning(self):
         self.login_warning_label.config(text=Scenario.login_warning_pt)
@@ -236,15 +275,21 @@ class Interface:
             self.register_username_field.config(fg="black")
             self.register_username_field.delete(0, tk.END)
 
+        self.focusedin = True
+
     def focusin_pin_register(self, pos):
         if self.register_pin_field.cget("fg") == "grey":
             self.register_pin_field.config(fg="black", show="*")
             self.register_pin_field.delete(0, tk.END)
 
+        self.focusedin = True
+
     def focusin_pin_confirm_register(self, pos):
         if self.register_pin_confirm_field.cget("fg") == "grey":
             self.register_pin_confirm_field.config(fg="black", show="*")
             self.register_pin_confirm_field.delete(0, tk.END)
+
+        self.focusedin = True
 
     def set_warning_message_register(self, message):
         if message == 0:
@@ -299,7 +344,8 @@ class Interface:
 
     # withdraw
     def withdraw(self, amount, current_balance):
-        self.final_balance = current_balance - amount
+        self.amount_withdraw = amount
+        self.final_balance = current_balance - self.amount_withdraw
 
         if self.final_balance < 0:
             label_text = Scenario.withdraw_current_balance_pt + ": " + str(current_balance) + " €\n" + Scenario.withdraw_amount_pt + ": " + str(
@@ -338,6 +384,8 @@ class Interface:
         if self.custom_withdraw_field.cget("fg") == "grey":
             self.custom_withdraw_field.config(fg="black")
             self.custom_withdraw_field.delete(0, tk.END)
+
+        self.focusedin = True
 
     def withdraw_custom_destroy(self):
         self.custom_withdraw_text.set("")
@@ -393,3 +441,156 @@ class Interface:
         self.vouchers_label.destroy()
         self.vouchers_code_label.destroy()
         self.vouchers_warning_label.destroy()
+        
+    # transfers
+    def transfers(self):
+        label_text = Scenario.tranfers_iban_pt
+        label2_text = Scenario.transfers_amount_pt
+
+        self.tranfers_label = tk.Label(self.canvas, font=(
+            "default", 18), text=label_text, justify=tk.LEFT, bg=BACKGROUND_CLR)
+        self.tranfers_label.place(x=220, y=100)
+
+        self.tranfers2_label = tk.Label(self.canvas, font=(
+            "default", 18), text=label2_text, justify=tk.LEFT, bg=BACKGROUND_CLR)
+        self.tranfers2_label.place(x=190, y=200)
+
+        self.iban_text = tk.StringVar()
+
+        self.iban_field = tk.Entry(
+            self.canvas, textvariable=self.iban_text, font=("default", 21))
+
+        self.iban_field.place(
+            x=(WIDTH/2)-100, y=(HEIGHT)-600, width=200, height=40)
+
+        self.iban_field.config(fg="grey")
+
+        self.iban_field.insert(
+            0, Scenario.iban_default_text_pt)
+
+        self.iban_field.bind("<FocusIn>", self.focusin_iban)
+
+        self.amount_text = tk.StringVar()
+
+        self.amount_field = tk.Entry(
+            self.canvas, textvariable=self.amount_text, font=("default", 21))
+
+        self.amount_field.place(
+            x=(WIDTH/2)-100, y=(HEIGHT)-500, width=200, height=40)
+
+        self.amount_field.config(fg="grey")
+
+        self.amount_field.insert(
+            0, Scenario.amount_default_text_pt)
+
+        self.amount_field.bind("<FocusIn>", self.focusin_amount)
+
+        self.transfers_warning_field = tk.Label(
+            self.canvas, font=("default", 18), justify=tk.LEFT, bg=BACKGROUND_CLR, fg="red")
+
+        self.transfers_warning_field.place(x=450, y=475)
+
+    def focusin_iban(self, pos):
+        if self.iban_field.cget("fg") == "grey":
+            self.iban_field.config(fg="black")
+            self.iban_field.delete(0, tk.END)
+
+        self.focusedin = True
+
+    def focusin_amount(self, pos):
+        if self.amount_field.cget("fg") == "grey":
+            self.amount_field.config(fg="black")
+            self.amount_field.delete(0, tk.END)
+
+        self.focusedin = True
+
+    def transfers_warning(self):
+        self.transfers_warning_field.config(
+            text=Scenario.tranfers_warning_message_pt)
+
+    def transfers_destroy(self):
+        self.iban_text.set("")
+        self.amount_text.set("")
+        self.iban_field.destroy()
+        self.amount_field.destroy()
+        self.tranfers_label.destroy()
+        self.tranfers2_label.destroy()
+        self.transfers_warning_field.destroy()
+
+    # payments
+    def payments(self):
+        label_text = Scenario.payments_entity_pt
+        label2_text = Scenario.payments_reference_pt
+        label3_text = Scenario.payments_amount_pt
+
+        self.payments_label = tk.Label(self.canvas, font=(
+            "default", 18), text=label_text, justify=tk.LEFT, bg=BACKGROUND_CLR)
+        self.payments_label.place(x=150, y=150)
+
+        self.payments2_label = tk.Label(self.canvas, font=(
+            "default", 18), text=label2_text, justify=tk.LEFT, bg=BACKGROUND_CLR)
+        self.payments2_label.place(x=150, y=200)
+
+        self.payments3_label = tk.Label(self.canvas, font=(
+            "default", 18), text=label3_text, justify=tk.LEFT, bg=BACKGROUND_CLR)
+        self.payments3_label.place(x=150, y=250)
+
+        self.entity_text = tk.StringVar()
+
+        self.entity_field = tk.Entry(
+            self.canvas, textvariable=self.entity_text, font=("default", 21))
+
+        self.entity_field.place(
+            x=300, y=150, width=200, height=40)
+
+        self.entity_field.bind("<FocusIn>", self.focusin_entity)
+
+        self.reference_text = tk.StringVar()
+
+        self.reference_field = tk.Entry(
+            self.canvas, textvariable=self.reference_text, font=("default", 21))
+
+        self.reference_field.place(
+            x=300, y=200, width=200, height=40)
+
+        self.reference_field.bind("<FocusIn>", self.focusin_reference)
+
+        self.payments_amount_text = tk.StringVar()
+
+        self.payments_amount_field = tk.Entry(
+            self.canvas, textvariable=self.payments_amount_text, font=("default", 21))
+
+        self.payments_amount_field.place(
+            x=300, y=250, width=200, height=40)
+    
+        self.payments_amount_field.bind("<FocusIn>", self.focusin_payments_amount)
+
+        self.payments_warning_field = tk.Label(
+            self.canvas, font=("default", 18), justify=tk.LEFT, bg=BACKGROUND_CLR, fg="red")
+
+        self.payments_warning_field.place(x=450, y=475)
+
+    def payments_warning(self):
+        self.payments_warning_field.config(
+            text=Scenario.payments_warning_message_pt)
+
+    def focusin_entity(self, pos):
+        self.focusedin = True
+
+    def focusin_reference(self, pos):
+        self.focusedin = True
+
+    def focusin_payments_amount(self, pos):
+        self.focusedin = True
+
+    def payments_destroy(self):
+        self.entity_text.set("")
+        self.payments_amount_text.set("")
+        self.reference_text.set("")
+        self.entity_field.destroy()
+        self.payments_amount_field.destroy()
+        self.reference_field.destroy()
+        self.payments_label.destroy()
+        self.payments2_label.destroy()
+        self.payments3_label.destroy()
+        self.payments_warning_field.destroy()
