@@ -526,15 +526,15 @@ class Interface:
 
         self.reference_field.bind("<FocusIn>", self.focusin_reference)
 
-        self.amount_text = tk.StringVar()
+        self.payments_amount_text = tk.StringVar()
 
-        self.amount_field = tk.Entry(
-            self.canvas, textvariable=self.amount_text, font=("default", 21))
+        self.payments_amount_field = tk.Entry(
+            self.canvas, textvariable=self.payments_amount_text, font=("default", 21))
 
-        self.amount_field.place(
+        self.payments_amount_field.place(
             x=300, y=250, width=200, height=40)
     
-        self.amount_field.bind("<FocusIn>", self.focusin_amount)
+        self.payments_amount_field.bind("<FocusIn>", self.focusin_payments_amount)
 
         self.payments_warning_field = tk.Label(
             self.canvas, font=("default", 18), justify=tk.LEFT, bg=BACKGROUND_CLR, fg="red")
@@ -551,15 +551,15 @@ class Interface:
     def focusin_reference(self, pos):
         self.focusedin = True
 
-    def focusin_amount(self, pos):
+    def focusin_payments_amount(self, pos):
         self.focusedin = True
 
     def payments_destroy(self):
         self.entity_text.set("")
-        self.amount_text.set("")
+        self.payments_amount_text.set("")
         self.reference_text.set("")
         self.entity_field.destroy()
-        self.amount_field.destroy()
+        self.payments_amount_field.destroy()
         self.reference_field.destroy()
         self.payments_label.destroy()
         self.payments2_label.destroy()
