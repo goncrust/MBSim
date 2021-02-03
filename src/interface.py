@@ -31,6 +31,13 @@ class Interface:
         # user
         self.current_user = None
 
+        # languages image
+        self.pt_image = None
+        self.en_image = None
+
+        self.pt_button = None
+        self.en_button = None
+
         # set first scenario and run it
         self.current_scenario = Scenario.LOGIN
         self.update_scenario()
@@ -99,17 +106,19 @@ class Interface:
             self.scenario(Scenario.get_scenario_active(
                 self.current_scenario, False), Scenario.get_scenario_text(self.current_scenario))
 
-        if self.current_scenario == Scenario.LOGIN:
-            self.login()
-        elif self.current_scenario == Scenario.REGISTER:
-            self.register()
-
         self.focusedin = False
 
     # place buttons and assign events
     def scenario(self, active, label):
 
         import image_loader
+
+        if self.current_scenario == Scenario.LOGIN:
+            if self.pt_image == None:
+                image_loader.get_language_button_images(self)
+            self.login()
+        elif self.current_scenario == Scenario.REGISTER:
+            self.register()
 
         # clear current buttons
         for x in range(len(self.buttons)):
@@ -152,6 +161,9 @@ class Interface:
 
     # for login scenario
     def login(self):
+        # language selection
+        self.language_selection()
+
         # variables to store fields data
         self.login_username_text = tk.StringVar()
         self.login_pin_text = tk.StringVar()
@@ -176,11 +188,48 @@ class Interface:
         self.pin_field.config(fg="grey")
         self.pin_field.config(show="")
 
-        self.username_field.insert(0, Scenario.login_username_pt)
-        self.pin_field.insert(0, Scenario.login_pin_pt)
+        self.username_field.insert(0, Scenario.get_label("login_username"))
+        self.pin_field.insert(0, Scenario.get_label("login_pin"))
 
         self.username_field.bind("<FocusIn>", self.focusin_username_login)
         self.pin_field.bind("<FocusIn>", self.focusin_pin_login)
+
+    # language selection
+    def language_selection(self):
+
+        if self.pt_button != None:
+            self.pt_button.destroy()
+        if self.en_button != None:
+            self.en_button.destroy()
+
+        if Scenario.get_current_language() == Scenario.PORTUGUESE:
+            self.pt_button = tk.Button(
+                self.canvas, image=self.pt_image[1], borderwidth=0, highlightthickness=0)
+            self.en_button = tk.Button(
+                self.canvas, image=self.en_image[0], borderwidth=0, highlightthickness=0)
+        elif Scenario.get_current_language() == Scenario.ENGLISH:
+            self.pt_button = tk.Button(
+                self.canvas, image=self.pt_image[0], borderwidth=0, highlightthickness=0)
+            self.en_button = tk.Button(
+                self.canvas, image=self.en_image[1], borderwidth=0, highlightthickness=0)
+
+        self.pt_button.place(x=20, y=20)
+        self.en_button.place(x=140, y=20)
+
+        self.pt_button.bind("<Button-1>", self.select_pt_button)
+        self.en_button.bind("<Button-1>", self.select_en_button)
+
+    def select_pt_button(self, pos):
+        Scenario.set_current_language(Scenario.PORTUGUESE)
+        # self.language_selection()
+        self.destroy_login()
+        self.update_scenario()
+
+    def select_en_button(self, pos):
+        Scenario.set_current_language(Scenario.ENGLISH)
+        # self.language_selection()
+        self.destroy_login()
+        self.update_scenario()
 
     def focusin_username_login(self, pos):
         if self.username_field.cget("fg") == "grey":
@@ -197,13 +246,16 @@ class Interface:
         self.focusedin = True
 
     def login_warning(self):
-        self.login_warning_label.config(text=Scenario.login_warning_pt)
+        self.login_warning_label.config(
+            text=Scenario.get_label("login_warning"))
 
     def destroy_login(self):
         # destroy fields
         self.username_field.destroy()
         self.pin_field.destroy()
         self.login_warning_label.destroy()
+        self.pt_button.destroy()
+        self.en_button.destroy()
 
         # reset variables
         self.login_username_text.set("")
@@ -234,11 +286,12 @@ class Interface:
             self.canvas, self.register_bank_text, "Caixa Geral de Depóstios", "Santander Totta", "Millennium BCP",
             "BPI", "Novo Banco", "Bankinter", "EuroBIC", "Popular", "Montepio", "Banco CTT", "BBVA", command=self.change_bank_register)
         self.register_info_field = tk.Label(
-            self.canvas, text=Scenario.register_info_pt, font=("default", 18), justify=tk.LEFT, bg=BACKGROUND_CLR)
+            self.canvas, text=Scenario.get_label("register_info"), font=(
+                "default", 18), justify=tk.LEFT, bg=BACKGROUND_CLR)
         self.register_warning_field = tk.Label(
             self.canvas, font=("default", 18), justify=tk.LEFT, bg=BACKGROUND_CLR, fg="red")
         self.register_calendar_label = tk.Label(self.canvas, font=(
-            "default", 16), justify=tk.LEFT, bg=BACKGROUND_CLR, text=Scenario.register_calendar_field_pt)
+            "default", 16), justify=tk.LEFT, bg=BACKGROUND_CLR, text=Scenario.get_label("register_calendar_field"))
         self.register_account_number_label = tk.Label(
             self.canvas, font=("default", 9), justify=tk.LEFT, fg="grey")
 
@@ -258,10 +311,11 @@ class Interface:
         self.register_pin_field.config(fg="grey", show="")
         self.register_pin_confirm_field.config(fg="grey", show="")
 
-        self.register_username_field.insert(0, Scenario.register_username_pt)
-        self.register_pin_field.insert(0, Scenario.register_pin_pt)
+        self.register_username_field.insert(
+            0, Scenario.get_label("register_username"))
+        self.register_pin_field.insert(0, Scenario.get_label("register_pin"))
         self.register_pin_confirm_field.insert(
-            0, Scenario.register_pin_confirm_pt)
+            0, Scenario.get_label("register_pin_confirm"))
 
         self.register_username_field.bind(
             "<FocusIn>", self.focusin_username_register)
@@ -294,24 +348,25 @@ class Interface:
     def set_warning_message_register(self, message):
         if message == 0:
             self.register_warning_field.config(
-                text=Scenario.register_only_letters_pt)
+                text=Scenario.get_label("register_only_letters"))
         elif message == 1:
             self.register_warning_field.config(
-                text=Scenario.register_short_username_pt)
+                text=Scenario.get_label("register_short_username"))
         elif message == 2:
             self.register_warning_field.config(
-                text=Scenario.register_only_numbers_pt)
+                text=Scenario.get_label("register_only_numbers"))
         elif message == 3:
             self.register_warning_field.config(
-                text=Scenario.register_pin_size_pt)
+                text=Scenario.get_label("register_pin_size"))
         elif message == 4:
             self.register_warning_field.config(
-                text=Scenario.register_username_exists_pt)
+                text=Scenario.get_label("register_username_exists"))
         elif message == 5:
             self.register_warning_field.config(
-                text=Scenario.register_pin_match_pt)
+                text=Scenario.get_label("register_pin_match"))
         elif message == 6:
-            self.register_warning_field.config(text=Scenario.register_age_pt)
+            self.register_warning_field.config(
+                text=Scenario.get_label("register_age"))
 
     def blink_info_register(self):
         self.register_info_field.config(fg="red")
@@ -348,11 +403,11 @@ class Interface:
         self.final_balance = current_balance - self.amount_withdraw
 
         if self.final_balance < 0:
-            label_text = Scenario.withdraw_current_balance_pt + ": " + str(current_balance) + " €\n" + Scenario.withdraw_amount_pt + ": " + str(
-                amount) + " €\n" + Scenario.withdraw_insufficient_balance_pt
+            label_text = Scenario.get_label("withdraw_current_balance") + ": " + str(current_balance) + " €\n" + Scenario.get_label("withdraw_amount") + ": " + str(
+                amount) + " €\n" + Scenario.get_label("withdraw_insufficient_balance")
         else:
-            label_text = Scenario.withdraw_current_balance_pt + ": " + str(current_balance) + " €\n" + Scenario.withdraw_amount_pt + ": " + str(
-                amount) + " €\n" + Scenario.withdraw_final_balance_pt + ": " + str(self.final_balance) + " €"
+            label_text = Scenario.get_label("withdraw_current_balance") + ": " + str(current_balance) + " €\n" + Scenario.get_label("withdraw_amount") + ": " + str(
+                amount) + " €\n" + Scenario.get_label("withdraw_final_balance") + ": " + str(self.final_balance) + " €"
 
         self.withdraw_label = tk.Label(self.canvas, font=(
             "default", 18), text=label_text, justify=tk.LEFT, bg=BACKGROUND_CLR)
@@ -375,7 +430,7 @@ class Interface:
         self.custom_withdraw_field.config(fg="grey")
 
         self.custom_withdraw_field.insert(
-            0, Scenario.withdraw_other_default_text_pt)
+            0, Scenario.get_label("withdraw_other_default_text"))
 
         self.custom_withdraw_field.bind(
             "<FocusIn>", self.focusin_withdraw_custom)
@@ -393,7 +448,7 @@ class Interface:
 
     # balance
     def balance(self, current_balance):
-        label_text = Scenario.withdraw_current_balance_pt + \
+        label_text = Scenario.get_label("withdraw_current_balance") + \
             ": " + str(current_balance) + " €"
 
         self.balance_label = tk.Label(self.canvas, font=(
@@ -406,7 +461,7 @@ class Interface:
 
     # mbway
     def mbway(self):
-        label_text = Scenario.mbway_error_pt
+        label_text = Scenario.get_label("mbway_error")
 
         self.mbway_label = tk.Label(self.canvas, font=(
             "default", 18), text=label_text, justify=tk.LEFT, bg=BACKGROUND_CLR)
@@ -421,11 +476,11 @@ class Interface:
 
         self.voucher_type_text = None
         if self.event_handler.voucher == "Music":
-            self.voucher_type_text = Scenario.voucher_music_pt
+            self.voucher_type_text = Scenario.get_label("voucher_music")
         elif self.event_handler.voucher == "Movies":
-            self.voucher_type_text = Scenario.voucher_movies_pt
+            self.voucher_type_text = Scenario.get_label("voucher_movies")
         elif self.event_handler.voucher == "Games":
-            self.voucher_type_text = Scenario.voucher_games_pt
+            self.voucher_type_text = Scenario.get_label("voucher_games")
 
         self.voucher_amount = amount
 
@@ -433,7 +488,8 @@ class Interface:
             "default", 18), text=self.voucher_type_text, justify=tk.CENTER, bg=BACKGROUND_CLR)
         self.voucher_type_label.place(x=285, y=150)
 
-        label_text = Scenario.voucher_checkout_pt + ": " + str(amount) + " €"
+        label_text = Scenario.get_label(
+            "voucher_checkout") + ": " + str(amount) + " €"
 
         self.vouchers_label = tk.Label(self.canvas, font=(
             "default", 18), text=label_text, justify=tk.CENTER, bg=BACKGROUND_CLR)
@@ -444,19 +500,20 @@ class Interface:
         if final_balance >= 0:
             self.voucher_code = str(random.randint(0, 9999999999))
 
-            label_text2 = Scenario.voucher_code_pt + ": " + self.voucher_code
+            label_text2 = Scenario.get_label(
+                "voucher_code") + ": " + self.voucher_code
 
             self.vouchers_code_label = tk.Label(self.canvas, font=(
                 "default", 18), text=label_text2, justify=tk.CENTER, bg=BACKGROUND_CLR)
             self.vouchers_code_label.place(x=285, y=250)
 
-            label_text3 = Scenario.voucher_warning_pt
+            label_text3 = Scenario.get_label("voucher_warning")
 
             self.vouchers_warning_label = tk.Label(self.canvas, font=(
                 "default", 18), text=label_text3, justify=tk.CENTER, bg=BACKGROUND_CLR, fg="red")
             self.vouchers_warning_label.place(x=120, y=300)
         else:
-            label_text3 = Scenario.withdraw_insufficient_balance_pt
+            label_text3 = Scenario.get_label("withdraw_insufficient_balance")
 
             self.vouchers_warning_label = tk.Label(self.canvas, font=(
                 "default", 18), text=label_text3, justify=tk.CENTER, bg=BACKGROUND_CLR, fg="red")
@@ -473,8 +530,8 @@ class Interface:
 
     # transfers
     def transfers(self):
-        label_text = Scenario.tranfers_iban_pt
-        label2_text = Scenario.transfers_amount_pt
+        label_text = Scenario.get_label("transfers_iban")
+        label2_text = Scenario.get_label("transfers_amount")
 
         self.tranfers_label = tk.Label(self.canvas, font=(
             "default", 18), text=label_text, justify=tk.LEFT, bg=BACKGROUND_CLR)
@@ -495,7 +552,7 @@ class Interface:
         self.iban_field.config(fg="grey")
 
         self.iban_field.insert(
-            0, Scenario.iban_default_text_pt)
+            0, Scenario.get_label("iban_default_text"))
 
         self.iban_field.bind("<FocusIn>", self.focusin_iban)
 
@@ -510,7 +567,7 @@ class Interface:
         self.amount_field.config(fg="grey")
 
         self.amount_field.insert(
-            0, Scenario.amount_default_text_pt)
+            0, Scenario.get_label("amount_default_text"))
 
         self.amount_field.bind("<FocusIn>", self.focusin_amount)
 
@@ -535,7 +592,7 @@ class Interface:
 
     def transfers_warning(self):
         self.transfers_warning_field.config(
-            text=Scenario.tranfers_warning_message_pt)
+            text=Scenario.get_label("tranfers_warning_message"))
 
     def transfers_destroy(self):
         self.iban_text.set("")
@@ -548,9 +605,9 @@ class Interface:
 
     # payments
     def payments(self):
-        label_text = Scenario.payments_entity_pt
-        label2_text = Scenario.payments_reference_pt
-        label3_text = Scenario.payments_amount_pt
+        label_text = Scenario.get_label("payments_entity")
+        label2_text = Scenario.get_label("payments_reference")
+        label3_text = Scenario.get_label("payments_amount")
 
         self.payments_label = tk.Label(self.canvas, font=(
             "default", 18), text=label_text, justify=tk.LEFT, bg=BACKGROUND_CLR)
@@ -604,19 +661,19 @@ class Interface:
         if error_code == 0:
             # only numbers
             self.payments_warning_field.config(
-                text=Scenario.payments_warning_message_pt)
+                text=Scenario.get_label("payments_warning_message"))
         elif error_code == 1:
             # entity size
             self.payments_warning_field.config(
-                text=Scenario.payments_entity_size_pt)
+                text=Scenario.get_label("payments_entity_size"))
         elif error_code == 2:
             # reference size
             self.payments_warning_field.config(
-                text=Scenario.payments_reference_size_pt)
+                text=Scenario.get_label("payments_reference_size"))
         elif error_code == 3:
             # not enough money
             self.payments_warning_field.config(
-                text=Scenario.withdraw_insufficient_balance_pt)
+                text=Scenario.get_label("withdraw_insufficient_balance"))
 
     def focusin_entity(self, pos):
         self.focusedin = True
@@ -652,7 +709,7 @@ class Interface:
         self.first_frame = tk.Frame(self.canvas)
         self.first_frame.place(x=20, y=20)
         self.ff_label = tk.Label(
-            self.first_frame, text=Scenario.movements_withdraws_pt).pack()
+            self.first_frame, text=Scenario.get_label("movements_withdraws")).pack()
         self.f_scrollable = Scrollable(self.first_frame)
         self.ff_label = tk.Label(
             self.f_scrollable, text=self.widthdraw_text).grid()
@@ -670,7 +727,7 @@ class Interface:
         self.second_frame = tk.Frame(self.canvas)
         self.second_frame.place(x=(WIDTH/2) + 10, y=20)
         self.sf_label = tk.Label(
-            self.second_frame, text=Scenario.movements_transfers_pt).pack()
+            self.second_frame, text=Scenario.get_label("movements_transfers")).pack()
         self.s_scrollable = Scrollable(self.second_frame)
         self.sf_label = tk.Label(
             self.s_scrollable, text=self.transfers_text).grid()
@@ -684,7 +741,7 @@ class Interface:
         self.third_frame = tk.Frame(self.canvas)
         self.third_frame.place(x=20, y=(HEIGHT/2) + 10 - 100)
         self.tf_label = tk.Label(
-            self.third_frame, text=Scenario.movements_payments_pt).pack()
+            self.third_frame, text=Scenario.get_label("movements_payments")).pack()
         self.t_scrollable = Scrollable(self.third_frame)
         self.tf_label = tk.Label(
             self.t_scrollable, text=self.payments_text).grid()
@@ -696,11 +753,11 @@ class Interface:
             # voucher type translation
             type_v = ""
             if v[1] == "Games":
-                type_v = Scenario.voucher_games_pt
+                type_v = Scenario.get_label("voucher_games")
             elif v[1] == "Movies":
-                type_v = Scenario.voucher_movies_pt
+                type_v = Scenario.get_label("voucher_movies")
             elif v[1] == "Music":
-                type_v = Scenario.voucher_music_pt
+                type_v = Scenario.get_label("voucher_music")
 
             self.vouchers_text = self.vouchers_text + \
                 type_v + "\t" + v[2] + "\t" + \
@@ -709,7 +766,7 @@ class Interface:
         self.fourth_frame = tk.Frame(self.canvas)
         self.fourth_frame.place(x=(WIDTH/2) + 10, y=(HEIGHT/2) + 10 - 100)
         self.fof_label = tk.Label(
-            self.fourth_frame, text=Scenario.movements_vouchers_pt).pack()
+            self.fourth_frame, text=Scenario.get_label("movements_vouchers")).pack()
         self.fo_scrollable = Scrollable(self.fourth_frame)
         self.fof_label = tk.Label(
             self.fo_scrollable, text=self.vouchers_text).grid()
@@ -737,7 +794,7 @@ class Interface:
 
     # IBAN
     def iban(self, user_iban):
-        label_text = Scenario.iban_pt + \
+        label_text = Scenario.get_label("iban") + \
             ": " + str(user_iban)
 
         self.iban_label = tk.Label(self.canvas, font=(
@@ -753,7 +810,7 @@ class Interface:
 class Scrollable(tk.Frame):
     """
        Make a frame scrollable with scrollbar on the right.
-       After adding or removing widgets to the scrollable frame, 
+       After adding or removing widgets to the scrollable frame,
        call the update() method to refresh the scrollable area.
     """
 
@@ -778,14 +835,13 @@ class Scrollable(tk.Frame):
             0, 0, window=self, anchor=tk.NW)
 
     def __fill_canvas(self, event):
-        #Enlarge the windows item to the canvas width
+        # Enlarge the windows item to the canvas width
 
         canvas_width = event.width
         self.canvas.itemconfig(self.windows_item, width=canvas_width)
 
     def update(self):
-        #Update the canvas and the scrollregion
+        # Update the canvas and the scrollregion
 
         self.update_idletasks()
         self.canvas.config(scrollregion=self.canvas.bbox(self.windows_item))
-
