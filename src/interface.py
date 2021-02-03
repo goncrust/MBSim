@@ -435,6 +435,16 @@ class Interface:
         self.custom_withdraw_field.bind(
             "<FocusIn>", self.focusin_withdraw_custom)
 
+        self.withdraw_warning_field = tk.Label(
+            self.canvas, font=("default", 18), justify=tk.LEFT, bg=BACKGROUND_CLR, fg="red")
+
+        self.withdraw_warning_field.place(x=450, y=475)
+
+    def withdraw_warning(self):
+        self.withdraw_warning_field.config(
+            text=Scenario.withdraw_error_pt)
+
+
     def focusin_withdraw_custom(self, pos):
         if self.custom_withdraw_field.cget("fg") == "grey":
             self.custom_withdraw_field.config(fg="black")
@@ -444,6 +454,7 @@ class Interface:
 
     def withdraw_custom_destroy(self):
         self.custom_withdraw_text.set("")
+        self.withdraw_warning_field.destroy()
         self.custom_withdraw_field.destroy()
 
     # balance
@@ -594,6 +605,10 @@ class Interface:
         self.transfers_warning_field.config(
             text=Scenario.get_label("tranfers_warning_message"))
 
+    def transfers_zero_warning(self):
+        self.transfers_warning_field.config(
+            text=Scenario.transfers_zero_warning_pt)
+
     def transfers_destroy(self):
         self.iban_text.set("")
         self.amount_text.set("")
@@ -674,6 +689,10 @@ class Interface:
             # not enough money
             self.payments_warning_field.config(
                 text=Scenario.get_label("withdraw_insufficient_balance"))
+        elif error_code == 4:
+            # paying zero
+            self.payments_warning_field.config(
+                text=Scenario.payments_zero_warning_pt)
 
     def focusin_entity(self, pos):
         self.focusedin = True

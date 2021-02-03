@@ -315,26 +315,28 @@ class IEventHandler:
             if only_numbers == False:
                 self.interface.transfers_warning()
             else:
+                if float(self.interface.amount_text.get()) == 0:
+                    self.interface.transfers_zero_warning()
+                else:
+                    if (i_db_con.users_db.get_balance(self.interface.current_user) - float(self.interface.amount_text.get())) >= 0:
 
-                if (i_db_con.users_db.get_balance(self.interface.current_user) - float(self.interface.amount_text.get())) >= 0:
+                        iban_text = self.interface.iban_text.get()
 
-                    iban_text = self.interface.iban_text.get()
+                        iban_text = iban_text.replace(" ", "")
 
-                    iban_text = iban_text.replace(" ", "")
+                        if len(iban_text) == 25:
 
-                    if len(iban_text) == 25:
+                            iban_text = iban_text[:4] + " " + iban_text[4:8] + \
+                                " " + iban_text[8:12] + " " + \
+                                iban_text[12:23] + " " + iban_text[23:25]
 
-                        iban_text = iban_text[:4] + " " + iban_text[4:8] + \
-                            " " + iban_text[8:12] + " " + \
-                            iban_text[12:23] + " " + iban_text[23:25]
+                            if i_db_con.users_db.verify_existing_account_number(iban_text):
+                                i_db_con.transfer(
+                                    self.interface.current_user, iban_text, float(self.interface.amount_text.get()))
 
-                        if i_db_con.users_db.verify_existing_account_number(iban_text):
-                            i_db_con.transfer(
-                                self.interface.current_user, iban_text, float(self.interface.amount_text.get()))
-
-                            self.interface.transfers_destroy()
-                            self.interface.current_scenario = Scenario.MAIN
-                            self.interface.update_scenario()
+                                self.interface.transfers_destroy()
+                                self.interface.current_scenario = Scenario.MAIN
+                                self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.WITHDRAWOTHERAMOUNT:
             # WITHDRAW other amount
@@ -348,14 +350,18 @@ class IEventHandler:
                         only_numbers = False
 
             if only_numbers:
-                self.interface.current_scenario = Scenario.CONFIRMWITHDRAW
+                if float(self.interface.custom_withdraw_text.get()) == 0:
+                    self.interface.withdraw_warning()
+                else:
+                    self.interface.current_scenario = Scenario.CONFIRMWITHDRAW
 
-                self.interface.withdraw(
-                    float(self.interface.custom_withdraw_text.get()), i_db_con.users_db.get_balance(self.interface.current_user))
+                    self.interface.withdraw(
+                        float(self.interface.custom_withdraw_text.get()), i_db_con.users_db.get_balance(self.interface.current_user))
 
-                self.interface.withdraw_custom_destroy()
+                    self.interface.withdraw_custom_destroy()
 
-                self.interface.update_scenario()
+                    self.interface.update_scenario()
+                    
 
         elif self.interface.current_scenario == Scenario.BALANCE:
             self.interface.current_scenario = Scenario.MAIN
@@ -401,15 +407,18 @@ class IEventHandler:
                     if only_numbers == False:
                         self.interface.payments_warning(0)
                     else:
-                        if (i_db_con.users_db.get_balance(self.interface.current_user) - float(self.interface.payments_amount_text.get())) >= 0:
-                            i_db_con.payments(self.interface.current_user, self.interface.entity_text.get(
-                            ), self.interface.reference_text.get(), float(self.interface.payments_amount_text.get()))
-
-                            self.interface.payments_destroy()
-                            self.interface.current_scenario = Scenario.MAIN
-                            self.interface.update_scenario()
+                        if float(self.interface.payments_amount_text.get()) == 0:
+                            self.interface.payments_warning(4)
                         else:
-                            self.interface.payments_warning(3)
+                            if (i_db_con.users_db.get_balance(self.interface.current_user) - float(self.interface.payments_amount_text.get())) >= 0:
+                                i_db_con.payments(self.interface.current_user, self.interface.entity_text.get(
+                                ), self.interface.reference_text.get(), float(self.interface.payments_amount_text.get()))
+
+                                self.interface.payments_destroy()
+                                self.interface.current_scenario = Scenario.MAIN
+                                self.interface.update_scenario()
+                            else:
+                                self.interface.payments_warning(3)
                 else:
                     self.interface.payments_warning(2)
             else:

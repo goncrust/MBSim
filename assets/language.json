@@ -281,6 +281,10 @@
         "Warning Message": {
             "Portuguese": "Utilize apenas números",
             "English": "Use only numbers"
+        },
+        "0 Error": {
+            "Portuguese": "Impossível transferir 0 €",
+            "English": "Impossible to transfer 0 €"
         }
     },
     "6": {
@@ -333,12 +337,16 @@
             "English": "Use only numbers"
         },
         "Entity size": {
-            "Portuguese": "A entidade tem de\npossuir 5 digitos númericos",
+            "Portuguese": "A entidade tem de\npossuir 5 digitos numéricos",
             "English": "The entity must have 5 numeric digits"
         },
         "Reference size": {
-            "Portuguese": "A referência tem de\npossuir 9 digitos númericos",
+            "Portuguese": "A referência tem de\npossuir 9 digitos numéricos",
             "English": "The entity must have 9 numeric digits"
+        },
+        "0 Error": {
+            "Portuguese": "Impossível pagar 0 €",
+            "English": "Impossible to pay 0 €"
         }
     },
     "7": {
@@ -537,6 +545,10 @@
         "Amount": {
             "Portuguese": "Valor",
             "English": "Amount"
+        },
+        "0 Error": {
+            "Portuguese": "Impossível levantar 0 €",
+            "English": "Impossible to withdraw 0 €"
         }
     },
     "12": {
