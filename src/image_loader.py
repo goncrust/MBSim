@@ -21,6 +21,26 @@ icon_file = Image.open(IMAGEDIR + 'multibanco.png')
 icon_file = icon_file.resize((25, 25))
 icon = ImageTk.PhotoImage(icon_file)
 
+#portuguese selection 
+button_pt_file = Image.open(IMAGEDIR + 'pt.png')
+button_pt_file = button_pt_file.resize((100, 50))
+button_pt = ImageTk.PhotoImage(button_pt_file)
+
+button_pt_selected_file = Image.open(IMAGEDIR + 'pt_selected.png')
+button_pt_selected_file = button_pt_selected_file.resize((100, 50))
+button_pt_selected = ImageTk.PhotoImage(button_pt_selected_file)
+
+#english selection 
+button_uk_file = Image.open(IMAGEDIR + 'uk.png')
+button_uk_file = button_uk_file.resize((100, 50))
+button_uk = ImageTk.PhotoImage(button_uk_file)
+
+button_uk_selected_file = Image.open(IMAGEDIR + 'uk_selected.png')
+button_uk_selected_file = button_uk_selected_file.resize((100, 50))
+button_uk_selected = ImageTk.PhotoImage(button_uk_selected_file)
+
+
+
 
 # place text on the images
 def place_text(interface, button, label):
