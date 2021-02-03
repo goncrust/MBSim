@@ -506,10 +506,16 @@ class Interface:
             "default", 18), text=label_text, justify=tk.CENTER, bg=BACKGROUND_CLR)
         self.vouchers_label.place(x=285, y=200)
 
-        self.voucher_code = None
+        self.voucher_code = ""
+        self.voucher_digits = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 
         if final_balance >= 0:
-            self.voucher_code = str(random.randint(0, 9999999999))
+            for i in range(0,3):
+                for i in range(0,4):
+                    self.voucher_code = self.voucher_code + str(random.choice(self.voucher_digits))
+                self.voucher_code = self.voucher_code + "-"
+            for i in range(0,4):
+                    self.voucher_code = self.voucher_code + str(random.choice(self.voucher_digits))
 
             label_text2 = Scenario.get_label(
                 "voucher_code") + ": " + self.voucher_code
