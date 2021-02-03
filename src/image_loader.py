@@ -31,11 +31,11 @@ button_pt_selected_file = button_pt_selected_file.resize((100, 50))
 button_pt_selected = ImageTk.PhotoImage(button_pt_selected_file)
 
 #english selection 
-button_uk_file = Image.open(IMAGEDIR + 'uk.png')
+button_uk_file = Image.open(IMAGEDIR + 'uk.jpg')
 button_uk_file = button_uk_file.resize((100, 50))
 button_uk = ImageTk.PhotoImage(button_uk_file)
 
-button_uk_selected_file = Image.open(IMAGEDIR + 'uk_selected.png')
+button_uk_selected_file = Image.open(IMAGEDIR + 'uk_selected.jpg')
 button_uk_selected_file = button_uk_selected_file.resize((100, 50))
 button_uk_selected = ImageTk.PhotoImage(button_uk_selected_file)
 
