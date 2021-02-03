@@ -479,9 +479,19 @@
         "Warning": {
             "Portuguese": "CERTIFIQUE-SE QUE GUARDA ESTE CÓDIGO\nANTES DE CONTINUAR",
             "English": "MAKE SURE YOU SAVE THIS CODE\nBEFORE PROCEEDING"
+        },
+        "Games": {
+            "Portuguese": "Jogos",
+            "English": "Games"
+        },
+        "Movies": {
+            "Portuguese": "Filmes",
+            "English": "Movies"
+        },
+        "Music": {
+            "Portuguese": "Música",
+            "English": "Music"
         }
-    
-
     },
     "11": {
         "0": {
@@ -587,6 +597,22 @@
         "7": {
             "Portuguese": "Outras Operações",
             "English": "Other Operations"
+        },
+        "Withdraws": {
+            "Portuguese": "Levantamentos",
+            "English": "Withdraws"
+        },
+        "Transfers": {
+            "Portuguese": "Transferências",
+            "English": "Transfers"
+        },
+        "Payments": {
+            "Portuguese": "Pagamentos",
+            "English": "Payments"
+        },
+        "Vouchers": {
+            "Portuguese": "Vouchers",
+            "English": "Vouchers"
         }
     },
     "14": {

@@ -417,7 +417,16 @@ class Interface:
 
     # vouchers
     def vouchers(self, amount, final_balance):
-        self.voucher_type_text = self.event_handler.voucher
+        self.voucher_type = self.event_handler.voucher
+
+        self.voucher_type_text = None
+        if self.event_handler.voucher == "Music":
+            self.voucher_type_text = Scenario.voucher_music_pt
+        elif self.event_handler.voucher == "Movies":
+            self.voucher_type_text = Scenario.voucher_movies_pt
+        elif self.event_handler.voucher == "Games":
+            self.voucher_type_text = Scenario.voucher_games_pt
+
         self.voucher_amount = amount
 
         self.voucher_type_label = tk.Label(self.canvas, font=(
@@ -628,7 +637,8 @@ class Interface:
 
         self.first_frame = tk.Frame(self.canvas)
         self.first_frame.place(x=20, y=20)
-        self.ff_label = tk.Label(self.first_frame, text="Withdraws").pack()
+        self.ff_label = tk.Label(
+            self.first_frame, text=Scenario.movements_withdraws_pt).pack()
         self.f_scrollable = Scrollable(self.first_frame)
         self.ff_label = tk.Label(
             self.f_scrollable, text=self.widthdraw_text).grid()
@@ -645,7 +655,8 @@ class Interface:
 
         self.second_frame = tk.Frame(self.canvas)
         self.second_frame.place(x=(WIDTH/2) + 10, y=20)
-        self.sf_label = tk.Label(self.second_frame, text="Transfers").pack()
+        self.sf_label = tk.Label(
+            self.second_frame, text=Scenario.movements_transfers_pt).pack()
         self.s_scrollable = Scrollable(self.second_frame)
         self.sf_label = tk.Label(
             self.s_scrollable, text=self.transfers_text).grid()
@@ -658,7 +669,8 @@ class Interface:
 
         self.third_frame = tk.Frame(self.canvas)
         self.third_frame.place(x=20, y=(HEIGHT/2) + 10 - 100)
-        self.tf_label = tk.Label(self.third_frame, text="Payments").pack()
+        self.tf_label = tk.Label(
+            self.third_frame, text=Scenario.movements_payments_pt).pack()
         self.t_scrollable = Scrollable(self.third_frame)
         self.tf_label = tk.Label(
             self.t_scrollable, text=self.payments_text).grid()
@@ -666,12 +678,24 @@ class Interface:
 
         self.vouchers_text = ""
         for v in self.vouchers_data:
+
+            # voucher type translation
+            type_v = ""
+            if v[1] == "Games":
+                type_v = Scenario.voucher_games_pt
+            elif v[1] == "Movies":
+                type_v = Scenario.voucher_movies_pt
+            elif v[1] == "Music":
+                type_v = Scenario.voucher_music_pt
+
             self.vouchers_text = self.vouchers_text + \
-                v[1] + "\t" + v[2] + "\t" + str(v[3]) + " €\t\t" + v[4] + "\n"
+                type_v + "\t" + v[2] + "\t" + \
+                str(v[3]) + " €\t\t" + v[4] + "\n"
 
         self.fourth_frame = tk.Frame(self.canvas)
         self.fourth_frame.place(x=(WIDTH/2) + 10, y=(HEIGHT/2) + 10 - 100)
-        self.fof_label = tk.Label(self.fourth_frame, text="Vouchers").pack()
+        self.fof_label = tk.Label(
+            self.fourth_frame, text=Scenario.movements_vouchers_pt).pack()
         self.fo_scrollable = Scrollable(self.fourth_frame)
         self.fof_label = tk.Label(
             self.fo_scrollable, text=self.vouchers_text).grid()

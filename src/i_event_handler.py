@@ -416,7 +416,7 @@ class IEventHandler:
 
             if self.interface.voucher_code != None:
                 i_db_con.register_movement(i_db_con.VOUCHER, i_db_con.users_db.get_account_number_from_name(
-                    self.interface.current_user), self.interface.voucher_amount, None, None, None, self.interface.voucher_type_text, self.interface.voucher_code)
+                    self.interface.current_user), self.interface.voucher_amount, None, None, None, self.interface.voucher_type, self.interface.voucher_code)
 
                 i_db_con.users_db.set_balance(self.interface.current_user, i_db_con.users_db.get_balance(
                     self.interface.current_user) - float(self.interface.voucher_amount))

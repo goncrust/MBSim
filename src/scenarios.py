@@ -127,6 +127,15 @@ class Scenario:
     voucher_warning_pt = languages[str(VOUCHERS2)]["Warning"]["Portuguese"]
     voucher_warning_en = languages[str(VOUCHERS2)]["Warning"]["English"]
 
+    voucher_games_pt = languages[str(VOUCHERS2)]["Games"]["Portuguese"]
+    voucher_games_en = languages[str(VOUCHERS2)]["Games"]["English"]
+
+    voucher_movies_pt = languages[str(VOUCHERS2)]["Movies"]["Portuguese"]
+    voucher_movies_en = languages[str(VOUCHERS2)]["Movies"]["English"]
+
+    voucher_music_pt = languages[str(VOUCHERS2)]["Music"]["Portuguese"]
+    voucher_music_en = languages[str(VOUCHERS2)]["Music"]["English"]
+
     tranfers_iban_pt = languages[str(TRANSFERS)]["IBAN"]["Portuguese"]
     transfers_iban_en = languages[str(TRANSFERS)]["IBAN"]["English"]
 
@@ -161,6 +170,20 @@ class Scenario:
         PAYMENTS)]["Warning Message"]["Portuguese"]
     payments_warning_message_en = languages[str(
         PAYMENTS)]["Warning Message"]["English"]
+
+    movements_withdraws_pt = languages[str(
+        BALANCE2)]["Withdraws"]["Portuguese"]
+    movements_withdraws_en = languages[str(BALANCE2)]["Withdraws"]["English"]
+
+    movements_transfers_pt = languages[str(
+        BALANCE2)]["Transfers"]["Portuguese"]
+    movements_transfers_en = languages[str(BALANCE2)]["Transfers"]["English"]
+
+    movements_payments_pt = languages[str(BALANCE2)]["Payments"]["Portuguese"]
+    movements_payments_en = languages[str(BALANCE2)]["Payments"]["English"]
+
+    movements_vouchers_pt = languages[str(BALANCE2)]["Vouchers"]["Portuguese"]
+    movements_vouchers_en = languages[str(BALANCE2)]["Vouchers"]["English"]
 
     # return active buttons in the scene
     @staticmethod
