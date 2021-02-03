@@ -100,6 +100,9 @@ class MDatabase:
         self.c.execute(
             "CREATE TABLE IF NOT EXISTS Payments(account TEXT, entity TEXT, reference TEXT, amount REAL, date TEXT)")
 
+        self.c.execute(
+            "CREATE TABLE IF NOT EXISTS Vouchers(account TEXT, type TEXT, code TEXT, amount REAL, date TEXT)")
+
         self.con.commit()
 
     def close_connection(self):
@@ -121,5 +124,11 @@ class MDatabase:
     def register_payment(self, account, entity, reference, amount, date):
         self.c.execute("INSERT INTO Payments(account, entity, reference, amount, date) Values(?, ?, ?, ?, ?)",
                        (account, entity, reference, amount, date))
+
+        self.con.commit()
+
+    def register_voucher(self, account, voucher_type, voucher_code, amount, date):
+        self.c.execute("INSERT INTO Vouchers(account, type, code, amount, date) Values(?, ?, ?, ?, ?)",
+                       (account, voucher_type, voucher_code, amount, date))
 
         self.con.commit()

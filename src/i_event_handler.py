@@ -38,12 +38,15 @@ class IEventHandler:
             self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.VOUCHERS:
+            self.voucher = "Games"
+
             self.interface.current_scenario = Scenario.VOUCHERS1
             self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.VOUCHERS1:
             self.interface.current_scenario = Scenario.VOUCHERS2
-            self.interface.vouchers(10)
+            self.interface.vouchers(10, i_db_con.users_db.get_balance(
+                self.interface.current_user) - 10)
             self.interface.update_scenario()
 
     def click_1(self, event):
@@ -66,12 +69,15 @@ class IEventHandler:
             self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.VOUCHERS:
+            self.voucher = "Movies"
+
             self.interface.current_scenario = Scenario.VOUCHERS1
             self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.VOUCHERS1:
             self.interface.current_scenario = Scenario.VOUCHERS2
-            self.interface.vouchers(20)
+            self.interface.vouchers(20, i_db_con.users_db.get_balance(
+                self.interface.current_user) - 20)
             self.interface.update_scenario()
 
     def click_2(self, event):
@@ -95,7 +101,8 @@ class IEventHandler:
 
         elif self.interface.current_scenario == Scenario.VOUCHERS1:
             self.interface.current_scenario = Scenario.VOUCHERS2
-            self.interface.vouchers(30)
+            self.interface.vouchers(30, i_db_con.users_db.get_balance(
+                self.interface.current_user) - 30)
             self.interface.update_scenario()
 
     def click_3(self, event):
@@ -159,7 +166,8 @@ class IEventHandler:
 
         elif self.interface.current_scenario == Scenario.VOUCHERS1:
             self.interface.current_scenario = Scenario.VOUCHERS2
-            self.interface.vouchers(50)
+            self.interface.vouchers(50, i_db_con.users_db.get_balance(
+                self.interface.current_user) - 50)
 
             self.interface.update_scenario()
 
@@ -204,6 +212,8 @@ class IEventHandler:
             self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.VOUCHERS:
+            self.voucher = "Music"
+
             self.interface.current_scenario = Scenario.VOUCHERS1
             self.interface.update_scenario()
 
@@ -393,6 +403,20 @@ class IEventHandler:
             self.interface.current_scenario = Scenario.MAIN
             self.interface.update_scenario()
 
+        elif self.interface.current_scenario == Scenario.VOUCHERS2:
+            # voucher
+            self.interface.destroy_vouchers()
+
+            if self.interface.voucher_code != None:
+                i_db_con.register_movement(i_db_con.VOUCHER, i_db_con.users_db.get_account_number_from_name(
+                    self.interface.current_user), self.interface.voucher_amount, None, None, None, self.interface.voucher_type_text, self.interface.voucher_code)
+
+                i_db_con.users_db.set_balance(self.interface.current_user, i_db_con.users_db.get_balance(
+                    self.interface.current_user) - float(self.interface.voucher_amount))
+
+            self.interface.current_scenario = Scenario.MAIN
+            self.interface.update_scenario()
+
         elif self.interface.current_scenario == Scenario.ADMIN:
             self.interface.current_scenario = Scenario.ADMIN1
             self.interface.update_scenario()
@@ -413,7 +437,7 @@ class IEventHandler:
                     self.interface.current_user, self.interface.final_balance)
 
                 i_db_con.register_movement(i_db_con.WITHDRAW, i_db_con.users_db.get_account_number_from_name(
-                    self.interface.current_user), self.interface.amount_withdraw, None, None, None)
+                    self.interface.current_user), self.interface.amount_withdraw, None, None, None, None)
 
             self.interface.destroy_withdraw()
 

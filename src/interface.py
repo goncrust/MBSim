@@ -415,33 +415,53 @@ class Interface:
     def destroy_mbway(self):
         self.mbway_label.destroy()
 
-    #vouchers
-    def vouchers(self, amount):
-        random_code = str(random.randint(0, 9999999999))
+    # vouchers
+    def vouchers(self, amount, final_balance):
+        self.voucher_type_text = self.event_handler.voucher
+        self.voucher_amount = amount
+
+        self.voucher_type_label = tk.Label(self.canvas, font=(
+            "default", 18), text=self.voucher_type_text, justify=tk.CENTER, bg=BACKGROUND_CLR)
+        self.voucher_type_label.place(x=285, y=150)
 
         label_text = Scenario.voucher_checkout_pt + ": " + str(amount) + " €"
+
         self.vouchers_label = tk.Label(self.canvas, font=(
-            "default", 18), text=label_text , justify=tk.CENTER, bg=BACKGROUND_CLR)
+            "default", 18), text=label_text, justify=tk.CENTER, bg=BACKGROUND_CLR)
         self.vouchers_label.place(x=285, y=200)
 
-        label_text2 = Scenario.voucher_code_pt + ": " + random_code
+        self.voucher_code = None
 
-        self.vouchers_code_label = tk.Label(self.canvas, font=(
-            "default", 18), text=label_text2 , justify=tk.CENTER, bg=BACKGROUND_CLR)
-        self.vouchers_code_label.place(x=285, y=250)
+        if final_balance >= 0:
+            self.voucher_code = str(random.randint(0, 9999999999))
 
-        label_text3 = Scenario.voucher_warning_pt
+            label_text2 = Scenario.voucher_code_pt + ": " + self.voucher_code
 
-        self.vouchers_warning_label = tk.Label(self.canvas, font=(
-            "default", 18), text=label_text3 , justify=tk.CENTER, bg=BACKGROUND_CLR, fg="red")
-        self.vouchers_warning_label.place(x=120, y=300)
+            self.vouchers_code_label = tk.Label(self.canvas, font=(
+                "default", 18), text=label_text2, justify=tk.CENTER, bg=BACKGROUND_CLR)
+            self.vouchers_code_label.place(x=285, y=250)
 
+            label_text3 = Scenario.voucher_warning_pt
+
+            self.vouchers_warning_label = tk.Label(self.canvas, font=(
+                "default", 18), text=label_text3, justify=tk.CENTER, bg=BACKGROUND_CLR, fg="red")
+            self.vouchers_warning_label.place(x=120, y=300)
+        else:
+            label_text3 = Scenario.withdraw_insufficient_balance_pt
+
+            self.vouchers_warning_label = tk.Label(self.canvas, font=(
+                "default", 18), text=label_text3, justify=tk.CENTER, bg=BACKGROUND_CLR, fg="red")
+            self.vouchers_warning_label.place(x=250, y=300)
 
     def destroy_vouchers(self):
-        self.vouchers_label.destroy()
-        self.vouchers_code_label.destroy()
-        self.vouchers_warning_label.destroy()
-        
+        try:
+            self.voucher_type_label.destroy()
+            self.vouchers_label.destroy()
+            self.vouchers_warning_label.destroy()
+            self.vouchers_code_label.destroy()
+        except:
+            pass
+
     # transfers
     def transfers(self):
         label_text = Scenario.tranfers_iban_pt
@@ -562,8 +582,9 @@ class Interface:
 
         self.payments_amount_field.place(
             x=300, y=250, width=200, height=40)
-    
-        self.payments_amount_field.bind("<FocusIn>", self.focusin_payments_amount)
+
+        self.payments_amount_field.bind(
+            "<FocusIn>", self.focusin_payments_amount)
 
         self.payments_warning_field = tk.Label(
             self.canvas, font=("default", 18), justify=tk.LEFT, bg=BACKGROUND_CLR, fg="red")

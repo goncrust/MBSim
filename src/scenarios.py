@@ -120,13 +120,16 @@ class Scenario:
 
     voucher_checkout_pt = languages[str(VOUCHERS2)]["Amount"]["Portuguese"]
     voucher_checkout_en = languages[str(VOUCHERS2)]["Amount"]["English"]
+
     voucher_code_pt = languages[str(VOUCHERS2)]["Code"]["Portuguese"]
     voucher_code_en = languages[str(VOUCHERS2)]["Code"]["English"]
+
     voucher_warning_pt = languages[str(VOUCHERS2)]["Warning"]["Portuguese"]
     voucher_warning_en = languages[str(VOUCHERS2)]["Warning"]["English"]
 
     tranfers_iban_pt = languages[str(TRANSFERS)]["IBAN"]["Portuguese"]
     transfers_iban_en = languages[str(TRANSFERS)]["IBAN"]["English"]
+
     transfers_amount_pt = languages[str(TRANSFERS)]["Amount"]["Portuguese"]
     transfers_amount_en = languages[str(TRANSFERS)]["Amount"]["English"]
 
@@ -134,6 +137,7 @@ class Scenario:
         TRANSFERS)]["Default NIB"]["Portuguese"]
     iban_default_text_en = languages[str(
         TRANSFERS)]["Default NIB"]["English"]
+
     amount_default_text_pt = languages[str(
         TRANSFERS)]["Default Amount"]["Portuguese"]
     amount_default_text_en = languages[str(
@@ -146,12 +150,17 @@ class Scenario:
 
     payments_entity_pt = languages[str(PAYMENTS)]["Entity"]["Portuguese"]
     payments_entity_en = languages[str(PAYMENTS)]["Entity"]["English"]
+
     payments_reference_pt = languages[str(PAYMENTS)]["Reference"]["Portuguese"]
     payments_reference_en = languages[str(PAYMENTS)]["Reference"]["English"]
+
     payments_amount_pt = languages[str(PAYMENTS)]["Amount"]["Portuguese"]
     payments_amount_en = languages[str(PAYMENTS)]["Amount"]["English"]
-    payments_warning_message_pt = languages[str(PAYMENTS)]["Warning Message"]["Portuguese"]
-    payments_warning_message_en = languages[str(PAYMENTS)]["Warning Message"]["English"]
+
+    payments_warning_message_pt = languages[str(
+        PAYMENTS)]["Warning Message"]["Portuguese"]
+    payments_warning_message_en = languages[str(
+        PAYMENTS)]["Warning Message"]["English"]
 
     # return active buttons in the scene
     @staticmethod
@@ -181,7 +190,7 @@ class Scenario:
         elif scenario == Scenario.VOUCHERS1:
             return [True, True, True, True, False, False, False, True]
         elif scenario == Scenario.VOUCHERS2:
-            return [False, False, False, True, False, False, False, True]
+            return [False, False, False, False, False, False, False, True]
         elif scenario == Scenario.WITHDRAWOTHERAMOUNT:
             return [False, False, False, True, False, False, False, True]
         elif scenario == Scenario.BALANCE1:
