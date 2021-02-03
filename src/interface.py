@@ -617,32 +617,88 @@ class Interface:
         self.payments_warning_field.destroy()
 
     # movements
-    def movements_menu(self):
+    def movements_menu(self, data, current_user_account_number):
 
-        first_frame = tk.Frame(self.canvas)
-        first_frame.place(x=20, y=20)
-        ff_label = tk.Label(first_frame, text="Withdraws").pack()
-        f_scrollable = Scrollable(first_frame)
+        self.widthdraw_data, self.transfers_data, self.payments_data, self.vouchers_data = data
 
-        second_frame = tk.Frame(self.canvas)
-        second_frame.place(x=(WIDTH/2) + 10, y=20)
-        sf_label = tk.Label(second_frame, text="Transfers").pack()
-        s_scrollable = Scrollable(second_frame)
+        self.widthdraw_text = ""
+        for w in self.widthdraw_data:
+            self.widthdraw_text = self.widthdraw_text + \
+                str(w[1]) + " €\t\t\t\t\t" + w[2] + "\n"
 
-        third_frame = tk.Frame(self.canvas)
-        third_frame.place(x=20, y=(HEIGHT/2) + 10 - 100)
-        tf_label = tk.Label(third_frame, text="Payments").pack()
-        t_scrollable = Scrollable(third_frame)
+        self.first_frame = tk.Frame(self.canvas)
+        self.first_frame.place(x=20, y=20)
+        self.ff_label = tk.Label(self.first_frame, text="Withdraws").pack()
+        self.f_scrollable = Scrollable(self.first_frame)
+        self.ff_label = tk.Label(
+            self.f_scrollable, text=self.widthdraw_text).grid()
+        self.f_scrollable.update()
 
-        fourth_frame = tk.Frame(self.canvas)
-        fourth_frame.place(x=(WIDTH/2) + 10, y=(HEIGHT/2) + 10 - 100)
-        fof_label = tk.Label(fourth_frame, text="Vouchers").pack()
-        fo_scrollable = Scrollable(fourth_frame)
+        self.transfers_text = ""
+        for t in self.transfers_data:
+            if t[0] == current_user_account_number:
+                self.transfers_text = self.transfers_text + \
+                    t[1] + "\t-" + str(t[2]) + " €\t" + t[3] + "\n"
+            elif t[1] == current_user_account_number:
+                self.transfers_text = self.transfers_text + \
+                    t[0] + "\t+" + str(t[2]) + " €\t" + t[3] + "\n"
 
-        # ff_label = tk.Label(scrollable, text="test2").grid()
-        # scrollable.update()
+        self.second_frame = tk.Frame(self.canvas)
+        self.second_frame.place(x=(WIDTH/2) + 10, y=20)
+        self.sf_label = tk.Label(self.second_frame, text="Transfers").pack()
+        self.s_scrollable = Scrollable(self.second_frame)
+        self.sf_label = tk.Label(
+            self.s_scrollable, text=self.transfers_text).grid()
+        self.s_scrollable.update()
+
+        self.payments_text = ""
+        for p in self.payments_data:
+            self.payments_text = self.payments_text + \
+                p[1] + "\t" + p[2] + "\t" + str(p[3]) + " €\t\t" + p[4] + "\n"
+
+        self.third_frame = tk.Frame(self.canvas)
+        self.third_frame.place(x=20, y=(HEIGHT/2) + 10 - 100)
+        self.tf_label = tk.Label(self.third_frame, text="Payments").pack()
+        self.t_scrollable = Scrollable(self.third_frame)
+        self.tf_label = tk.Label(
+            self.t_scrollable, text=self.payments_text).grid()
+        self.t_scrollable.update()
+
+        self.vouchers_text = ""
+        for v in self.vouchers_data:
+            self.vouchers_text = self.vouchers_text + \
+                v[1] + "\t" + v[2] + "\t" + str(v[3]) + " €\t\t" + v[4] + "\n"
+
+        self.fourth_frame = tk.Frame(self.canvas)
+        self.fourth_frame.place(x=(WIDTH/2) + 10, y=(HEIGHT/2) + 10 - 100)
+        self.fof_label = tk.Label(self.fourth_frame, text="Vouchers").pack()
+        self.fo_scrollable = Scrollable(self.fourth_frame)
+        self.fof_label = tk.Label(
+            self.fo_scrollable, text=self.vouchers_text).grid()
+        self.fo_scrollable.update()
+
+    def movements_menu_destroy(self):
+        self.widthdraw_data, self.transfers_data, self.transfers_data, self.vouchers_data = None, None, None, None
+        self.widthdraw_text, self.transfers_text, self.payments_text, self.vouchers_text = "", "", "", ""
+
+        self.first_frame.destroy()
+        # self.ff_label.destroy()
+        self.f_scrollable.destroy()
+
+        self.second_frame.destroy()
+        # self.sf_label.destroy()
+        self.s_scrollable.destroy()
+
+        self.third_frame.destroy()
+        # self.tf_label.destroy()
+        self.t_scrollable.destroy()
+
+        self.fourth_frame.destroy()
+        # self.fof_label.destroy()
+        self.fo_scrollable.destroy()
 
 
+# movements scrolling sections
 # credits: https://stackoverflow.com/questions/3085696/adding-a-scrollbar-to-a-group-of-widgets-in-tkinter
 class Scrollable(tk.Frame):
     """

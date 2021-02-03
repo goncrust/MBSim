@@ -132,3 +132,15 @@ class MDatabase:
                        (account, voucher_type, voucher_code, amount, date))
 
         self.con.commit()
+
+    def retrieve_data(self, account):
+        withdraw_data = self.c.execute(
+            "SELECT * FROM Withdraw WHERE account=?", (account,)).fetchall()
+        transfers_data = self.c.execute(
+            "SELECT * FROM Transfers WHERE account=? OR account_to=?", (account, account)).fetchall()
+        payments_data = self.c.execute(
+            "SELECT * FROM Payments WHERE account=?", (account,)).fetchall()
+        vouchers_data = self.c.execute(
+            "SELECT * FROM Vouchers WHERE account=?", (account,)).fetchall()
+
+        return withdraw_data, transfers_data, payments_data, vouchers_data
