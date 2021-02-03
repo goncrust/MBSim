@@ -65,6 +65,8 @@ class IEventHandler:
             self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.BALANCE:
+            self.interface.movements_menu()
+
             self.interface.current_scenario = Scenario.BALANCE2
             self.interface.update_scenario()
 

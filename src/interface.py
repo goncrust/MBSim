@@ -615,3 +615,70 @@ class Interface:
         self.payments2_label.destroy()
         self.payments3_label.destroy()
         self.payments_warning_field.destroy()
+
+    # movements
+    def movements_menu(self):
+
+        first_frame = tk.Frame(self.canvas)
+        first_frame.place(x=20, y=20)
+        ff_label = tk.Label(first_frame, text="Withdraws").pack()
+        f_scrollable = Scrollable(first_frame)
+
+        second_frame = tk.Frame(self.canvas)
+        second_frame.place(x=(WIDTH/2) + 10, y=20)
+        sf_label = tk.Label(second_frame, text="Transfers").pack()
+        s_scrollable = Scrollable(second_frame)
+
+        third_frame = tk.Frame(self.canvas)
+        third_frame.place(x=20, y=(HEIGHT/2) + 10 - 100)
+        tf_label = tk.Label(third_frame, text="Payments").pack()
+        t_scrollable = Scrollable(third_frame)
+
+        fourth_frame = tk.Frame(self.canvas)
+        fourth_frame.place(x=(WIDTH/2) + 10, y=(HEIGHT/2) + 10 - 100)
+        fof_label = tk.Label(fourth_frame, text="Vouchers").pack()
+        fo_scrollable = Scrollable(fourth_frame)
+
+        # ff_label = tk.Label(scrollable, text="test2").grid()
+        # scrollable.update()
+
+
+# credits: https://stackoverflow.com/questions/3085696/adding-a-scrollbar-to-a-group-of-widgets-in-tkinter
+class Scrollable(tk.Frame):
+    """
+       Make a frame scrollable with scrollbar on the right.
+       After adding or removing widgets to the scrollable frame, 
+       call the update() method to refresh the scrollable area.
+    """
+
+    def __init__(self, frame, width=16, canvas_width=(WIDTH/2)-16-10-20, canvas_height=(HEIGHT/2)-140-10):
+
+        scrollbar = tk.Scrollbar(frame, width=width)
+        scrollbar.pack(side=tk.RIGHT, fill=tk.Y, expand=False)
+
+        self.canvas = tk.Canvas(
+            frame, yscrollcommand=scrollbar.set, width=canvas_width, height=canvas_height)
+        self.canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+
+        scrollbar.config(command=self.canvas.yview)
+
+        self.canvas.bind('<Configure>', self.__fill_canvas)
+
+        # base class initialization
+        tk.Frame.__init__(self, frame)
+
+        # assign this obj (the inner frame) to the windows item of the canvas
+        self.windows_item = self.canvas.create_window(
+            0, 0, window=self, anchor=tk.NW)
+
+    def __fill_canvas(self, event):
+        "Enlarge the windows item to the canvas width"
+
+        canvas_width = event.width
+        self.canvas.itemconfig(self.windows_item, width=canvas_width)
+
+    def update(self):
+        "Update the canvas and the scrollregion"
+
+        self.update_idletasks()
+        self.canvas.config(scrollregion=self.canvas.bbox(self.windows_item))
