@@ -65,6 +65,11 @@ class IEventHandler:
             self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.BALANCE:
+            current_user_account_number = i_db_con.users_db.get_account_number_from_name(
+                self.interface.current_user)
+            self.interface.movements_menu(
+                i_db_con.movements_db.retrieve_data(current_user_account_number), current_user_account_number)
+
             self.interface.current_scenario = Scenario.BALANCE2
             self.interface.update_scenario()
 
@@ -355,6 +360,8 @@ class IEventHandler:
             self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.BALANCE2:
+            # destroy movements
+            self.interface.movements_menu_destroy()
             self.interface.current_scenario = Scenario.MAIN
             self.interface.update_scenario()
 
@@ -437,7 +444,7 @@ class IEventHandler:
                     self.interface.current_user, self.interface.final_balance)
 
                 i_db_con.register_movement(i_db_con.WITHDRAW, i_db_con.users_db.get_account_number_from_name(
-                    self.interface.current_user), self.interface.amount_withdraw, None, None, None, None)
+                    self.interface.current_user), self.interface.amount_withdraw, None, None, None, None, None)
 
             self.interface.destroy_withdraw()
 
