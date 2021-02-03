@@ -171,6 +171,16 @@ class Scenario:
     payments_warning_message_en = languages[str(
         PAYMENTS)]["Warning Message"]["English"]
 
+    payments_entity_size_pt = languages[str(
+        PAYMENTS)]["Entity size"]["Portuguese"]
+    payments_entity_size_en = languages[str(
+        PAYMENTS)]["Entity size"]["English"]
+
+    payments_reference_size_pt = languages[str(
+        PAYMENTS)]["Reference size"]["Portuguese"]
+    payments_reference_size_en = languages[str(
+        PAYMENTS)]["Reference size"]["English"]
+
     movements_withdraws_pt = languages[str(
         BALANCE2)]["Withdraws"]["Portuguese"]
     movements_withdraws_en = languages[str(BALANCE2)]["Withdraws"]["English"]

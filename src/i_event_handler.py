@@ -388,16 +388,24 @@ class IEventHandler:
                     except:
                         only_numbers = False
 
-            if only_numbers == False:
-                self.interface.payments_warning()
-            else:
-                if (i_db_con.users_db.get_balance(self.interface.current_user) - float(self.interface.payments_amount_text.get())) >= 0:
-                    i_db_con.payments(self.interface.current_user, self.interface.entity_text.get(
-                    ), self.interface.reference_text.get(), float(self.interface.payments_amount_text.get()))
+            if len(self.interface.entity_text.get()) == 5:
+                if len(self.interface.reference_text.get()) == 9:
+                    if only_numbers == False:
+                        self.interface.payments_warning(0)
+                    else:
+                        if (i_db_con.users_db.get_balance(self.interface.current_user) - float(self.interface.payments_amount_text.get())) >= 0:
+                            i_db_con.payments(self.interface.current_user, self.interface.entity_text.get(
+                            ), self.interface.reference_text.get(), float(self.interface.payments_amount_text.get()))
 
-                    self.interface.payments_destroy()
-                    self.interface.current_scenario = Scenario.MAIN
-                    self.interface.update_scenario()
+                            self.interface.payments_destroy()
+                            self.interface.current_scenario = Scenario.MAIN
+                            self.interface.update_scenario()
+                        else:
+                            self.interface.payments_warning(3)
+                else:
+                    self.interface.payments_warning(2)
+            else:
+                self.interface.payments_warning(1)
 
         elif self.interface.current_scenario == Scenario.MBWAY1:
             # destroy mbway

@@ -600,9 +600,23 @@ class Interface:
 
         self.payments_warning_field.place(x=450, y=475)
 
-    def payments_warning(self):
-        self.payments_warning_field.config(
-            text=Scenario.payments_warning_message_pt)
+    def payments_warning(self, error_code):
+        if error_code == 0:
+            # only numbers
+            self.payments_warning_field.config(
+                text=Scenario.payments_warning_message_pt)
+        elif error_code == 1:
+            # entity size
+            self.payments_warning_field.config(
+                text=Scenario.payments_entity_size_pt)
+        elif error_code == 2:
+            # reference size
+            self.payments_warning_field.config(
+                text=Scenario.payments_reference_size_pt)
+        elif error_code == 3:
+            # not enough money
+            self.payments_warning_field.config(
+                text=Scenario.withdraw_insufficient_balance_pt)
 
     def focusin_entity(self, pos):
         self.focusedin = True
