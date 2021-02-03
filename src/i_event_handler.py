@@ -104,6 +104,14 @@ class IEventHandler:
 
             self.interface.update_scenario()
 
+        elif self.interface.current_scenario == Scenario.BALANCE:
+            self.interface.current_scenario = Scenario.IBAN
+            # iban
+            self.interface.iban(
+                i_db_con.users_db.get_account_number_from_name(self.interface.current_user))
+
+            self.interface.update_scenario()
+
         elif self.interface.current_scenario == Scenario.VOUCHERS1:
             self.interface.current_scenario = Scenario.VOUCHERS2
             self.interface.vouchers(30, i_db_con.users_db.get_balance(
@@ -445,6 +453,13 @@ class IEventHandler:
             self.interface.current_scenario = Scenario.MAIN
             self.interface.update_scenario()
 
+        elif self.interface.current_scenario == Scenario.IBAN:
+            self.interface.current_scenario = Scenario.MAIN
+            # destroy iban
+            self.interface.destroy_iban()
+
+            self.interface.update_scenario()
+
         elif self.interface.current_scenario == Scenario.CONFIRMWITHDRAW:
             # confirm withdraw
             if self.interface.final_balance >= 0:
@@ -462,3 +477,5 @@ class IEventHandler:
     def update_interface_bank_numbers_abb(self):
         self.interface.register_bank_abb, self.interface.register_account_number = i_db_con.create_account_number(
             self.interface.register_bank_text.get())
+
+    

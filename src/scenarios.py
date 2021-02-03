@@ -27,6 +27,7 @@ class Scenario:
     CONFIRMWITHDRAW = 15
     ADMIN = 16
     ADMIN1 = 17
+    IBAN = 18
 
     # languages.json
     LANGUAGES = languages
@@ -195,6 +196,9 @@ class Scenario:
     movements_vouchers_pt = languages[str(BALANCE2)]["Vouchers"]["Portuguese"]
     movements_vouchers_en = languages[str(BALANCE2)]["Vouchers"]["English"]
 
+    iban_pt = languages[str(IBAN)]["IBAN"]["Portuguese"]
+    iban_en = languages[str(IBAN)]["IBAN"]["English"]
+
     # return active buttons in the scene
     @staticmethod
     def get_scenario_active(scenario, admin):
@@ -211,7 +215,7 @@ class Scenario:
         elif scenario == Scenario.WITHDRAW:
             return [True, True, True, True, True, False, True, True]
         elif scenario == Scenario.BALANCE:
-            return [True, True, False, False, False, False, False, True]
+            return [True, True, True, False, False, False, False, True]
         elif scenario == Scenario.TRANSFERS:
             return [False, False, False, True, False, False, False, True]
         elif scenario == Scenario.PAYMENTS:
@@ -238,6 +242,8 @@ class Scenario:
             return [False, False, False, True, False, False, False, True]
         elif scenario == Scenario.ADMIN1:
             return [False, False, False, True, False, False, True, True]
+        elif scenario == Scenario.IBAN:
+            return [False, False, False, False, False, False, False, True]
 
     # return buttons's text in the scene
     @staticmethod

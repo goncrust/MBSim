@@ -735,6 +735,18 @@ class Interface:
         # self.fof_label.destroy()
         self.fo_scrollable.destroy()
 
+    # IBAN
+    def iban(self, user_iban):
+        label_text = Scenario.iban_pt + \
+            ": " + str(user_iban)
+
+        self.iban_label = tk.Label(self.canvas, font=(
+            "default", 18), text=label_text, justify=tk.LEFT, bg=BACKGROUND_CLR)
+        self.iban_label.place(x=200, y=200)
+
+    def destroy_iban(self):
+        self.iban_label.destroy()
+
 
 # movements scrolling sections
 # credits: https://stackoverflow.com/questions/3085696/adding-a-scrollbar-to-a-group-of-widgets-in-tkinter
@@ -766,13 +778,14 @@ class Scrollable(tk.Frame):
             0, 0, window=self, anchor=tk.NW)
 
     def __fill_canvas(self, event):
-        "Enlarge the windows item to the canvas width"
+        #Enlarge the windows item to the canvas width
 
         canvas_width = event.width
         self.canvas.itemconfig(self.windows_item, width=canvas_width)
 
     def update(self):
-        "Update the canvas and the scrollregion"
+        #Update the canvas and the scrollregion
 
         self.update_idletasks()
         self.canvas.config(scrollregion=self.canvas.bbox(self.windows_item))
+
