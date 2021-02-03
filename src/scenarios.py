@@ -32,6 +32,10 @@ class Scenario:
     # languages.json
     LANGUAGES = languages
 
+    # languages
+    PORTUGUESE = "pt"
+    ENGLISH = "en"
+
     # specific language cases
     login_username_pt = languages[str(LOGIN)]["Username"]["Portuguese"]
     login_username_en = languages[str(LOGIN)]["Username"]["English"]
@@ -140,7 +144,7 @@ class Scenario:
     voucher_music_pt = languages[str(VOUCHERS2)]["Music"]["Portuguese"]
     voucher_music_en = languages[str(VOUCHERS2)]["Music"]["English"]
 
-    tranfers_iban_pt = languages[str(TRANSFERS)]["IBAN"]["Portuguese"]
+    transfers_iban_pt = languages[str(TRANSFERS)]["IBAN"]["Portuguese"]
     transfers_iban_en = languages[str(TRANSFERS)]["IBAN"]["English"]
 
     transfers_amount_pt = languages[str(TRANSFERS)]["Amount"]["Portuguese"]
@@ -208,6 +212,24 @@ class Scenario:
     iban_pt = languages[str(IBAN)]["IBAN"]["Portuguese"]
     iban_en = languages[str(IBAN)]["IBAN"]["English"]
 
+    @staticmethod
+    def get_label(label):
+        if Scenario.get_current_language() == Scenario.PORTUGUESE:
+            return eval("Scenario." + label + "_pt")
+        elif Scenario.get_current_language() == Scenario.ENGLISH:
+            return eval("Scenario." + label + "_en")
+
+    @staticmethod
+    def get_current_language():
+        return languages["Current Language"]
+
+    @staticmethod
+    def set_current_language(language):
+        languages["Current Language"] = language
+
+        with open('assets/language.json', 'w', encoding='utf-8') as languages_file:
+            json.dump(languages, languages_file, ensure_ascii=False, indent=4)
+
     # return active buttons in the scene
     @staticmethod
     def get_scenario_active(scenario, admin):
@@ -261,6 +283,9 @@ class Scenario:
         result = []
 
         for i in range(8):
-            result.append(languages[str(scenario)][str(i)]["Portuguese"])
+            if Scenario.get_current_language() == Scenario.PORTUGUESE:
+                result.append(languages[str(scenario)][str(i)]["Portuguese"])
+            elif Scenario.get_current_language() == Scenario.ENGLISH:
+                result.append(languages[str(scenario)][str(i)]["English"])
 
         return result
