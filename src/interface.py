@@ -444,7 +444,6 @@ class Interface:
         self.withdraw_warning_field.config(
             text=Scenario.withdraw_error_pt)
 
-
     def focusin_withdraw_custom(self, pos):
         if self.custom_withdraw_field.cget("fg") == "grey":
             self.custom_withdraw_field.config(fg="black")
@@ -510,12 +509,14 @@ class Interface:
         self.voucher_digits = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 
         if final_balance >= 0:
-            for i in range(0,3):
-                for i in range(0,4):
-                    self.voucher_code = self.voucher_code + str(random.choice(self.voucher_digits))
+            for i in range(0, 3):
+                for i in range(0, 4):
+                    self.voucher_code = self.voucher_code + \
+                        str(random.choice(self.voucher_digits))
                 self.voucher_code = self.voucher_code + "-"
-            for i in range(0,4):
-                    self.voucher_code = self.voucher_code + str(random.choice(self.voucher_digits))
+            for i in range(0, 4):
+                self.voucher_code = self.voucher_code + \
+                    str(random.choice(self.voucher_digits))
 
             label_text2 = Scenario.get_label(
                 "voucher_code") + ": " + self.voucher_code
@@ -728,8 +729,12 @@ class Interface:
 
         self.widthdraw_text = ""
         for w in self.widthdraw_data:
-            self.widthdraw_text = self.widthdraw_text + \
-                str(w[1]) + " €\t\t\t\t\t" + w[2] + "\n"
+            if w[1] < 9999:
+                self.widthdraw_text = self.widthdraw_text + \
+                    str(w[1]) + " €\t\t\t\t\t" + w[2] + "\n"
+            else:
+                self.widthdraw_text = self.widthdraw_text + \
+                    str(w[1]) + " €\t\t\t\t" + w[2] + "\n"
 
         self.first_frame = tk.Frame(self.canvas)
         self.first_frame.place(x=20, y=20)
@@ -743,11 +748,21 @@ class Interface:
         self.transfers_text = ""
         for t in self.transfers_data:
             if t[0] == current_user_account_number:
-                self.transfers_text = self.transfers_text + \
-                    t[1] + "\t-" + str(t[2]) + " €\t" + t[3] + "\n"
+                if t[2] < 9999:
+                    self.transfers_text = self.transfers_text + \
+                        t[1] + "\t-" + str(t[2]) + " €\t" + t[3] + "\n"
+                else:
+                    self.transfers_text = self.transfers_text + \
+                        t[1] + "  -" + str(t[2]) + " €\t" + t[3] + "\n"
             elif t[1] == current_user_account_number:
-                self.transfers_text = self.transfers_text + \
-                    t[0] + "\t+" + str(t[2]) + " €\t" + t[3] + "\n"
+                if t[2] < 9999:
+                    self.transfers_text = self.transfers_text + \
+                        t[0] + "\t+" + str(t[2]) + " €\t" + t[3] + "\n"
+                else:
+                    self.transfers_text = self.transfers_text + \
+                        t[0] + "  +" + str(t[2]) + " €\t" + t[3] + "\n"
+
+        print(self.transfers_text)
 
         self.second_frame = tk.Frame(self.canvas)
         self.second_frame.place(x=(WIDTH/2) + 10, y=20)
@@ -760,8 +775,12 @@ class Interface:
 
         self.payments_text = ""
         for p in self.payments_data:
-            self.payments_text = self.payments_text + \
-                p[1] + "\t" + p[2] + "\t" + str(p[3]) + " €\t\t" + p[4] + "\n"
+            if p[3] < 9999:
+                self.payments_text = self.payments_text + \
+                    p[1] + "\t" + p[2] + "\t" + str(p[3]) + " €\t\t" + p[4] + "\n"
+            else:
+                self.payments_text = self.payments_text + \
+                    p[1] + "\t" + p[2] + "\t" + str(p[3]) + " €\t" + p[4] + "\n"
 
         self.third_frame = tk.Frame(self.canvas)
         self.third_frame.place(x=20, y=(HEIGHT/2) + 10 - 100)
@@ -786,7 +805,7 @@ class Interface:
 
             self.vouchers_text = self.vouchers_text + \
                 type_v + "\t" + v[2] + "\t" + \
-                str(v[3]) + " €\t\t" + v[4] + "\n"
+                str(v[3]) + " €\t" + v[4] + "\n"
 
         self.fourth_frame = tk.Frame(self.canvas)
         self.fourth_frame.place(x=(WIDTH/2) + 10, y=(HEIGHT/2) + 10 - 100)
