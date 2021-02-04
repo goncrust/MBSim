@@ -32,6 +32,13 @@ This project was made and is maintained by @goncrust, @teravyte18 and @KingKatan
 <img src="https://github.com/KingKatana09.png?size=50" alt="drawing" width="50">
 </a>
 
+Honorable mentions for having helped in this project (@DPS777):
+
+</a>
+<a href="https://github.com/DPS777">
+<img src="https://github.com/DPS777.png?size=50" alt="drawing" width="50">
+</a>
+
 ## Features
 
 ### Real Banks
