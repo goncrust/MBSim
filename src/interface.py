@@ -4,6 +4,7 @@ from scenarios import *
 from tkcalendar import Calendar, DateEntry
 import time
 import random
+import admin
 
 # window dimensions
 WIDTH = 750
@@ -30,6 +31,9 @@ class Interface:
 
         # user
         self.current_user = None
+
+        # admin
+        self.admin = admin.Admin(self)
 
         # languages image
         self.pt_image = None
@@ -762,8 +766,6 @@ class Interface:
                     self.transfers_text = self.transfers_text + \
                         t[0] + "  +" + str(t[2]) + " €\t" + t[3] + "\n"
 
-        print(self.transfers_text)
-
         self.second_frame = tk.Frame(self.canvas)
         self.second_frame.place(x=(WIDTH/2) + 10, y=20)
         self.sf_label = tk.Label(
@@ -777,10 +779,12 @@ class Interface:
         for p in self.payments_data:
             if p[3] < 9999:
                 self.payments_text = self.payments_text + \
-                    p[1] + "\t" + p[2] + "\t" + str(p[3]) + " €\t\t" + p[4] + "\n"
+                    p[1] + "\t" + p[2] + "\t" + \
+                    str(p[3]) + " €\t\t" + p[4] + "\n"
             else:
                 self.payments_text = self.payments_text + \
-                    p[1] + "\t" + p[2] + "\t" + str(p[3]) + " €\t" + p[4] + "\n"
+                    p[1] + "\t" + p[2] + "\t" + \
+                    str(p[3]) + " €\t" + p[4] + "\n"
 
         self.third_frame = tk.Frame(self.canvas)
         self.third_frame.place(x=20, y=(HEIGHT/2) + 10 - 100)
@@ -847,6 +851,33 @@ class Interface:
 
     def destroy_iban(self):
         self.iban_label.destroy()
+
+    # admin
+    def admin_menu(self, code):
+        if code == 0:
+            self.admin.generate_menu_search(
+                Scenario.get_label("login_username"))
+        elif code == 1:
+            return self.admin.generate_menu_user(Scenario.get_label("admin_new_pin"))
+        elif code == 2:
+            return self.admin.return_user_modification()
+        elif code == 3:
+            return self.admin.return_user_to_delete()
+
+    def username_exists(self, username):
+        return self.event_handler.username_exists(username)
+
+    def get_account_number_from_username(self, username):
+        return self.event_handler.get_account_number_from_name(username)
+
+    def get_bank_from_username(self, username):
+        return self.event_handler.get_bank_from_user(username)
+
+    def get_birthday_from_username(self, username):
+        return self.event_handler.get_birthday_from_user(username)
+
+    def get_balance_from_username(self, username):
+        return self.event_handler.get_balance_from_user(username)
 
 
 # movements scrolling sections

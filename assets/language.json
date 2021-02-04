@@ -789,6 +789,10 @@
         "7": {
             "Portuguese": "Confirmar",
             "English": "Confirm"
+        },
+        "New PIN": {
+            "Portuguese": "Novo PIN",
+            "English": "New PIN"
         }
     },
     "18": {

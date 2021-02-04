@@ -1,5 +1,6 @@
 from scenarios import *
 import database.i_db_connector as i_db_con
+import hashlib
 
 
 # button events
@@ -190,10 +191,13 @@ class IEventHandler:
             self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.ADMIN:
+            self.interface.admin.destroy_menu_search()
             self.interface.current_scenario = Scenario.MAIN
             self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.ADMIN1:
+            self.interface.admin.destroy_menu_user()
+
             self.interface.current_scenario = Scenario.MAIN
             self.interface.update_scenario()
 
@@ -233,8 +237,10 @@ class IEventHandler:
     def click_5(self, event):
 
         if self.interface.current_scenario == Scenario.MAIN:
-            self.interface.current_scenario = Scenario.ADMIN
-            self.interface.update_scenario()
+            if self.interface.current_user == "admin":
+                self.interface.admin_menu(0)
+                self.interface.current_scenario = Scenario.ADMIN
+                self.interface.update_scenario()
 
     def click_6(self, event):
 
@@ -252,7 +258,15 @@ class IEventHandler:
         elif self.interface.current_scenario == Scenario.ADMIN1:
             # delete user
 
-            pass
+            # returns user
+            user = self.interface.admin_menu(3)
+
+            i_db_con.users_db.delete_user(user)
+
+            self.interface.admin.destroy_menu_user()
+
+            self.interface.current_scenario = Scenario.MAIN
+            self.interface.update_scenario()
 
     def click_7(self, event):
 
@@ -361,7 +375,6 @@ class IEventHandler:
                     self.interface.withdraw_custom_destroy()
 
                     self.interface.update_scenario()
-                    
 
         elif self.interface.current_scenario == Scenario.BALANCE:
             self.interface.current_scenario = Scenario.MAIN
@@ -450,13 +463,35 @@ class IEventHandler:
             self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.ADMIN:
-            self.interface.current_scenario = Scenario.ADMIN1
-            self.interface.update_scenario()
+            # search user
+            if self.interface.admin_menu(1):
+                self.interface.admin.destroy_menu_search()
+                self.interface.current_scenario = Scenario.ADMIN1
+                self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.ADMIN1:
             # confirm user modification
 
-            pass
+            # returns user modifications
+            name, account, bank, pin, birthday, balance = self.interface.admin_menu(
+                2)
+
+            if (pin == "Novo PIN") or (pin == "New PIN") or (pin == ""):
+                pin = i_db_con.users_db.get_pin_from_user(
+                    self.interface.admin.username).fetchall()[0][0]
+            else:
+                pin = hashlib.sha512(pin.encode('utf-8')).hexdigest()
+
+            birthday = birthday.strftime("%d-%m-%Y")
+
+            i_db_con.users_db.delete_user(self.interface.admin.username)
+            i_db_con.users_db.register_user(
+                name, account, bank, pin, birthday, float(balance))
+
+            self.interface.admin.destroy_menu_user()
+
+            self.interface.current_scenario = Scenario.MAIN
+            self.interface.update_scenario()
 
         elif self.interface.current_scenario == Scenario.VOUCHERS:
             self.interface.current_scenario = Scenario.MAIN
@@ -487,4 +522,17 @@ class IEventHandler:
         self.interface.register_bank_abb, self.interface.register_account_number = i_db_con.create_account_number(
             self.interface.register_bank_text.get())
 
-    
+    def username_exists(self, username):
+        return i_db_con.users_db.verify_existing_username(username)
+
+    def get_account_number_from_name(self, username):
+        return i_db_con.users_db.get_account_number_from_name(username)
+
+    def get_bank_from_user(self, username):
+        return i_db_con.users_db.get_bank_from_name(username)
+
+    def get_birthday_from_user(self, username):
+        return i_db_con.users_db.get_birthday_from_name(username)
+
+    def get_balance_from_user(self, username):
+        return i_db_con.users_db.get_balance(username)

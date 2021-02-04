@@ -67,11 +67,22 @@ class UDatabase:
 
         self.con.commit()
 
+    def delete_user(self, name):
+        self.c.execute("DELETE FROM Users WHERE name=?", (name,))
+
+        self.con.commit()
+
     def get_name_from_account_number(self, account):
         return self.c.execute("SELECT name FROM Users WHERE account=?", (account,)).fetchall()[0][0]
 
     def get_account_number_from_name(self, name):
         return self.c.execute("SELECT account FROM Users WHERE name=?", (name,)).fetchall()[0][0]
+
+    def get_bank_from_name(self, name):
+        return self.c.execute("SELECT bank FROM Users WHERE name=?", (name,)).fetchall()[0][0]
+
+    def get_birthday_from_name(self, name):
+        return self.c.execute("SELECT birthday FROM Users WHERE name=?", (name,)).fetchall()[0][0]
 
 
 class MDatabase:

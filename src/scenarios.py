@@ -120,8 +120,10 @@ class Scenario:
     withdraw_other_default_text_en = languages[str(
         WITHDRAWOTHERAMOUNT)]["Amount"]["English"]
 
-    withdraw_error_pt = languages[str(WITHDRAWOTHERAMOUNT)]["0 Error"]["Portuguese"]
-    withdraw_error_en = languages[str(WITHDRAWOTHERAMOUNT)]["0 Error"]["English"]
+    withdraw_error_pt = languages[str(
+        WITHDRAWOTHERAMOUNT)]["0 Error"]["Portuguese"]
+    withdraw_error_en = languages[str(
+        WITHDRAWOTHERAMOUNT)]["0 Error"]["English"]
 
     mbway_error_pt = languages[str(MBWAY1)]["Error Message"]["Portuguese"]
     mbway_error_en = languages[str(MBWAY1)]["Error Message"]["English"]
@@ -150,7 +152,8 @@ class Scenario:
     transfers_amount_pt = languages[str(TRANSFERS)]["Amount"]["Portuguese"]
     transfers_amount_en = languages[str(TRANSFERS)]["Amount"]["English"]
 
-    transfers_zero_warning_pt = languages[str(TRANSFERS)]["0 Error"]["Portuguese"]
+    transfers_zero_warning_pt = languages[str(
+        TRANSFERS)]["0 Error"]["Portuguese"]
     transfers_zero_warning_en = languages[str(TRANSFERS)]["0 Error"]["English"]
 
     iban_default_text_pt = languages[str(
@@ -182,7 +185,8 @@ class Scenario:
     payments_warning_message_en = languages[str(
         PAYMENTS)]["Warning Message"]["English"]
 
-    payments_zero_warning_pt = languages[str(PAYMENTS)]["0 Error"]["Portuguese"]
+    payments_zero_warning_pt = languages[str(
+        PAYMENTS)]["0 Error"]["Portuguese"]
     payments_zero_warning_en = languages[str(PAYMENTS)]["0 Error"]["English"]
 
     payments_entity_size_pt = languages[str(
@@ -211,6 +215,9 @@ class Scenario:
 
     iban_pt = languages[str(IBAN)]["IBAN"]["Portuguese"]
     iban_en = languages[str(IBAN)]["IBAN"]["English"]
+
+    admin_new_pin_pt = languages[str(ADMIN1)]["New PIN"]["Portuguese"]
+    admin_new_pin_en = languages[str(ADMIN1)]["New PIN"]["English"]
 
     @staticmethod
     def get_label(label):
