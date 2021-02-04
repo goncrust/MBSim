@@ -2,7 +2,7 @@
 
 **Portuguese ATM Simulator** for school project
 
-![multibanco](main_menu.png)
+<img src="main_menu.png" alt="multibanco" width="425">
 
 ## List of contents
 
@@ -23,20 +23,20 @@ This project was made and is maintained by @goncrust, @teravyte18 and @KingKatan
 
 </a>
 <a href="https://github.com/goncrust">
-<img src="https://github.com/goncrust.png?size=50" alt="drawing" width="50">
+<img src="https://github.com/goncrust.png?size=50" width="50">
 </a>
 <a href="https://github.com/teravyte18">
-<img src="https://github.com/teravyte18.png?size=50" alt="drawing" width="50">
+<img src="https://github.com/teravyte18.png?size=50" width="50">
 </a>
 <a href="https://github.com/KingKatana09">
-<img src="https://github.com/KingKatana09.png?size=50" alt="drawing" width="50">
+<img src="https://github.com/KingKatana09.png?size=50" width="50">
 </a>
 
 Honorable mentions for having helped in this project (@DPS777):
 
 </a>
 <a href="https://github.com/DPS777">
-<img src="https://github.com/DPS777.png?size=50" alt="drawing" width="50">
+<img src="https://github.com/DPS777.png?size=50" width="50">
 </a>
 
 ## Features
@@ -51,11 +51,15 @@ The application has a list of real Portuguese banks, with iban generation simila
 
 With an admin menu you can change any user data you want.
 
-![admin](admin_menu.png)
+<img src="admin_menu.png" alt="admin" width="425">
 
 ### Local Database
 
 SQLite3 is used so that all data relating to users and account movements is stored locally.
+
+### Keyboard support
+
+You cane use your keyboard's numpad to navigate through the menus.
 
 ## Get Started
 
