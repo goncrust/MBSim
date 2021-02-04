@@ -21,7 +21,16 @@ The current version of the program is only optimised for Windows 10.
 
 This project was made and is maintained by @goncrust, @teravyte18 and @KingKatana09:
 
-[![](https://github.com/goncrust.png?size=50)](https://github.com/goncrust) [![](https://github.com/teravyte18.png?size=50)](https://github.com/teravyte18) [![](https://github.com/KingKatana09.png?size=50)](https://github.com/KingKatana09)
+</a>
+<a href="https://github.com/goncrust">
+<img src="https://github.com/goncrust.png?size=50" alt="drawing" width="50">
+</a>
+<a href="https://github.com/teravyte18">
+<img src="https://github.com/teravyte18.png?size=50" alt="drawing" width="50">
+</a>
+<a href="https://github.com/KingKatana09">
+<img src="https://github.com/KingKatana09.png?size=50" alt="drawing" width="50">
+</a>
 
 ## Features
 
