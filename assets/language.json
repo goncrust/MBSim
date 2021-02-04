@@ -126,7 +126,7 @@
         },
         "Info": {
             "Portuguese": "Insira um nome de utilizador com 4 ou\nmais letras e que não contenha números\ne um pin de 4 digitos numéricos.",
-            "English": "Enter a username with 4 or more letters and that does not contain numbers and a 4-digit numeric pin."
+            "English": "Enter a username with 4 or more letters \nand that does not contain numbers and a \n4-digit numeric pin."
         },
         "Only Letters": {
             "Portuguese": "O nome de utilizador só\npode conter letras.",
@@ -158,7 +158,7 @@
         },
         "Age": {
             "Portuguese": "Tens de ter pelo menos\n16 anos.",
-            "English": "You must be at least 16 years old.."
+            "English": "You must be at least 16 years old."
         }
     },
     "3": {
@@ -198,11 +198,11 @@
     "4": {
         "0": {
             "Portuguese": "Consulta de\nSaldos da Conta",
-            "English": "Account Balance Inquiry"
+            "English": "Account Balance\n Inquiry"
         },
         "1": {
             "Portuguese": "Consulta de\nMovimentos da Conta",
-            "English": "Account Movements Inquiry"
+            "English": "Account Movements\nInquiry"
         },
         "2": {
             "Portuguese": "Consulta IBAN",
@@ -263,12 +263,12 @@
             "English": "Confirm"
         },
         "IBAN": {
-            "Portuguese": "Insira o IBAN do destinatário",
-            "English": "Insert receiver IBAN number"
+            "Portuguese": "Insira o IBAN do destinatário.",
+            "English": "Insert receiver IBAN number."
         },
         "Amount": {
-            "Portuguese": "Introduza a importância a transferir",
-            "English": "Insert amount to transfer"
+            "Portuguese": "Introduza a importância a transferir.",
+            "English": "Insert amount to transfer."
         },
         "Default NIB": {
             "Portuguese": "IBAN",
@@ -279,12 +279,12 @@
             "English": "Amount"
         },
         "Warning Message": {
-            "Portuguese": "Utilize apenas números",
-            "English": "Use only numbers"
+            "Portuguese": "Utilize apenas números.",
+            "English": "Use only numbers."
         },
         "0 Error": {
-            "Portuguese": "Impossível transferir 0 €",
-            "English": "Impossible to transfer 0 €"
+            "Portuguese": "Impossível transferir 0 €.",
+            "English": "Impossible to transfer 0 €."
         }
     },
     "6": {
@@ -321,28 +321,28 @@
             "English": "Confirm"
         },
         "Entity": {
-            "Portuguese": "Entidade",
-            "English": "Entity"
+            "Portuguese": "Entidade:",
+            "English": "Entity:"
         },
         "Reference": {
-            "Portuguese": "Referência",
-            "English": "Reference"
+            "Portuguese": "Referência:",
+            "English": "Reference:"
         },
         "Amount": {
-            "Portuguese": "Montante",
-            "English": "Amount"
+            "Portuguese": "Montante:",
+            "English": "Amount:"
         },
         "Warning Message": {
-            "Portuguese": "Utilize apenas números",
-            "English": "Use only numbers"
+            "Portuguese": "Utilize apenas números.",
+            "English": "Use only numbers."
         },
         "Entity size": {
-            "Portuguese": "A entidade tem de\npossuir 5 digitos numéricos",
-            "English": "The entity must have 5 numeric digits"
+            "Portuguese": "A entidade tem de\npossuir 5 digitos numéricos.",
+            "English": "The entity must have 5 numeric digits."
         },
         "Reference size": {
-            "Portuguese": "A referência tem de\npossuir 9 digitos numéricos",
-            "English": "The entity must have 9 numeric digits"
+            "Portuguese": "A referência tem de\npossuir 9 digitos numéricos.",
+            "English": "The entity must have 9 numeric digits."
         },
         "0 Error": {
             "Portuguese": "Impossível pagar 0 €",
@@ -829,5 +829,5 @@
             "English": "IBAN"
         }
     },
-    "Current Language": "pt"
+    "Current Language": "en"
 }
