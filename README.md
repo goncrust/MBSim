@@ -59,7 +59,7 @@ SQLite3 is used so that all data relating to users and account movements is stor
 
 ### Keyboard support
 
-You cane use your keyboard's numpad to navigate through the menus.
+You can use your keyboard's numpad to navigate through the menus.
 
 ## Get Started
 
