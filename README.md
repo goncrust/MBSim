@@ -75,5 +75,5 @@ You cane use your keyboard's numpad to navigate through the menus.
 1. Install the required python librarys:
     - `pip install pillow`
     - `pip install tkcalendar`
-1. Clone the repo
+1. Clone the repo: `git clone https://github.com/goncrust/MBSim.git`
 1. Go to the folder created by cloning the repo and run `py main.py`
