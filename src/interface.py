@@ -526,10 +526,15 @@ class Interface:
             self.vouchers_code_label.place(x=285, y=250)
 
             label_text3 = Scenario.get_label("voucher_warning")
-
+            
             self.vouchers_warning_label = tk.Label(self.canvas, font=(
                 "default", 18), text=label_text3, justify=tk.CENTER, bg=BACKGROUND_CLR, fg="red")
-            self.vouchers_warning_label.place(x=120, y=300)
+
+            if Scenario.get_current_language() == Scenario.PORTUGUESE:
+                self.vouchers_warning_label.place(x=120, y=300)
+            elif Scenario.get_current_language() == Scenario.ENGLISH:
+                 self.vouchers_warning_label.place(x=180, y=300)
+           
         else:
             label_text3 = Scenario.get_label("withdraw_insufficient_balance")
 
@@ -557,16 +562,23 @@ class Interface:
 
         self.tranfers2_label = tk.Label(self.canvas, font=(
             "default", 18), text=label2_text, justify=tk.LEFT, bg=BACKGROUND_CLR)
-        self.tranfers2_label.place(x=190, y=200)
-
+        
+        if Scenario.get_current_language() == Scenario.PORTUGUESE:
+            self.tranfers2_label.place(x=190, y=200)
+        elif Scenario.get_current_language() == Scenario.ENGLISH:
+            self.tranfers2_label.place(x=235, y=200)
+        
         self.iban_text = tk.StringVar()
 
         self.iban_field = tk.Entry(
             self.canvas, textvariable=self.iban_text, font=("default", 21))
 
-        self.iban_field.place(
-            x=(WIDTH/2)-100, y=(HEIGHT)-600, width=200, height=40)
+        if Scenario.get_current_language() == Scenario.PORTUGUESE:
+            self.iban_field.place(x=(WIDTH/2)-100, y=(HEIGHT)-600, width=200, height=40)
+        elif Scenario.get_current_language() == Scenario.ENGLISH:
+            self.iban_field.place(x=(WIDTH/2)-100, y=(HEIGHT)-600, width=200, height=40)
 
+    
         self.iban_field.config(fg="grey")
 
         self.iban_field.insert(
@@ -579,8 +591,11 @@ class Interface:
         self.amount_field = tk.Entry(
             self.canvas, textvariable=self.amount_text, font=("default", 21))
 
-        self.amount_field.place(
-            x=(WIDTH/2)-100, y=(HEIGHT)-500, width=200, height=40)
+        if Scenario.get_current_language() == Scenario.PORTUGUESE:
+            self.amount_field.place(x=(WIDTH/2)-100, y=(HEIGHT)-500, width=200, height=40)
+        elif Scenario.get_current_language() == Scenario.ENGLISH:
+            self.amount_field.place(x=(WIDTH/2)-100, y=(HEIGHT)-500, width=200, height=40)
+        
 
         self.amount_field.config(fg="grey")
 
