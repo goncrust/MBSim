@@ -19,7 +19,7 @@ The current version of the program is only optimised for Windows 10.
 
 ## Development
 
-This project was made and is maintained by @goncrust, @teravyte18 and @KingKatana09:
+This project was developed and is maintained by @goncrust, @teravyte18 and @KingKatana09:
 
 </a>
 <a href="https://github.com/goncrust">
