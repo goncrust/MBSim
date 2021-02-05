@@ -1,0 +1,4 @@
+Setup="main".exe
+TempMode
+Silent=2
+Overwrite=1
