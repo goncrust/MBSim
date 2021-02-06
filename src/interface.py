@@ -487,6 +487,7 @@ class Interface:
     # vouchers
     def vouchers(self, amount, final_balance):
         self.voucher_type = self.event_handler.voucher
+        self.final_balance = final_balance
 
         self.voucher_type_text = None
         if self.event_handler.voucher == "Music":
@@ -512,7 +513,7 @@ class Interface:
         self.voucher_code = ""
         self.voucher_digits = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 
-        if final_balance >= 0:
+        if self.final_balance >= 0:
             for i in range(0, 3):
                 for i in range(0, 4):
                     self.voucher_code = self.voucher_code + \

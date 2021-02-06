@@ -338,11 +338,11 @@
         },
         "Entity size": {
             "Portuguese": "A entidade tem de\npossuir 5 digitos numéricos.",
-            "English": "The entity must have 5 numeric digits."
+            "English": "The entity must have\n5 numeric digits."
         },
         "Reference size": {
             "Portuguese": "A referência tem de\npossuir 9 digitos numéricos.",
-            "English": "The entity must have 9 numeric digits."
+            "English": "The entity must have\n9 numeric digits."
         },
         "0 Error": {
             "Portuguese": "Impossível pagar 0 €",
@@ -833,5 +833,5 @@
             "English": "IBAN"
         }
     },
-    "Current Language": "pt"
+    "Current Language": "en"
 }
