@@ -71,6 +71,11 @@ You can use your keyboard's numpad to navigate through the menus.
 
 ### Step by step
 
+1. Download the executable from [here](https://github.com/goncrust/MBSim/releases/download/v1.0/mbsim.exe)
+1. Simply execute the file and ignore the anti-virus warnings
+
+### or
+
 1. Install [python 3.9](https://www.python.org/ftp/python/3.9.1/python-3.9.1-amd64.exe)
 1. Install the required python librarys:
     - `pip install pillow`
