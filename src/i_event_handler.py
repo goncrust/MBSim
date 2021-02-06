@@ -453,11 +453,12 @@ class IEventHandler:
             self.interface.destroy_vouchers()
 
             if self.interface.voucher_code != None:
-                i_db_con.register_movement(i_db_con.VOUCHER, i_db_con.users_db.get_account_number_from_name(
-                    self.interface.current_user), self.interface.voucher_amount, None, None, None, self.interface.voucher_type, self.interface.voucher_code)
+                if self.interface.final_balance >= 0:
+                    i_db_con.register_movement(i_db_con.VOUCHER, i_db_con.users_db.get_account_number_from_name(
+                        self.interface.current_user), self.interface.voucher_amount, None, None, None, self.interface.voucher_type, self.interface.voucher_code)
 
-                i_db_con.users_db.set_balance(self.interface.current_user, i_db_con.users_db.get_balance(
-                    self.interface.current_user) - float(self.interface.voucher_amount))
+                    i_db_con.users_db.set_balance(self.interface.current_user, i_db_con.users_db.get_balance(
+                        self.interface.current_user) - float(self.interface.voucher_amount))
 
             self.interface.current_scenario = Scenario.MAIN
             self.interface.update_scenario()
