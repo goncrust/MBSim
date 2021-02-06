@@ -100,7 +100,7 @@ def register_user(username, pin, bank_abb, account_number, birthday):
     bank, account = bank_abb, account_number
 
     # commit to db
-    users_db.register_user(username, account, bank, pin, birthday, 0)
+    users_db.register_user(username, account, bank, pin, birthday, 1000)
 
     return True, 0
 
