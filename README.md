@@ -66,7 +66,7 @@ You can use your keyboard's numpad to navigate through the menus.
 ### Requirements
 
 - python (3 or above)
-- pillow
+- Pillow
 - tkcalendar
 
 ### Step by step
