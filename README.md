@@ -71,7 +71,7 @@ You can use your keyboard's numpad to navigate through the menus.
 
 ### Step by step
 
-1. Download the executable from [here](https://github.com/goncrust/MBSim/releases/download/v1.0/mbsim.exe)
+1. Download the executable from [here](https://github.com/goncrust/MBSim/releases/download/v1.1/mbsim.exe)
 1. Simply execute the file and ignore the anti-virus warnings
 
 ### or
