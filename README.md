@@ -69,12 +69,12 @@ You can use your keyboard's numpad to navigate through the menus.
 - Pillow
 - tkcalendar
 
-### Step by step
+### Step by step (Windows only)
 
 1. Download the executable from [here](https://github.com/goncrust/MBSim/releases/download/v1.1/mbsim.exe)
 1. Simply execute the file and ignore the anti-virus warnings
 
-### or
+### or (all platforms)
 
 1. Install [python 3.9](https://www.python.org/ftp/python/3.9.1/python-3.9.1-amd64.exe)
 1. Install the required python librarys:
