@@ -1,3 +1,13 @@
+'''
+MBSim (https://github.com/goncrust/MBSim)
+
+Scenarios scheme and language/labels handler.
+
+Copyright (c) 2021 by goncrust and contributors
+Released under the GPL v3.0
+https://github.com/goncrust/MBSim/blob/main/LICENSE.md
+'''
+
 import json
 
 # read languages.json content

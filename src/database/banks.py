@@ -1,3 +1,13 @@
+'''
+MBSim (https://github.com/goncrust/MBSim)
+
+Generate random account numbers, with real simulation of portuguese/bank indentifiers.
+
+Copyright (c) 2021 by goncrust
+Released under the GPL v3.0
+https://github.com/goncrust/MBSim/blob/main/LICENSE.md
+'''
+
 import random
 
 

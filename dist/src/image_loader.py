@@ -1,3 +1,13 @@
+'''
+MBSim (https://github.com/goncrust/MBSim)
+
+Image assets manager.
+
+Copyright (c) 2021 by goncrust and contributors
+Released under the GPL v3.0
+https://github.com/goncrust/MBSim/blob/main/LICENSE.md
+'''
+
 from PIL import Image, ImageTk, ImageFont, ImageDraw
 import path_installer
 

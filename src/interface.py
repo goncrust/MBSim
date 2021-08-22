@@ -1,3 +1,13 @@
+'''
+MBSim (https://github.com/goncrust/MBSim)
+
+Base window and widgets. Keyboard connection to event handler.
+
+Copyright (c) 2021 by goncrust and contributors
+Released under the GPL v3.0
+https://github.com/goncrust/MBSim/blob/main/LICENSE.md
+'''
+
 import tkinter as tk
 import i_event_handler
 from scenarios import *

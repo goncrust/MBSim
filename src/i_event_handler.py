@@ -1,3 +1,13 @@
+'''
+MBSim (https://github.com/goncrust/MBSim)
+
+Connection with UI events (Event Handler).
+
+Copyright (c) 2021 by goncrust and contributors
+Released under the GPL v3.0
+https://github.com/goncrust/MBSim/blob/main/LICENSE.md
+'''
+
 from scenarios import *
 import database.i_db_connector as i_db_con
 import hashlib
