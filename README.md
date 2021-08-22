@@ -10,6 +10,7 @@
 1. [Development](#Development)
 1. [Features](#Features)
 1. [Get Started](#Get-Started)
+1. [License](#License)
 
 ## Info
 
@@ -82,3 +83,7 @@ You can use your keyboard's numpad to navigate through the menus.
     - `pip install tkcalendar`
 1. Clone the repo: `git clone https://github.com/goncrust/MBSim.git`
 1. Go to the folder created by cloning the repo and run `py main.py`
+
+## License
+
+The source code is licensed under the open source GPL v3.0. License is available [here](https://github.com/goncrust/MBSim/blob/main/LICENSE.md).
