@@ -1,6 +1,6 @@
 # MBSim
 
-**Portuguese ATM Simulator** for school project
+**Portuguese ATM Simulator** for high school project
 
 <img src="main_menu.png" alt="multibanco" width="425">
 
