@@ -78,7 +78,7 @@ You can use your keyboard's numpad to navigate through the menus.
 ### or (all platforms)
 
 1. Install [python 3](https://www.python.org/)
-1. Install the required python librarys:
+1. Install the required python libraries:
     - `pip install pillow`
     - `pip install tkcalendar`
 1. Clone the repo: `git clone https://github.com/goncrust/MBSim.git`
