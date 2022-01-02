@@ -20,7 +20,7 @@ The current version of the program is only optimised for Windows 10.
 
 ## Development
 
-This project was developed and is maintained by @goncrust, @teravyte18 and @KingKatana09:
+This project was developed and is maintained by [@goncrust](https://github.com/goncrust), [@teravyte18](https://github.com/teravyte18) and [@KingKatana09](https://github.com/KingKatana09):
 
 </a>
 <a href="https://github.com/goncrust">
@@ -33,7 +33,7 @@ This project was developed and is maintained by @goncrust, @teravyte18 and @King
 <img src="https://github.com/KingKatana09.png?size=50" width="50">
 </a>
 
-Honorable mentions for having helped in this project (@DPS777):
+Honorable mentions for having helped in this project ([@DPS777](https://github.com/DPS777)):
 
 </a>
 <a href="https://github.com/DPS777">
@@ -64,7 +64,7 @@ You can use your keyboard's numpad to navigate through the menus.
 
 ## Get Started
 
-### Requirements
+### Dependencies
 
 - python (3 or above)
 - Pillow
@@ -77,7 +77,7 @@ You can use your keyboard's numpad to navigate through the menus.
 
 ### or (all platforms)
 
-1. Install [python 3.9](https://www.python.org/)
+1. Install [python 3](https://www.python.org/)
 1. Install the required python librarys:
     - `pip install pillow`
     - `pip install tkcalendar`
